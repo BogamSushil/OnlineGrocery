@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OnlineGroceryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="AuthenticateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmailID" Type="nvarchar" Mode="In" />
+          <Parameter Name="HashPassword" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetAllUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetChieldProductCategorys" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="parent_product_type_code" Type="char" Mode="In" />
+        </Function>
+        <Function Name="GetProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="product_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetProductByCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="product_type_code" Type="char" Mode="In" />
+        </Function>
+        <Function Name="GetProductCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="product_type_code" Type="char" Mode="In" />
+        </Function>
+        <Function Name="GetUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmailID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ManageProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="product_id" Type="int" Mode="In" />
+          <Parameter Name="product_type_code" Type="char" Mode="In" />
+          <Parameter Name="product_name" Type="varchar" Mode="In" />
+          <Parameter Name="product_price" Type="money" Mode="In" />
+          <Parameter Name="product_color" Type="varchar" Mode="In" />
+          <Parameter Name="product_size" Type="varchar" Mode="In" />
+          <Parameter Name="productImageName" Type="nvarchar" Mode="In" />
+          <Parameter Name="product_description" Type="varchar" Mode="In" />
+          <Parameter Name="other_product_details" Type="varchar" Mode="In" />
+          <Parameter Name="Operation" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ManageProductCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="product_type_code" Type="char" Mode="In" />
+          <Parameter Name="parent_product_type_code" Type="char" Mode="In" />
+          <Parameter Name="product_type_description" Type="varchar" Mode="In" />
+          <Parameter Name="productTypeImageName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Operation" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ManageUserOperation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EmailID" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="HashId" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsActive" Type="bit" Mode="In" />
+          <Parameter Name="RoleID" Type="tinyint" Mode="In" />
+          <Parameter Name="CreatedBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreateDate" Type="datetime" Mode="In" />
+          <Parameter Name="ModifiedBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="ModifiedDate" Type="datetime" Mode="In" />
+          <Parameter Name="Operation" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="OnlineGroceryModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OnlineGroceryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="OnlineGroceryEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="GetChieldProductCategorys" ReturnType="Collection(OnlineGroceryModel.ProductCategory)">
+          <Parameter Name="parent_product_type_code" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetProduct" ReturnType="Collection(OnlineGroceryModel.Product)">
+          <Parameter Name="product_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetProductByCategory" ReturnType="Collection(OnlineGroceryModel.Product)">
+          <Parameter Name="product_type_code" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetProductCategory" ReturnType="Collection(OnlineGroceryModel.ProductCategory)">
+          <Parameter Name="product_type_code" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ManageProduct">
+            <Parameter Name="product_id" Mode="In" Type="Int32" />
+            <Parameter Name="product_type_code" Mode="In" Type="String" />
+            <Parameter Name="product_name" Mode="In" Type="String" />
+            <Parameter Name="product_price" Mode="In" Type="Decimal" />
+            <Parameter Name="product_color" Mode="In" Type="String" />
+            <Parameter Name="product_size" Mode="In" Type="String" />
+            <Parameter Name="productImageName" Mode="In" Type="String" />
+            <Parameter Name="product_description" Mode="In" Type="String" />
+            <Parameter Name="other_product_details" Mode="In" Type="String" />
+            <Parameter Name="Operation" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ManageProductCategory">
+            <Parameter Name="product_type_code" Mode="In" Type="String" />
+            <Parameter Name="parent_product_type_code" Mode="In" Type="String" />
+            <Parameter Name="product_type_description" Mode="In" Type="String" />
+            <Parameter Name="productTypeImageName" Mode="In" Type="String" />
+            <Parameter Name="Operation" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ManageUserOperation">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="EmailID" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="HashId" Mode="In" Type="String" />
+            <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+            <Parameter Name="RoleID" Mode="In" Type="Byte" />
+            <Parameter Name="CreatedBy" Mode="In" Type="String" />
+            <Parameter Name="CreateDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ModifiedBy" Mode="In" Type="String" />
+            <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Operation" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AuthenticateUser" ReturnType="Collection(OnlineGroceryModel.UserEntity)">
+            <Parameter Name="EmailID" Mode="In" Type="String" />
+            <Parameter Name="HashPassword" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllUsers" ReturnType="Collection(OnlineGroceryModel.UserEntity)" />
+          <FunctionImport Name="GetUser" ReturnType="Collection(OnlineGroceryModel.UserEntity)">
+          <Parameter Name="EmailID" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="ProductCategory">
+          <Property Type="String" Name="product_type_code" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="parent_product_type_code" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="product_type_description" Nullable="true" MaxLength="80" />
+          <Property Type="String" Name="productTypeImageName" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="Product">
+          <Property Type="Int32" Name="product_id" Nullable="false" />
+          <Property Type="String" Name="product_type_code" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="product_name" Nullable="true" MaxLength="80" />
+          <Property Type="Decimal" Name="product_price" Nullable="true" Precision="19" />
+          <Property Type="String" Name="product_color" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="product_size" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="productImageName" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="product_description" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="other_product_details" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="UserEntity">
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="EmailID" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="HashId" Nullable="false" MaxLength="200" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="Byte" Name="RoleID" Nullable="false" />
+          <Property Type="String" Name="RoleName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OnlineGroceryModelStoreContainer" CdmEntityContainer="OnlineGroceryEntities">
+          <FunctionImportMapping FunctionImportName="GetChieldProductCategorys" FunctionName="OnlineGroceryModel.Store.GetChieldProductCategorys">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OnlineGroceryModel.ProductCategory">
+                <ScalarProperty Name="product_type_code" ColumnName="product_type_code" />
+                <ScalarProperty Name="parent_product_type_code" ColumnName="parent_product_type_code" />
+                <ScalarProperty Name="product_type_description" ColumnName="product_type_description" />
+                <ScalarProperty Name="productTypeImageName" ColumnName="productTypeImageName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetProduct" FunctionName="OnlineGroceryModel.Store.GetProduct">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OnlineGroceryModel.Product">
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="product_type_code" ColumnName="product_type_code" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="product_price" ColumnName="product_price" />
+                <ScalarProperty Name="product_color" ColumnName="product_color" />
+                <ScalarProperty Name="product_size" ColumnName="product_size" />
+                <ScalarProperty Name="productImageName" ColumnName="productImageName" />
+                <ScalarProperty Name="product_description" ColumnName="product_description" />
+                <ScalarProperty Name="other_product_details" ColumnName="other_product_details" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetProductByCategory" FunctionName="OnlineGroceryModel.Store.GetProductByCategory">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OnlineGroceryModel.Product">
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="product_type_code" ColumnName="product_type_code" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="product_price" ColumnName="product_price" />
+                <ScalarProperty Name="product_color" ColumnName="product_color" />
+                <ScalarProperty Name="product_size" ColumnName="product_size" />
+                <ScalarProperty Name="productImageName" ColumnName="productImageName" />
+                <ScalarProperty Name="product_description" ColumnName="product_description" />
+                <ScalarProperty Name="other_product_details" ColumnName="other_product_details" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetProductCategory" FunctionName="OnlineGroceryModel.Store.GetProductCategory">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OnlineGroceryModel.ProductCategory">
+                <ScalarProperty Name="product_type_code" ColumnName="product_type_code" />
+                <ScalarProperty Name="parent_product_type_code" ColumnName="parent_product_type_code" />
+                <ScalarProperty Name="product_type_description" ColumnName="product_type_description" />
+                <ScalarProperty Name="productTypeImageName" ColumnName="productTypeImageName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ManageProduct" FunctionName="OnlineGroceryModel.Store.ManageProduct" />
+          <FunctionImportMapping FunctionImportName="ManageProductCategory" FunctionName="OnlineGroceryModel.Store.ManageProductCategory" />
+          <FunctionImportMapping FunctionImportName="ManageUserOperation" FunctionName="OnlineGroceryModel.Store.ManageUserOperation" />
+          <FunctionImportMapping FunctionImportName="AuthenticateUser" FunctionName="OnlineGroceryModel.Store.AuthenticateUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OnlineGroceryModel.UserEntity">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="HashId" ColumnName="HashId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllUsers" FunctionName="OnlineGroceryModel.Store.GetAllUsers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OnlineGroceryModel.UserEntity">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="HashId" ColumnName="HashId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetUser" FunctionName="OnlineGroceryModel.Store.GetUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OnlineGroceryModel.UserEntity">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="HashId" ColumnName="HashId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
