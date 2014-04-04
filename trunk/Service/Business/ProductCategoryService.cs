@@ -10,19 +10,43 @@ namespace Service.Business
     {
         #region "Public methods"
 
-
+        public List<Domain.ProductCategory> GetAll()
+        {
+            var data = this.DBContext.GetAllProductCategory().ToList();
+            if (null != data)
+            {
+                var entites = new List<Domain.ProductCategory>();
+                foreach (var item in data)
+                {
+                    entites.Add(Translate(item));
+                }
+                return entites;
+            }
+            return null;
+        }
 
         public Domain.ProductCategory GetProductCategory(string categoryCode)
         {
             return this.Translate(this.DBContext.GetProductCategory(categoryCode).FirstOrDefault());
         }
 
-        public void SaveUpdateUser(Domain.ProductCategory entity)
+        public void Update(Domain.ProductCategory entity)
         {
             DatabaseAction action = string.IsNullOrWhiteSpace(entity.product_type_code) ? DatabaseAction.Insert : DatabaseAction.Update;
             try
             {
-                this.DBContext.ManageProductCategory(entity.product_type_code, entity.parent_product_type_code, entity.product_type_description, entity.productTypeImageName, (int)action);
+                this.DBContext.ManageProductCategory(entity.product_type_code, entity.parent_product_type_code, entity.product_type_description, entity.productTypeImageName, (int)DatabaseAction.Update);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public void Create(Domain.ProductCategory entity)
+        {
+            try
+            {
+                this.DBContext.ManageProductCategory(entity.product_type_code, entity.parent_product_type_code, entity.product_type_description, entity.productTypeImageName, (int)DatabaseAction.Insert);
             }
             catch (Exception ex)
             {

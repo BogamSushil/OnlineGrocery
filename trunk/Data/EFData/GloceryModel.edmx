@@ -9,6 +9,10 @@
           <Parameter Name="EmailID" Type="nvarchar" Mode="In" />
           <Parameter Name="HashPassword" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="GetAllProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="product_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetAllProductCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetChieldProductCategorys" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="parent_product_type_code" Type="char" Mode="In" />
@@ -121,6 +125,10 @@
           <FunctionImport Name="GetUser" ReturnType="Collection(OnlineGroceryModel.UserEntity)">
           <Parameter Name="EmailID" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="GetAllProduct" ReturnType="Collection(OnlineGroceryModel.Product)">
+            <Parameter Name="product_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllProductCategory" ReturnType="Collection(OnlineGroceryModel.ProductCategory)" />
         </EntityContainer>
         <ComplexType Name="ProductCategory">
           <Property Type="String" Name="product_type_code" Nullable="false" MaxLength="15" />
@@ -271,6 +279,31 @@
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllProduct" FunctionName="OnlineGroceryModel.Store.GetAllProduct">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="OnlineGroceryModel.Product">
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="product_type_code" ColumnName="product_type_code" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="product_price" ColumnName="product_price" />
+                <ScalarProperty Name="product_color" ColumnName="product_color" />
+                <ScalarProperty Name="product_size" ColumnName="product_size" />
+                <ScalarProperty Name="productImageName" ColumnName="productImageName" />
+                <ScalarProperty Name="product_description" ColumnName="product_description" />
+                <ScalarProperty Name="other_product_details" ColumnName="other_product_details" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllProductCategory" FunctionName="OnlineGroceryModel.Store.GetAllProductCategory">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="OnlineGroceryModel.ProductCategory">
+                <ScalarProperty Name="product_type_code" ColumnName="product_type_code" />
+                <ScalarProperty Name="parent_product_type_code" ColumnName="parent_product_type_code" />
+                <ScalarProperty Name="product_type_description" ColumnName="product_type_description" />
+                <ScalarProperty Name="productTypeImageName" ColumnName="productTypeImageName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

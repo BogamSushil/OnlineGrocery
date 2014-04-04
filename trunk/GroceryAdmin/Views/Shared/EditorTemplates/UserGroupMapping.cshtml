@@ -1,0 +1,162 @@
+﻿@using Kendo.Mvc.UI;
+@using Kendo.Mvc.Extensions;
+
+<script type="text/javascript">    
+    var IsItemChecked = false;
+    function UpdateIdinHF(obj) {        
+        var id = $(obj).attr('id');
+        var txtVal = $(obj).attr('textValue');
+        var name = $(obj).attr('name');
+        var value = parseInt($(obj).attr('value'));
+        var IsChecked = $(obj).is(':checked');
+
+        if (value != 0) {
+            UpdateIdInHiddenField(txtVal, IsChecked);
+
+            var totalchk = $('input[id*="chk_' + name + '"]').not("#chk_" + name + "_0").length;
+            var checkedchk = $('input[id*="chk_' + name + '"]:checked').not("#chk_" + name + "_0").length;
+
+            if (totalchk == checkedchk) {
+                $("#chk_" + name + "_0").prop("checked", true);
+            }
+            else {
+                $("#chk_" + name + "_0").prop("checked", false);
+            }
+        }
+        else {
+            $('input[id*="chk_' + name + '"]').each(function () {
+                if (parseInt($(this).val()) != 0) {
+                    if (IsChecked == true) {
+                        $(this).prop("checked", true);
+                        UpdateIdInHiddenField($(this).attr('textValue'), IsChecked);
+                    }
+                    else {
+                        $(this).prop("checked", false);
+                        UpdateIdInHiddenField($(this).attr('textValue'), IsChecked);
+                    }
+                }
+            });
+        }
+        IsItemChecked = true;
+    }
+    function onClose(e) {
+        if (IsItemChecked == true) {
+            IsItemChecked = false;
+            e.preventDefault();
+        }
+        else {
+            ShowSelectedItem();
+        }
+    }
+    function ShowSelectedItem() {
+     
+    }
+
+    function UpdateIdInHiddenField(value, IsAdd) {
+       
+        var groupDrop = $("#Groups").data("kendoDropDownList");
+        var hf = groupDrop.dataItem(0).GroupName;
+        
+        if (IsAdd == true) {
+            if (value.length != 0 &&  hf.indexOf(value.trim()) == -1) {
+                if (hf.length != 0) {
+                    hf = hf + ", " + value.trim();
+                }
+                else {
+                    hf = hf + value.trim();
+                }
+            }
+        }
+        else if (IsAdd == false) {
+            if (hf.indexOf(", " + value.trim()) >= 0) {
+                hf = hf.replace(", " + value.trim(), "");
+            }
+            else if (hf.indexOf(value.trim() + ",") == 0) {
+                hf = hf.replace(value.trim() + ", ", "");
+            }
+            else {
+                hf = hf.replace(value.trim(), "");
+            }
+        }
+        $('.groupDropBox').prop('title', hf);
+        groupDrop.dataItem(0).GroupName = hf;
+     
+    }
+
+    function onChange(e) {
+        e.sender.value(null);
+    }
+
+    var groupSelect = function (groupId) {
+        var checkCtr = $("#chk_Group_" + groupId);
+        if ($(checkCtr).length != 0) {
+
+            if (checkCtr.attr('checked')) {
+                checkCtr.attr('checked', false);
+            }
+            else {
+                checkCtr.attr('checked', true);
+            }
+            UpdateIdinHF(checkCtr)
+        }
+    };
+
+    function onSelect(e) {
+        var dataItem = this.dataItem(e.item.index());
+        groupSelect(dataItem.GroupID);
+    }
+
+    function onOpen(e) {
+        $('ul#Groups_listbox li:first').css("display", 'none');
+    }
+
+    function On_DataBound(e) {
+        if (selectedGroups != undefined) {
+            var groups = selectedGroupIds.split(",");
+            if (groups != undefined && groups.length != 0) {
+                for (var i = 0; i < groups.length; i++) {
+                    var check = $('#chk_Group_' + groups[i].trim());
+                    if (check) {
+                        check.prop("checked", true);
+                    }
+                }
+            }
+        }
+        var groupDrop = $("#Groups").data("kendoDropDownList");
+        groupDrop.dataItem(0).GroupName = selectedGroupNames;
+        if (groupDrop.dataSource && groupDrop.dataSource.total() == groups.length + 2) {
+            $('#chk_Group_0').prop("checked", true);;
+        }
+        groupDrop.value(-1);
+        $('.groupDropBox').prop('title', selectedGroupNames);
+    }
+    
+
+</script>
+
+@(Html.Kendo().DropDownList()
+            .Name("Groups").HtmlAttributes(new { @class = "groupDropBox" })       
+            .DataTextField("GroupName")
+            .DataValueField("GroupID") 
+            .Events(e=> e.Close("onClose"))        
+            .Events(e=> e.Open("onOpen"))        
+            .Events(e=> e.Change("onChange").DataBound("On_DataBound"))      
+            .Events(e=>e.Select("onSelect"))          
+            .DataSource(source =>
+            {
+                source.Read(read =>
+                {
+                    read.Action("GetGroupsDrop", "Group");
+                }
+                
+                )
+                .ServerFiltering(false); 
+            })       
+             .SelectedIndex(999)            
+            .Template("<input type='checkbox' id='chk_Group_#=data.GroupID #' onclick='groupSelect(#=data.GroupID #);' groupName = '#=data.GroupName #' name='Group' value='#=data.GroupID #'  textValue ='#=data.GroupName #'  />" + " " + "#=data.GroupName#") 
+            
+           
+   
+            
+)
+
