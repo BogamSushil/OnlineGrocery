@@ -1,0 +1,83 @@
+﻿@model Admin.Portal.Models.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.blockUI.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function () {       
+        $("#UserName").focus();         
+    });
+    $(document).ready(function () {
+        var settings = $('form').validate().settings;
+        settings.onkeyup = false;
+        $("#inputtxt").validate({
+            focusCleanup: true
+        });
+        if ($('.validation-summary-errors').length > 0) {
+            $('#centerKey').click();
+        }
+        var validator = $("form").data("validator");
+        if (validator) {            
+            validator.settings.onkeyup = false; // disable validation on keyup
+        }
+    });
+
+   
+    function test()
+    {        
+       $('.field-validation-error').hide();
+    }
+</script>
+<div class="container">
+    
+    <!-- Page -->
+    @using (@Html.BeginForm("Login", "Login", FormMethod.Post, new { id = "frmLogOn" }))
+    {
+       <div >
+        <div class="loginbox">
+            <table border="0" style="position: relative;">
+                <tbody>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.UserName, "Username")
+                        </td>
+                        <td id="inputtxt">
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "k-textbox o", @type = "text", @placeholder = "User Name", @id = "UserName", @name = "UserName", @style= "width:200px"})
+                            @Html.ValidationMessageFor(m => m.UserName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => m.UserName,"Password")
+                        </td>
+                        <td id="inputpassword">
+                            @Html.TextBoxFor(m => m.Password, new { data_bind = "value: Name", @class = "k-textbox", @type = "password", @placeholder = "Password", @id = "Password", @name = "Password", })
+                            @Html.ValidationMessageFor(m =>m.Password)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="spaceex" colspan="2">
+                            @Html.ValidationSummary(true)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="spaceex" colspan="2">
+                            <input type="submit" value="Log in" title="Log in" class="loginnewbtn button-main" style="width: 72px; text-align: center; margin-left: 89px;" />
+                        </td>
+                    </tr>                   
+                    <tr>
+                        <td colspan="2" width="100%" class="links_forgot spaceex" ><a href="#" id="fdid" style="width: 72px; text-align: center; margin-left: 0px; font-size:15px">Forgot Password?</a></td>
+                    </tr>                    
+                </tbody>
+            </table>
+        </div>
+       </div>
+    }
+</div>
+
+
