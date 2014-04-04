@@ -1,0 +1,12 @@
+﻿html.login {
+	background: #c9d5e1 url("/AdvantexeContents/#BrandName#/Branding/bgfx.jpg") no-repeat center center !important;
+}
+html.inner {
+	background: #656259 url("/AdvantexeContents/#BrandName#/Branding/bgfx1.png") no-repeat center top !important;
+}
+
+.logo {
+	margin: 7px 0;
+	width: 140px;
+	height: 41px;
+}

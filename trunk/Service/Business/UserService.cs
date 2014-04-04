@@ -16,7 +16,7 @@ namespace Service.Business
 
         public Domain.User GetUser(string emailId)
         {
-            return this.Translate(this.DBContext.GetUser(emailId).FirstOrDefault());
+            return Translate(this.DBContext.GetUser(emailId).FirstOrDefault());
         }
 
         public void SaveUpdateUser(Domain.User entity)
@@ -71,7 +71,7 @@ namespace Service.Business
 
         #region Private / Helper Methods
 
-        private Domain.User Translate(Data.EFData.UserEntity entity)
+        internal static Domain.User Translate(Data.EFData.UserEntity entity)
         {
             if (null == entity)
             {
@@ -91,7 +91,8 @@ namespace Service.Business
                 UserID = entity.UserID,
                 UserName = entity.UserName,
                 HashId = entity.HashId,
-                IsActive = entity.IsActive
+                IsActive = entity.IsActive,
+                RoleName = entity.RoleName
             };
         }
 

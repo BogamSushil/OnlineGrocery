@@ -1,0 +1,22 @@
+﻿@using Kendo.Mvc.UI;
+@using Kendo.Mvc.Extensions;
+
+@(Html.Kendo().DropDownList()
+            .Name("ConetntType")      
+            .DataTextField("Name")
+            .DataValueField("ContentTypeID")                            
+            .DataSource(source =>
+            {
+                source.Read(read =>
+                {
+                    read.Action("GetContentType", "ContentTypes");
+                }
+                
+                )
+                .ServerFiltering(false); 
+            }) 
+            .SelectedIndex(0)
+            .OptionLabel("Select")
+            )
+
+

@@ -1,0 +1,80 @@
+﻿@using System.Collections
+@using Kendo.Mvc.UI;
+@model Advantexe.Admin.Portal.Data.ContentEntity
+
+@{
+    Layout = null;
+}
+<style>
+    .k-widget.k-tooltip-validation {
+        margin: 0.5em 0 0 0 !important;
+        background: #fff;
+        color: #000;
+        font-family: Calibri, arial;
+        font-size: 12px;
+        font-weight: normal;
+        border-radius: 0;
+        box-shadow: 0 1px 13px rgba(0, 0, 0, 0.5);
+        border: 1px solid #fff;
+        width: 36%;
+    }
+
+</style>
+
+<ul class="errors ContentError"></ul>
+
+@Html.HiddenFor(model => model.ContentID)
+
+<div class="editor-label">
+    @Html.LabelFor(m => m.Name, "Title")
+</div>
+<div class="editor-field">
+    @Html.TextBoxFor(m => m.Name)
+    @Html.ValidationMessageFor(m => m.Name)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Description, "Description")
+</div>
+<div class="editor-field">
+    @Html.TextAreaFor(m => m.Description)
+    @Html.ValidationMessageFor(m => m.Description)
+</div>
+
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.ContentType, "Category")
+</div>
+<div class="editor-field">
+    @Html.EditorFor(m => m.ContentType)
+    @Html.ValidationMessageFor(m => m.ContentType)
+</div>
+<div class="editor-label">
+    @Html.LabelFor(model => model.GroupNames ,"Group")
+</div>
+<div class="editor-field" style="color:#000;">
+    @Html.EditorFor(m => m.GroupNames)
+    @Html.ValidationMessageFor(m => m.GroupNames)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.FileOrUrl ,"Type")
+</div>
+<div class="editor-field">
+      @Html.EditorFor(m => m.FileOrUrl)
+            @Html.ValidationMessageFor(m=>m.FileOrUrl)
+</div>
+<div class="editor-label">
+    @Html.LabelFor(model => model.Upload,"File name / URL")
+</div>
+<div class="editor-field">
+      @Html.EditorFor(m => m.Upload)
+            @Html.ValidationMessageFor(m=>m.Upload)
+</div>
+<div class="editor-label">
+    @Html.LabelFor(model => model.Status,"Status")
+</div>
+<div class="editor-field">
+    @Html.TextBoxFor(m => m.Status, new  { @disabled = "disabled", @style = "border:none; background-color:white; font-family: calibri; padding-top:4px;" })
+</div>
+

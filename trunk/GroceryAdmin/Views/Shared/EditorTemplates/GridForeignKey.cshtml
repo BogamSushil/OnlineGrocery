@@ -1,0 +1,7 @@
+﻿@model Advantexe.Admin.Portal.Data.GroupEntity
+@using Kendo.Mvc.UI;
+@using Kendo.Mvc.Extensions;      
+@(
+ Html.Kendo().DropDownListFor(m => m)        
+        .BindTo((SelectList)ViewData[ViewData.TemplateInfo.GetFullHtmlFieldName("") + "_Data"])
+)
