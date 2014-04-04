@@ -21,7 +21,7 @@ namespace Domain
         public Nullable<System.DateTime> CreateDate { get; set; }
         public string ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
-        public Role Role { get; set; }
+        public string RoleName { get; set; }
 
         
     }

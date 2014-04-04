@@ -1,0 +1,67 @@
+﻿body {
+    background-color:#F2F2F2;    
+}
+
+.userDisplyaAreaClass {
+    display: none;
+}
+
+.printAreaClass {
+    display: block !Important;
+}
+
+.navbar-header {
+    display: none;
+}
+.summeryRep {
+    border: none !important;
+}
+.customDropdown .k-input {
+    font-size: 19pt;
+}
+.footer {
+    color:#000;
+}
+
+.dash_header {
+    display: none;
+}
+
+.reportDataContainer {
+    overflow: hidden !Important;
+    height:100% !Important;
+  
+}
+#tabstrip {
+background:none !Important;     
+box-shadow:none !important;
+}
+
+
+#exportToExcel {
+    display: none;
+}
+
+#exportToPDF {
+    display: none;
+}
+
+.leftFloat {
+    float: none;
+}
+
+#chartTable {
+    width: 400px !Important;
+}
+
+.k-select {
+    display: none !Important;
+}
+.tabcontent {
+height:100%
+}
+
+.container {
+
+
+}

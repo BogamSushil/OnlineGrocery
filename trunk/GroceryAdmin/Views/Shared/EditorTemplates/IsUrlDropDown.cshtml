@@ -1,0 +1,21 @@
+﻿@using Kendo.Mvc.UI;
+@using Kendo.Mvc.Extensions;
+
+@(Html.Kendo().DropDownList()
+            .Name("IsFileDropDown")       
+            .DataTextField("Text")
+            .DataValueField("Value")         
+            .Events(e=> e.Select ("fileUrlChane"))                   
+            .BindTo(new List<SelectListItem>() {
+              new SelectListItem() {
+                  Text = "File",
+                  Value = "1"
+              },
+              new SelectListItem() {
+                  Text = "Url",
+                  Value = "2"
+              }
+          })
+ )
+
+
