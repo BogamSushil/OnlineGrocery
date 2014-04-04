@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html class="inner">
+<head>
+    <meta charset="utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name='viewport' content='width=device-width; initial-scale=1.0; maximum-scale=5;'>
+    
+    <title>Advantexe VLE</title>
+    @Styles.Render("~/Content/css")
+    <link href="~/Content/Styles/content/shared/styles/examples-offline.css" rel="stylesheet" />
+    <link href="~/Content/Styles/styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/Content/Styles/styles/kendo.rtl.min.css" rel="stylesheet" />
+    <link href="~/Content/Styles/styles/kendo.default.min.css" rel="stylesheet" />
+    <link href="~/Content/Styles/styles/kendo.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Styles/styles/font-awesome4.css" rel="stylesheet" />
+    <link href="~/Content/validationEngine.jquery.css" rel="stylesheet" />
+    <link href="~/Content/Styles/styles/custom.css" rel="stylesheet" />
+    <link href="~/Content/Styles/styles/color.css" rel="stylesheet" />
+      <link href="@ViewData["BrandingCss"]" rel="stylesheet" />
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/jquery.validationEngine-en.js"></script>
+    <script src="~/Scripts/jquery.validationEngine.js"></script>
+    <script src="~/Content/Styles/js/custom.js"></script>
+    <script src="~/Content/Styles/js/kendo.web.min.js"></script>
+    <script src="@Url.Content("~/Scripts/kendo.aspnetmvc.min.js")" type="text/javascript"></script>
+     <script src="~/Scripts/common.js"></script>
+    <script src="~/Scripts/jquery.blockUI.js"></script>
+        <script src="~/Scripts/ErrorLogger.js"></script>
+    <script type ="text/javascript" >
+        var onError = function () {
+            $.blockUI({
+                message: $("div.glowUIForServerErrror"),
+                fadeIn: 700,
+                fadeOut: 700,
+                timeout: 3000,
+                showOverlay: false,
+                centerY: false,
+                css:
+                    {
+                        backgroundColor: '#000',
+                        width: '600px',
+                        left: '26%',
+                    },
+
+                onUnblock: function () { location.reload(); }
+
+            });
+
+        };
+  </script> 
+</head>
+<body>
+    <div id="content-login" class="k-content bg1 Login_container">
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="@Url.Action("UserDashboard", "UserDashboard")" >
+                    <img src="@ViewData["LogoImage"]" border="0" alt="Advertexe" longdesc="index.html" class="logo"></a>
+                <div class="welcome_user">
+                    <div class="title">Welcome @ViewData["User"]  </div>
+                <div class="pull-right">
+                    <!-- select box user -->
+                    <div class="myselectBox">
+                        <div class="myselectBoxhd"><i class="fa fa-user fa-lg"></i></div>
+                        <ul class="myselectOptions">
+                            <li class="selectOption"><i class="fa fa-edit"></i> 
+                             @Html.ActionLink("Edit Profile", "UserProfile", "UserDashboard") </li>
+                            <li class="selectOption"><i class="fa fa-sign-out"></i>
+                                @Html.ActionLink("Logout", "Logout", "AdvantexeAccount")
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+            <div class="container">
+            <div id="dashboard" class="k-content">
+                <div class="dash_header">
+                    <h3 class="dash-header-icon"><i class="fa fa-user fa-sm" style="vertical-align: middle;padding-left: 2px;"></i><a href="@Url.Action("UserDashboard", "UserDashboard")" >DASHBOARD </a></h3>
+                </div>
+                @RenderBody()
+ 
+            </div>
+                </div>
+           
+            <div class="footer">
+                 <p> &copy;2014 Advantexe Learning Solutions
+                    <br />
+                All Rights Reserved</p>
+            </div>     
+    </div>
+     <div class="glowUIForServerErrrorUser" style="display: none;">
+        <div style="padding-left: 1em;">
+            <h1><span id="glowMsgForServerErrrorUser" style="color: #fff; text-align: right; padding-left: 2em">Server Error. Please contact administrator.</span></h1>
+        </div>
+    </div>
+</body>
+</html>

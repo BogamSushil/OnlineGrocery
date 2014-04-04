@@ -1,0 +1,559 @@
+﻿@model Domain.ProductCategory
+@using Kendo.Mvc.UI;
+@using Kendo.Mvc.Extensions;
+@{    ViewBag.Title = "Product Category Management";
+      Layout = null;        
+}
+
+<style type="text/css">
+    #Client .k-grid-delete {
+        background-position: center center;
+        margin-top: -.2em;
+        margin-bottom: -.2em;
+        background-repeat: no-repeat;
+    }
+
+    #Client .k-grid-edit {
+        margin-top: 0;
+        margin-bottom: 0;
+        background-repeat: no-repeat;
+    }
+</style>
+
+<link href="~/Content/dropit.css" rel="stylesheet" />
+<script src="~/Scripts/dropit.js"></script>
+<script src="~/Scripts/common.js"></script>
+@using (@Html.BeginForm("Manage", "ManageProductType", FormMethod.Post, new { id = "frmProductType", DefaultButton = "Search" }))
+{
+    <script type="text/javascript">
+        var IsEmail = false;
+        var confirmEmail = false;
+        $(document).ready(function () {
+            $("#Client").find(".k-toolbar.k-grid-toolbar.k-grid-top").css({ background: 'none', border: 'none', borderBottom: '1px solid #ccc' });
+            $("#Client .k-grid-add").find('span').remove();
+            $("#Client .k-grid-add").removeClass('k-button k-button-icontext ').empty().html('<span class="fa fa-pencil fa-lg"></span> Create New Category');
+            $("#Client .k-grid-add").attr('font-size', 13);
+        });
+        // On ClientGrid DataBound Hide Default Add New button
+
+        function ClientGrid_OnDataBound(e) {
+            $('.gridstyle .k-grid-edit span').removeClass().addClass('fa fa-edit fa-lg');
+            $('.gridstyle .k-grid-Delete span').removeClass().addClass('fa fa-times-circle fa-lg k-delete');
+            $('#Phone').attr('placeholder', 'XXX-XXX-XXXX');
+          
+            // For Manage button       
+            $("#Client").find(".k-toolbar.k-grid-toolbar.k-grid-top").css({ background: 'none', border: 'none', borderBottom: '1px solid #ccc' });
+            $("#Client .k-grid-add").find('span').remove();
+            $("#Client .k-grid-add").removeClass('k-button k-button-icontext ').empty().html('<span class="fa fa-pencil fa-lg"></span> Create New Category');
+            $("#Client .k-grid-add").attr('font-size', 13);
+          
+
+            var grid = $("#Client").data("kendoGrid");
+            if (grid != undefined) {
+                var tr = grid.tbody.find("tr");
+                $.each(tr, function (index, data) {
+
+                    var dataItem = grid.dataItem(data);
+                    var Status = dataItem.Status;
+                 
+                    if (dataItem.IsActive) {
+                        $(data).find('.k-grid-Deactivate').addClass('fa fa-ban fa-lg');
+                        $(data).find('.k-grid-Deactivate').attr('title', 'Disable');
+                    }
+                    else if (!dataItem.IsActive) {
+                        $(data).find('.k-grid-Deactivate').addClass('fa fa-circle-o fa-lg');
+                        $(data).find('.k-grid-Deactivate').attr('title', 'Enable');
+                    }
+                  
+                });
+            }
+        }
+
+        //On ClientGrid Edit Change style of buttons 
+        function metadataFieldsGrid_onEdit(e) {
+            if (e.model.isNew()) {
+                var Status = $(e.container).find("#IsActive");
+                if (Status != undefined && Status.length > 0) {
+                    $("#IsActive").removeAttr("disabled");
+                }
+                $('.gridstyle .k-grid-update').attr('title', 'Save');
+            }
+            else {
+                var Status = $(e.container).find("#IsActive");
+                if (Status != undefined && Status.length > 0) {
+                    $("#IsActive").attr("disabled", "disabled");
+                }
+                $('.gridstyle .k-grid-update').attr('title', 'Update');
+            }
+
+            var grid = $("#Client").data("kendoGrid");
+
+            var grid = $("#Client").data("kendoGrid");
+            var tr = grid.tbody.find("tr");
+            $.each(tr, function (index, data) {
+                var dataItem = grid.dataItem(data);
+                var Status = dataItem.Status;
+                if (dataItem.IsActive) {
+                    $(data).find('.k-grid-Deactivate').addClass('fa fa-ban fa-lg');
+                    $(data).find('.k-grid-Deactivate').attr('title', 'Disable');
+                }
+                else if (!dataItem.IsActive) {
+                    $(data).find('.k-grid-Deactivate').addClass('fa fa-circle-o fa-lg');
+                    $(data).find('.k-grid-Deactivate').attr('title', 'Enable');
+                }
+
+            });
+            $('#Phone').attr('placeholder', 'XXX-XXX-XXXX');
+            $('#ClientName').attr('maxlength', '100');
+            $('#ContactName').attr('maxlength', '100');
+            $('#ClientEmailAddress').attr('maxlength', '200');
+            $('#Phone').attr('maxlength', '12');
+            $('.gridstyle .k-grid-cancel').attr('title', 'Cancel');
+            $(e.container).find(".k-grid-update").html(" ");
+            $(e.container).find(".k-grid-cancel").html(" ");
+            $('.gridstyle .k-grid-update').addClass('r-edit fa fa-check-circle fa-lg');
+            $('.gridstyle .k-grid-cancel').addClass('r-edit fa fa-times-circle fa-lg');
+            $('.gridstyle .k-grid-cancel').attr('title', 'Cancel');
+            $('.gridstyle .k-grid-edit span').removeClass().addClass('fa fa-edit fa-lg');
+            $('.gridstyle .k-grid-Delete span').removeClass().addClass('fa fa-times-circle fa-lg');
+            $('.gridstyle .k-grid-Manage span').removeClass().addClass('fa fa-shield fa-lg');
+        }
+
+        $("#frmProductType").keypress(function (e) {
+            kCode = e.keyCode || e.charCode //for cross browser
+            if (kCode == 13 && $("#txtSearch").is(':focus')) {
+                var defaultbtn = $(this).attr("DefaultButton");
+                $("#" + defaultbtn).click();
+                return false;
+            }
+        });
+
+        //On Search button click search a specific record 
+        $(document).ready(function () {
+            $("#Search").on('click', function () {
+                var txtSearch = $("#txtSearch").val();
+                if (txtSearch == "") {
+                    window.location.reload();
+                }
+                else if ($.trim($('#txtSearch').val()) == '') {
+                    window.location.reload();
+                }
+                else {
+                    var grid = $("#Client").data("kendoGrid");
+                    grid.dataSource.filter({
+                        logic: "or",
+                        filters: [
+                          { field: "product_type_code", operator: "contains", value: txtSearch },
+                          { field: "parent_product_type_code", operator: "contains", value: txtSearch },
+                          { field: "product_type_description", operator: "contains", value: txtSearch }
+                        ]
+                    });
+                }
+            });
+            $("#Client tbody").on("keydown", "tr", function (e) {
+                var grid = $("#Client").data("kendoGrid");
+                //get the pressed key code
+                var code = (e.keyCode ? e.keyCode : e.which);
+                if (code == 13) { //Enter keycode
+                    $(e.srcElement).closest("tbody").focus();
+                    setTimeout(function () {
+                        grid.saveRow();
+                    })
+                }
+            });
+        });
+
+
+        function ClientGrid_OnCancel(e) {
+            var grid = $("#Client").data("kendoGrid");
+            grid.dataSource.read();
+            e.model.IsEmail = false;
+            confirmEmail = false;
+        };
+
+        // On Group Click inside Manage    
+        function getGroupGrid(clientId, isActive, clientName) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("RedirectToChield", "Client")',
+                data: { clientId: clientId, clientName: clientName, controllerId: 1, action: "ManageGroup" },
+                error: function (xhr, ajaxOptions, error) {
+                    onError();
+                    $('#glowMsgForServerErrror').html(AlertsMessages.ServerError.value);
+                },
+                // whatever I did here on success
+                success: function (data) {
+                    window.location = getSiteUrl("/Group/ManageGroup");
+                }
+            });
+            // window.location = "/Group/ManageGroup?clientId=" + ClientID;       
+        }
+
+        // On Content Click inside Manage
+        function getContentGrid(clientId, isActive, clientName) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("RedirectToChield", "Client")',
+                    data: { clientId: clientId, clientName: clientName, controllerId: 2, action: "ManageContents" },
+                    error: function (xhr, ajaxOptions, error) {
+                        onError();
+                        $('#glowMsgForServerErrror').html(AlertsMessages.ServerError.value);
+                    },
+                    // whatever I did here on success
+                    success: function (data) {
+                        window.location = getSiteUrl("/Content/ManageContents");
+                    }
+                });
+            }
+
+            // On User Click inside Manage
+            function getUserGrid(clientId, isActive, clientName) {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("RedirectToChield", "Client")',
+                    data: { clientId: clientId, clientName: clientName, controllerId: 2, action: "ManageUser" },
+                    error: function (xhr, ajaxOptions, error) {
+                        onError();
+                        $('#glowMsgForServerErrror').html(AlertsMessages.ServerError.value);
+                    },
+                    // whatever I did here on success
+                    success: function (data) {
+                        window.location = getSiteUrl("/User/ManageUser");
+                    }
+                });
+            }
+
+
+
+            // On Deactivate button click deactivate record
+            $(document).ready(function () {
+                $(document).on("click", ".k-grid-Deactivate", function (e) {
+                    var grid = $("#Client").data("kendoGrid");
+                    var dataItem = grid.dataItem($(this).closest("tr"));
+                    var ClientID = dataItem.ClientID;
+                    var status = !dataItem.IsActive;
+                    $('#HStatus').val(!dataItem.IsActive);
+                    $('#HClientID').val(ClientID);
+                    if (dataItem.IsActive) {
+                        $('#mymodal1').fadeIn('slow');
+                        $("#Confirmation").attr("style", "block");
+                        $("#Confirmation").text(AlertsMessages.DeactivateClient.value);
+                    }
+                    else {
+                        $("#Confirmation").attr("style", "none");
+                        Deactivate();
+                    }
+                    $('#mymodal1 .cont .close').click(function () {
+                        $('#mymodal1').fadeOut();
+                    });
+                });
+
+                $(document).on("click", ".k-grid-Branding", function (e) {
+                    var grid = $("#Client").data("kendoGrid");
+                    var dataItem = grid.dataItem($(this).closest("tr"));
+                    var ClientID = dataItem.ClientID;
+                    var url = getSiteUrl("/Branding/ManageBranding?clientId=") + ClientID + "&clientName=" + dataItem.ClientName;
+                    window.location.replace(url);
+                });
+
+            });
+
+            //Deactivate Click
+            function Deactivate() {
+                $('.gridstyle .k-grid-update').addClass('r-edit fa fa-check-circle fa-lg');
+                $('.gridstyle .k-grid-cancel').addClass('r-edit fa fa-times-circle fa-lg');
+                $('.gridstyle .k-grid-edit span').removeClass().addClass('fa fa-edit fa-lg');
+                $('.gridstyle .k-grid-Delete span').removeClass().addClass('fa fa-times-circle fa-lg');
+                $('.gridstyle .k-grid-Manage span').removeClass().addClass('fa fa-shield fa-lg');
+                var status = $("#HStatus").val() == 'false' ? false : true;
+                var clientId = $('#HClientID').val();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("DeactivateClient", "Client")',
+                    data: { clientID: clientId, status: status },
+                    error: function (xhr, ajaxOptions, error) {
+                        unhandledException();
+                    },
+                    // whatever I did here on success
+                    success: function (data) {
+                        window.location.reload();
+                        $('#mymodal1').fadeOut();
+                    }
+                });
+            }
+
+
+            var Email;
+            function ClientGrid_OnSave(e) {
+                if (e.model.ClientID == 0 && confirmEmail == false) {
+                    $('#mymodalEmail').fadeIn('slow');
+                    e.preventDefault();
+                }
+                if (IsEmail == true) {
+                    e.model.IsEmail = true;
+                    e.model.WelcomeEmailSubject = EmailSubject.WelcomeClientEmail.value;
+                    IsEmail = false;
+                    confirmEmail = false;
+                }
+                $('#mymodalEmail .cont .close').click(function () {
+                    $('#mymodalEmail').fadeOut();
+                });
+            }
+
+
+            function Cancel() {
+                $('#mymodal1').fadeOut();
+            }
+
+
+            function CancelDelete() {
+                $('#mymodal2').fadeOut();
+            }
+
+            function StCancel() {
+                $('#mymodal3').fadeOut();
+            }
+
+            function SendCancel() {
+                IsEmail = false;
+                confirmEmail = true;
+                var grid = $("#Client").data("kendoGrid");
+                if (grid) {
+                    grid.saveRow();
+                }
+                $('#mymodalEmail').fadeOut();
+            }
+
+            // On Delete button click deactivate record
+            $(document).ready(function () {
+                $(document).on("click", ".k-grid-Delete", function (e) {
+                    $('#mymodal2').fadeIn('slow');
+                    var grid = $("#Client").data("kendoGrid");
+                    var dataItem = grid.dataItem($(this).closest("tr"))
+                    var ClientID = dataItem.ClientID;
+                    $('#DE_ClientID').val(ClientID);
+                    $('#DE_ClientName').val(dataItem.ClientName);
+                    $("#DeleteConfirm").attr("style", "block");
+                    $("#DeleteConfirm").text(AlertsMessages.DeleteClient.value);
+                    $('#mymodal2 .cont .close').click(function () {
+                        $('#mymodal2').fadeOut();
+                    });
+                });
+            });
+
+
+            // Delete Function
+            function Delete() {
+                $('.gridstyle .k-grid-update').addClass('r-edit fa fa-check-circle fa-lg');
+                $('.gridstyle .k-grid-cancel').addClass('r-edit fa fa-times-circle fa-lg');
+                $('.gridstyle .k-grid-edit span').removeClass().addClass('fa fa-edit fa-lg');
+                $('.gridstyle .k-grid-Delete span').removeClass().addClass('fa fa-times-circle fa-lg');
+                $('.gridstyle .k-grid-Manage span').removeClass().addClass('fa fa-shield fa-lg');
+                var clientId = $("#DE_ClientID").val();
+                var name = $("#DE_ClientName").val();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("DeleteCategory", "ManageProductType")',
+            data: { clientID: clientId, clientName: name },
+            error: function (xhr, ajaxOptions, error) {
+                onError();
+                $('#glowMsgForServerErrror').html(AlertsMessages.ServerError.value);
+                unhandledException();
+            },
+            // whatever I did here on success
+            success: function (data) {
+                window.location.reload();
+                $('#mymodal2').fadeOut();
+            }
+        });
+    }
+
+    function showAlertWindow(message) {
+        var alertWindow = $('#alertWindow').data('kendoWindow');
+        alertWindow.content(message);
+        alertWindow.refresh();
+        alertWindow.center();
+        alertWindow.open();
+    }
+
+    function error_handler(e) {       
+        var message = "";
+        if (e.errors) {
+            debugger;
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += "* " + this + "<\Br>";
+                    });
+                }
+            });
+        }
+        if (message == "") {
+            message = AlertsMessages.ServerError.value
+        }
+        showAlertWindow(message);
+        $("#Client").data("kendoGrid").preventDefault();
+
+    }
+    var Email;
+
+    function SendEmail(e) {
+        var grid = $("#Client").data("kendoGrid");
+        IsEmail = true;
+        confirmEmail = true;
+        grid.saveRow();
+    }
+
+    function AfterEnd(e) {
+        if (e.type == "destroy" || e.type == "create" || e.type == "update") {
+            if (e.response == null || e.response.Errors == null) {
+                window.location.reload();
+                $('#txtSearch').val("");
+            }
+        }
+    }
+
+    function ExportClientToExcel() {
+        window.location = getSiteUrl("/Client/ExportClientToExcel");
+    }
+    </script>   
+     
+    <div class="container">
+        <div id="tabstrip" class="style-no-BGBSH tabstr">
+            <ul style="margin-top: -32px; float: right;">
+                <li class="k-state-active cust-active-link"></li>
+            </ul>
+            @Html.Hidden("HIsValid")
+            <div class="tabcontent">
+                <header>
+                    <div class="leftFloat" style="width: 70%;">
+                        <div class="manageChd"><i class="fa fa-building-o fa-4x"></i></div>
+                        <div class="titlepage">
+                            Category Management
+                                <br>
+                            <small class="description">Responsibilities: Manage Product Category<br>
+                                <span>4  </span>Product Category at present</small>
+                        </div>
+                    </div>
+                    <div class="reportheader">
+                        <a onclick="ExportClientToExcel();" href="javascript:void(0);" id="exportallToXLS" class="typesearch serchIcon"><span class="iconXLS"></span> Export to Excel</a>
+                    </div>
+                    <div class="rightFloat posReletive" style="width: 30%;">
+                        <span class="k-textbox k-space-right rightFloat rtextbox">
+                            <input id="txtSearch" type="text" placeholder="Search by category name, Parent category" />
+                            <a class="typesearch serchIcon fa fa-search fa-lg" id="Search">&nbsp;</a>
+                        </span>
+                    </div>
+                    <div class="clear"></div>
+                    <h3 class="dataviz-title"> </h3>
+
+                </header>
+                <div class="gridPlaceholder">
+
+                    <div id="clientsDb">
+                        <div id="grid2" class="gridstyle">
+                            @(Html.Kendo().Grid<Domain.ProductCategory>()
+                        .Name("Client")
+                        .Columns(columns =>
+                        {
+                            columns.Bound(p => p.product_type_code).Title("Category").Width(120);
+                            columns.Bound(p => p.product_type_description).Title("Description").Width(120);
+                            columns.Bound(p => p.parent_product_type_code).Title("ParentCategory").Width(100);
+                            columns.Bound(p => p.productTypeImageName).Title("Image Address").Width(250);
+                            columns.Command(command => { command.Edit().Text(" ").HtmlAttributes(new { title = "Edit" }); command.Custom("Deactivate").Text(" ").HtmlAttributes(new { title = "Disable" }); command.Custom("Delete").Text(" ").HtmlAttributes(new { title = "Delete" });  }).Width(250).Title("Actions");
+                        })
+                        .ToolBar(toolbar => toolbar.Create())
+                        .Editable(editable => editable.Mode(GridEditMode.InLine))
+                        .Pageable(pageable => pageable.ButtonCount(10)
+                        .Refresh(true))
+                        .Sortable()
+                        .Scrollable()
+                        .Events(ev => ev.DataBound("ClientGrid_OnDataBound").Edit("metadataFieldsGrid_onEdit").Cancel("ClientGrid_OnCancel").Save("ClientGrid_OnSave"))
+                        .DataSource(dataSource => dataSource
+                            .Ajax()
+                            .PageSize(10)
+                            .Model(model =>
+                            {
+                                model.Id(e => e.product_type_code);
+                              
+                            })
+                            .Create(create => create.Action("CreateCategory", "ManageProductType"))
+                            .Read(read => read.Action("GetCategories", "ManageProductType"))
+                            .Update(update => update.Action("UpdateCategory", "ManageProductType"))
+                            .Events(e => e.Error("error_handler"))
+                            .Events(e => e.RequestEnd("AfterEnd"))
+                            )
+                        )
+
+
+                            @(Html.Kendo().Window()
+                        .Name("alertWindow")
+                        .Title("Error messages")
+                        .Draggable()
+                        .Resizable()
+                        .Width(300)
+                        .Modal(true)
+                        .Visible(false)
+                    )
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>   
+    <div style="clear: both"></div>  
+}
+<div class="mymodal2" id="mymodal1">
+    <div class="cont errorDiv">
+        <p class="close"></p>
+        <span id="Confirmation" style="display: none;"></span>
+        <br />
+        <br />
+        @Html.Hidden("HClientID")
+        @Html.Hidden("HStatus")
+        <div class="errorDivbutton">
+            <button class="k-button" id="Ok" onclick="Deactivate();">YES</button>
+            <button class="k-button" onclick="Cancel();">NO</button>
+        </div>
+    </div>
+</div>
+
+<div class="mymodal2" id="mymodal2">
+    <div class="cont errorDiv">
+        <p class="close"></p>
+        <span id="DeleteConfirm" style="display: none;"></span>
+        <br />
+        <br />
+        @Html.Hidden("DE_ClientID")
+        @Html.Hidden("DE_ClientName")
+        <div class="errorDivbutton">
+            <button class="k-button" id="Ok_Delete" onclick="Delete();">YES</button>
+            <button class="k-button" onclick="CancelDelete();">NO</button>
+        </div>
+    </div>
+</div>
+<div class="mymodalDate" id="mymodal3">
+    <div class="cont">
+        <p class="close"></p>
+        <span id="StatusConfirmation" style="display: none;"></span>
+        <br />
+        <br />
+        <button class="k-button" id="StOk" onclick="StCancel();">Ok</button>
+    </div>
+</div>
+<div class="mymodalDate" id="mymodalEmail">
+    <div class="cont">
+        <p class="close"></p>
+        <span id="Email">Client is Successfully Created</span>
+        <br />
+        <br />
+        <span>Do you want sent Email?</span>
+        <br />
+        <br />
+        @Html.Hidden("IsClientID")
+        <button class="k-button" id="StEmail" onclick="SendEmail();">Send Email</button>
+        <button class="k-button" id="StCancel" onclick="SendCancel();">No, Thanks</button>
+    </div>
+</div>
