@@ -1,0 +1,28 @@
+﻿@model EazyWizy.WebUI.Models.ContentModel
+@{
+    Layout = null;
+    ViewBag.Title = "Online Grocery Mall";
+}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>EazyWizy.com</title>
+         @Scripts.Render("~/bundles/jquery") 
+         @Scripts.Render("~/bundles/Site")
+         @Styles.Render("~/Content/css")    
+    </head>
+    <body>
+        <div id="divRoot">
+           <div id="divRootInner" style="background-image:url(/Content/Images/WoodDivBackground.jpg);">   
+             <div id="TopMenu">            
+                 @Html.Partial("Menu/_TopMenuPartial")               
+             </div>  
+             <div>
+                 @Html.Partial("Menu/_CategoriesMenu")      
+             </div>
+           </div>
+        </div>      
+    </body>
+</html>
+
