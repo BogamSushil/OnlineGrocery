@@ -1,0 +1,12 @@
+﻿#divRoot {
+    width:954px; 
+    margin: 0 auto;
+    background-color:lightgreen;
+}
+#divRootInner {
+    height:200px;
+}
+
+#divCategories > ul > li {
+    list-style:none;
+}
