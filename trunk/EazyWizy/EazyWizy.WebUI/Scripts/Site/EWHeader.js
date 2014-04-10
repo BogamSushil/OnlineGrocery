@@ -8,5 +8,10 @@
         $(divHeader).each(function () {
             $(this).css("width", Math.floor(eqWidth));
         });
-    }   
+    } 
 });
+
+function addFilterDiv()
+{
+    alert('To Be Implemented');
+}
