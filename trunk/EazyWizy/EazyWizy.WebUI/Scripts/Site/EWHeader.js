@@ -11,7 +11,12 @@
     } 
 });
 
-function addFilterDiv()
+function addFilterDiv(_thiz)
 {
-    alert('To Be Implemented');
+    var thiz = $(_thiz);
+    var top = Math.floor(thiz.position().top);
+    var left = Math.floor(thiz.position().left) + 300;
+    $('#divLHSContainer').css("top", top);
+    $('#divLHSContainer').css("left", left);
+    
 }
