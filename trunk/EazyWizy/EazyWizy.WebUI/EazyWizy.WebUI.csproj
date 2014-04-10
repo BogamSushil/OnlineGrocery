@@ -234,6 +234,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Menu\_TopMenuPartial.cshtml" />
     <Content Include="Views\Shared\Menu\_CategoriesMenu.cshtml" />
+    <Content Include="Views\Shared\Menu\_LHSMenu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
