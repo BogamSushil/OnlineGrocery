@@ -8,5 +8,15 @@
         $(divHeader).each(function () {
             $(this).css("width", Math.floor(eqWidth));
         });
-    }   
+    } 
 });
+
+function addFilterDiv(_thiz)
+{
+    var thiz = $(_thiz);
+    var top = Math.floor(thiz.position().top);
+    var left = Math.floor(thiz.position().left) + 300;
+    $('#divLHSContainer').css("top", top);
+    $('#divLHSContainer').css("left", left);
+    
+}

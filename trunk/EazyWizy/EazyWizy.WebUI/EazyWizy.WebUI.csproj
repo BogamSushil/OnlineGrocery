@@ -115,6 +115,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Header.css" />
+    <Content Include="Content\Images\rightarrow.png" />
     <Content Include="Content\Images\Copyright.png" />
     <Content Include="Content\Images\Home.png" />
     <Content Include="Content\Images\LogOut.png" />
@@ -177,6 +178,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\ew-jquery.css" />
     <Content Include="DBScripts\DataScript.SQL" />
+    <Content Include="DBScripts\EazyWizy Database Script.sql" />
     <Content Include="DBScripts\TopMenu Create Script.sql" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -208,6 +210,7 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Site\EWMenu.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -234,6 +237,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Menu\_TopMenuPartial.cshtml" />
     <Content Include="Views\Shared\Menu\_CategoriesMenu.cshtml" />
+    <Content Include="Views\Shared\Menu\_LHSMenu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
