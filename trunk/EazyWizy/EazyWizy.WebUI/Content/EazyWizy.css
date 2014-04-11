@@ -1,0 +1,60 @@
+﻿#divRoot {
+    width:954px; 
+    margin: 0 auto;
+    background-color:lightgreen;
+}
+#divRootInner {
+    height:200px;
+}
+
+#divCategories > ul > li {
+    list-style:none;
+}
+
+.disp-Block {
+    display:block;
+}
+.div-mid-top {
+    height:25px;
+}
+
+/*LHS Menu*/
+.div-TopUp {     
+    height:20px;
+    background-color:#373737;
+    border-radius:11px 11px 0px 0px;
+}
+.div-TopDown {     
+    height:20px;
+    background-color:#373737;
+    border-radius:0px 0px 11px 11px;
+}
+
+.li-style {
+    list-style:none;  
+    list-style-type: none;    
+    margin-top:0px;
+    margin-bottom:0px;
+    text-decoration:none;   
+    display: inline-block;
+    width:215px;
+    padding:0;
+}
+#ulLHS li {
+    display:block;
+    line-height:30px;
+    border-bottom: 1px solid #808080;
+
+    font-family:Verdana,Arial;
+    font-size:14px;
+    font-weight:bold;
+    cursor:pointer;
+}
+#ulLHS li > img {
+    width:10px;
+    float:right;
+    margin-top:10px;
+    margin-right:5px;
+}
+
+/*------*/

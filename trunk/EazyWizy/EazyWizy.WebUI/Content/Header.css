@@ -1,0 +1,54 @@
+﻿#divHeader1 > div {   
+    height:50px;   
+    border-radius:0px 0px 11px 11px;
+    margin-right:-4px;
+    display:inline-block;
+    cursor:pointer;     
+    text-align:center;
+    vertical-align:top;
+    padding:3px;
+    font-stretch: expanded;
+}
+#TopMenu {
+     margin-top:-8px;
+}
+
+#divHeader1 > div > img {
+    text-align:center;
+    width:20px;
+}
+#divImage {
+    background-color: #ff6900;
+}
+#divMyHome {
+    background-color: #a3bf05;
+}
+#divDiscounts {
+    background-color: #1e896f;
+}
+#divMyAcct {
+    background-color: #ffbc00;
+}
+#divLastPurchase{
+    background-color: #ff6900; 
+}
+#divTrackOrder {
+    background-color: #a3bf05;
+}
+#divHelpSupport {
+    background-color: #1e896f;
+}
+#divSignIn {
+    background-color: #ffbc00;
+}
+#divRegister{
+    background-color: #ff6900; 
+}
+
+/*Font*/
+.cssHeader-Menu-font {
+    color:white;
+    font-family:Verdana,Arial;
+    font-weight:bold;
+    font-size:15px;
+}
