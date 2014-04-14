@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Domain.Interfacas
+{
+    public interface IDatabaseObject
+    {
+        bool Add();
+        bool Update();
+        bool Delete();
+    }
+}
