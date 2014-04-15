@@ -113,11 +113,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Header.css" />
+    <Content Include="Content\Images\brand.png" />
+    <Content Include="Content\Images\category.png" />
+    <Content Include="Content\Images\Fruits.png" />
     <Content Include="Content\Images\rightarrow.png" />
     <Content Include="Content\Images\Copyright.png" />
     <Content Include="Content\Images\Home.png" />
     <Content Include="Content\Images\LogOut.png" />
     <Content Include="Content\Images\Register.png" />
+    <Content Include="Content\Images\Stationary.png" />
+    <Content Include="Content\Images\vegetables.png" />
     <Content Include="Content\Images\WoodDivBackground.jpg" />
     <Content Include="Content\kendo\Default\sprite.png" />
     <Content Include="Content\kendo\kendo.common.min.css" />

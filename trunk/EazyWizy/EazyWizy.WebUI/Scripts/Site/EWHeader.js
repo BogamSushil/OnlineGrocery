@@ -9,8 +9,8 @@
         });
     }
 
-    $("#lhsPanelBar").kendoPanelBar({
-        expandMode: "single"
+    $("#lhsPanelBar").kendoMenu({
+       orientation:'vertical'
     });
 });
 
