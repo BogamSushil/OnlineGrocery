@@ -1,5 +1,4 @@
 ﻿$(document).ready(function () {
-
     //This function to equally divide the Top Menu
     var divHeader = $('#divHeader1 > div');
     if (divHeader)
@@ -8,7 +7,11 @@
         $(divHeader).each(function () {
             $(this).css("width", Math.floor(eqWidth));
         });
-    } 
+    }
+
+    $("#lhsPanelBar").kendoMenu({
+       orientation:'vertical'
+    });
 });
 
 function addFilterDiv(_thiz)

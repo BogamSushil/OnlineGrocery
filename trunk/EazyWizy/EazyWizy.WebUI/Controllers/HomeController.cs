@@ -16,18 +16,18 @@ namespace EazyWizy.WebUI.Controllers
         private ITopMenuRepository topMenuRepository;
         public HomeController()
         {
-            this.topMenuRepository = new EFTopMenuRepository();
+            //this.topMenuRepository = new EFTopMenuRepository();
         }
         public HomeController(ITopMenuRepository _topMenuRepository)
         {
-            this.topMenuRepository = _topMenuRepository;
+            //this.topMenuRepository = _topMenuRepository;
         }
 
         public ViewResult Index()
         {
-            ContentModel contentModel = new ContentModel();
-            contentModel.TopMenu = this.topMenuRepository.TopMenu;
-            return View(contentModel);
+            //ContentModel contentModel = new ContentModel();
+            //contentModel.TopMenu = this.topMenuRepository.TopMenu;
+            return View();
         }
 	}
 }
