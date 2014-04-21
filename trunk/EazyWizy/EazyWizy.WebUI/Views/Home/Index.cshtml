@@ -1,4 +1,5 @@
-﻿@{
+﻿@model EazyWizy.WebUI.Models.ContentModel
+@{
     Layout = null;
     ViewBag.Title = "Online Grocery Mall";
 }
@@ -21,7 +22,7 @@
              </div>  
              <div class="disp-Block div-mid-top"></div>
              <div class="disp-Block">
-                 @Html.Partial("Menu/_LHSMenu")      
+                 @Html.Partial("Menu/_PartialLHSMenu",Model.lhsAllMenu)      
              </div>             
            </div>
         </div>      
