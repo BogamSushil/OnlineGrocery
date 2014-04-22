@@ -121,6 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Header.css" />
+    <Content Include="Content\Images\crossFilter.png" />
     <Content Include="Content\Images\rightArrow.jpg" />
     <Content Include="Content\Images\brand.png" />
     <Content Include="Content\Images\category.png" />
@@ -156,7 +157,7 @@
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\kendo\jquery.min.js" />
     <Content Include="Scripts\kendo\kendo.web.min.js" />
-    <Content Include="Scripts\Site\EWHeader.js" />
+    <Content Include="Scripts\Site\jsHeader.js" />
     <Content Include="Scripts\Site\jsLHSMenu.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -166,6 +167,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Content\ProductDisplayController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Menu\LHSMenuController.cs" />
     <Compile Include="Global.asax.cs">
@@ -181,10 +183,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\Menu\_TopMenuPartial.cshtml" />
-    <Content Include="Views\Shared\Menu\_CategoriesMenu.cshtml" />
+    <Content Include="Views\Shared\Menu\_PartialTopMenu.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Shared\Menu\_PartialLHSMenu.cshtml" />
+    <Content Include="Views\Content\ProductDisplay.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -194,7 +196,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\LHSMenu\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EazyWizy.Domain\EazyWizy.Domain.csproj">
