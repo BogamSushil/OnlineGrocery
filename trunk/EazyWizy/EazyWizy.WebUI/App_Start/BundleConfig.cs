@@ -26,7 +26,8 @@ namespace EazyWizy.WebUI
             bundles.Add(new StyleBundle("~/Content/Site/css").Include(
                    "~/Content/Site.css",
                   "~/Content/EazyWizy.css",
-                  "~/Content/Header.css"));
+                  "~/Content/Header.css",
+                  "~/Content/lhsMenu.css"));
         }       
     }
 }

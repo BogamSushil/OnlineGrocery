@@ -1,7 +1,6 @@
 ﻿@model EazyWizy.WebUI.Models.ContentModel
 @{
     Layout = null;
-    ViewBag.Title = "Online Grocery Mall";
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -19,15 +18,12 @@
            <div id="divRootInner">   
              <div id="TopMenu">            
                  @Html.Partial("Menu/_PartialTopMenu")               
-             </div>  
-            @* <div class="disp-Block div-mid-top">                 
-                 <div id="divFilters" class='ew-div-filters'></div>
-             </div>*@
+             </div>             
              <div class="disp-Block div-index-lhs">
                  @Html.Partial("Menu/_PartialLHSMenu",Model.lhsAllMenu)      
-             </div>             
+             </div>    
+             <div class="disp-inBlock">Here the product list will be displayed</div>                        
            </div>
         </div>      
     </body>
 </html>
-

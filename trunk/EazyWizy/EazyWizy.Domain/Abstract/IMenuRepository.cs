@@ -4,8 +4,12 @@ using EazyWizy.Domain.Entities;
 
 namespace EazyWizy.Domain.Abstract
 {
-    public interface ITopMenuRepository
+    public interface IMenuRepository
     {
         IEnumerable<TopMenu> TopMenu { get; }
+
+        IList<LHSMenu> LHSMenu { get; }
+
+        IList<LHSSubMenuBrand> LHSSubMenuBrand { get; }
     }
 }

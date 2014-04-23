@@ -1,28 +1,22 @@
-﻿using System;
+﻿using EazyWizy.Domain.Abstract;
+using EazyWizy.Domain.Concrete;
+using EazyWizy.WebUI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-using EazyWizy.Domain.Abstract;
-using EazyWizy.Domain;
-using EazyWizy.Domain.Concrete;
-using EazyWizy.WebUI.Models;
-
-namespace EazyWizy.WebUI.Controllers
+namespace EazyWizy.WebUI.Controllers.Content
 {
-    public class HomeController : Controller
+    public class ContentController : Controller
     {
         private IMenuRepository menuRepository;
-        public HomeController()
+        public ContentController()
         {
             this.menuRepository = new EFMenuRepository();
         }
-        public HomeController(IMenuRepository _menuRepository)
-        {
-            this.menuRepository = _menuRepository;
-        }
-        public ViewResult Index()
+        public ActionResult ProductDisplay()
         {
             ContentModel contentModel = new ContentModel();
             contentModel.topMenu = this.menuRepository.TopMenu;
@@ -30,8 +24,8 @@ namespace EazyWizy.WebUI.Controllers
             {
                 lhsMenu = this.menuRepository.LHSMenu,
                 lhsSubMenuBrand = this.menuRepository.LHSSubMenuBrand
-            }; 
-            return View(contentModel);
+            };
+            return View("ProductDisplay", contentModel);
         }
 	}
 }
