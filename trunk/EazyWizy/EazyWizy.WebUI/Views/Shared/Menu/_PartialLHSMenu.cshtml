@@ -1,0 +1,28 @@
+﻿@model EazyWizy.WebUI.Models.LHSAllMenu
+<div id="divLHSMenu" class="ew-lhs-div-border" style="width:200px;">
+    <ul class="ew-lhs-ul">
+        @foreach (var item in Model.lhsMenu.ToList())
+        {
+            <li class='ew-lhs-li ew-lhs-font'>
+                <span>
+                    <img class='ew-lhs-image' src='~/Content/Images/@item.Image' alt="" />
+                       @item.Name
+                    <span class="k-icon k-i-arrow-e ew-lhs-right-arrow"></span> 
+                </span>      
+                <div class='ew-lhs-subdiv'>
+                    <ul class='ew-lhs-submenu-ul'>          
+                         @foreach (var brandItem in Model.lhsSubMenuBrand.ToList())
+                         {  
+                            <li data-associated-id="@brandItem.IdBrand" class="ew-lhs-sub-li">
+                                <span>
+                                    <img class='ew-lhs-image' src='~/Content/Images/@brandItem.Image' alt="" />
+                                        @Html.ActionLink(@brandItem.Name, "ProductDisplay", "Content")
+                                </span>    
+                            </li>         
+                         }
+                     </ul>
+                </div>   
+            </li>
+        }
+    </ul>
+</div>
