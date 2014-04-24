@@ -32,5 +32,15 @@ namespace EazyWizy.Domain.Entities
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TopMenu>("sp_Select_GetMenu");
         }
+    
+        public virtual ObjectResult<LHSMenu> sp_Select_GetLHSMenu()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LHSMenu>("sp_Select_GetLHSMenu");
+        }
+    
+        public virtual ObjectResult<LHSSubMenuBrand> sp_Select_GetSubMenuBrand()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LHSSubMenuBrand>("sp_Select_GetSubMenuBrand");
+        }
     }
 }

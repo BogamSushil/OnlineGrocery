@@ -10,7 +10,12 @@ namespace EazyWizy.WebUI.Models
 {
     public class ContentModel
     {
-        public IEnumerable<TopMenu> TopMenu { get; set; }
-
+        public IEnumerable<TopMenu> topMenu { get; set; }
+        public LHSAllMenu lhsAllMenu { get; set; }
+    }
+    public class LHSAllMenu
+    {
+        public IEnumerable<LHSMenu> lhsMenu { get; set; }
+        public IEnumerable<LHSSubMenuBrand> lhsSubMenuBrand { get; set; }     
     }
 }
