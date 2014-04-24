@@ -1,0 +1,16 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE sp_GetTopMenu
+AS  
+SET NOCOUNT ON   
+		
+		SELECT
+			IdMenu,
+			Name 
+		FROM 
+			.TOPMENU 
+		ORDER BY 
+			SortedNumber;
+Go
