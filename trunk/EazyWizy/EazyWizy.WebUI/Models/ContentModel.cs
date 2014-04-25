@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using EazyWizy.Domain;
-using EazyWizy.Domain.Abstract;
-using EazyWizy.Domain.Entities;
+using Domain;
 
 namespace EazyWizy.WebUI.Models
 {
@@ -13,9 +11,10 @@ namespace EazyWizy.WebUI.Models
         public IEnumerable<TopMenu> topMenu { get; set; }
         public LHSAllMenu lhsAllMenu { get; set; }
     }
+
     public class LHSAllMenu
     {
         public IEnumerable<LHSMenu> lhsMenu { get; set; }
-        public IEnumerable<LHSSubMenuBrand> lhsSubMenuBrand { get; set; }     
+        public IEnumerable<SubMenuBrand> lhsSubMenuBrand { get; set; }     
     }
 }
