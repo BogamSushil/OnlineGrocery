@@ -28,6 +28,9 @@ namespace EazyWizy.WebUI
                   "~/Content/EazyWizy.css",
                   "~/Content/Header.css",
                   "~/Content/lhsMenu.css"));
+
+            bundles.Add(new StyleBundle("~/Content/jqueryui/css").Include(
+                "~/Content/jquery-ui/jquery-ui-1.10.4.custom.css"));
         }       
     }
 }

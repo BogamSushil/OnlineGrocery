@@ -134,6 +134,22 @@
     <Content Include="Content\Images\Stationary.png" />
     <Content Include="Content\Images\vegetables.png" />
     <Content Include="Content\Images\WoodDivBackground.jpg" />
+    <Content Include="Content\jquery-ui\images\animated-overlay.gif" />
+    <Content Include="Content\jquery-ui\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\jquery-ui\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\jquery-ui\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\jquery-ui\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\jquery-ui\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\jquery-ui\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\jquery-ui\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\jquery-ui\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\jquery-ui\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\jquery-ui\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\jquery-ui\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\jquery-ui\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\jquery-ui\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\jquery-ui\jquery-ui-1.10.4.custom.css" />
+    <Content Include="Content\jquery-ui\jquery-ui-1.10.4.custom.min.css" />
     <Content Include="Content\kendo\Default\sprite.png" />
     <Content Include="Content\kendo\kendo.common.min.css" />
     <Content Include="Content\kendo\kendo.default.min.css" />
@@ -152,9 +168,8 @@
     <None Include="BundleTransformer.Configuration.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
-    <Content Include="Scripts\jquery-1.9.1.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.custom.js" />
     <Content Include="Scripts\kendo\jquery.min.js" />
     <Content Include="Scripts\kendo\kendo.web.min.js" />
     <Content Include="Scripts\Site\jsHeader.js" />
@@ -184,9 +199,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Menu\_PartialTopMenu.cshtml" />
-    <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Shared\Menu\_PartialLHSMenu.cshtml" />
     <Content Include="Views\Content\ProductDisplay.cshtml" />
+    <Content Include="Views\Shared\Menu\_PartialBrandFilter.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

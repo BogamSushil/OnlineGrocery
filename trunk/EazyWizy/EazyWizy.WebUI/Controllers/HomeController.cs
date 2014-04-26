@@ -18,10 +18,7 @@ namespace EazyWizy.WebUI.Controllers
         {
             this.menuRepository = new EFMenuRepository();
         }
-        public HomeController(IMenuRepository _menuRepository)
-        {
-            this.menuRepository = _menuRepository;
-        }
+
         public ViewResult Index()
         {
             ContentModel contentModel = new ContentModel();

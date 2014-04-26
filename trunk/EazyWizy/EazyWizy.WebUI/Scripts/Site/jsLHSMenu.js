@@ -73,6 +73,14 @@
     }
 }
 
+var eazyWizyBrandFilter = {
+    _init: function () {
+        $('.ew-lhs-div-brand-filter').accordion();
+    }
+
+}
+
 $(document).ready(function () {
     eazyWizyLHSMenu._init();
+    eazyWizyBrandFilter._init();
 });
