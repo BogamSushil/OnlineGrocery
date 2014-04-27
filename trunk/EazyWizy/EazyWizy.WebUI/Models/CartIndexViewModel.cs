@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Domain.Entites;
 
 namespace EazyWizy.WebUI.Models
 {
