@@ -10,7 +10,11 @@ namespace EazyWizy.WebUI
         public static void RegisterBundles(BundleCollection bundles)
         { 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                 "~/Scripts/*.js"));
+                 "~/Scripts/jquery-1.10.2.js",
+                 "~/Scripts/jquery.ui.widget.js",
+                 "~/Scripts/jquery.ui.core.js",
+                 "~/Scripts/jquery.ui.accordion.js"
+                 ));            
 
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
                       "~/Scripts/kendo/kendo.web.min.js"));
@@ -30,7 +34,7 @@ namespace EazyWizy.WebUI
                   "~/Content/lhsMenu.css"));
 
             bundles.Add(new StyleBundle("~/Content/jqueryui/css").Include(
-                "~/Content/jquery-ui/jquery-ui-1.10.4.custom.css"));
+                "~/Content/jquery-ui/jquery.ui.all.css"));
         }       
     }
 }

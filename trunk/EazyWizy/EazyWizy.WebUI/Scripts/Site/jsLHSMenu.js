@@ -75,7 +75,18 @@
 
 var eazyWizyBrandFilter = {
     _init: function () {
-        $('.ew-lhs-div-brand-filter').accordion();
+        $('.ew-lhs-div-brand-filter').accordion({
+            heightStyle: "fill"
+        });
+
+        $(".ew-lhs-div-brand-filter").resizable({
+            minHeight: 140,
+            minWidth: 200,
+            resize: function () {
+                $("#accordion").accordion("refresh");
+            }
+        });
+
     }
 
 }

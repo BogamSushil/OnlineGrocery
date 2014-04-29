@@ -82,20 +82,14 @@
 
 .ew-lhs-div-brand-filter { 
     width:202px;
+    padding: 10px;
+	height: 220px;
 }
 
 .div-lhs-filter {
-    margin-top:5px;
+   margin-top:5px;
 }
 
 .ui-helper-reset {
     border-radius:0px !important;
-}
-
-.ui-accordion-content {
-    height:50px !important;
-    overflow:auto !important;
-}
-.ui-accordion-header {
-    margin-top:-1px !important;
 }

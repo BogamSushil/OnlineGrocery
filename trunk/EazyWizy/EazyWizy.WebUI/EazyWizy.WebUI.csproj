@@ -121,7 +121,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Header.css" />
+    <Content Include="Content\Images\bg-top.jpg" />
+    <Content Include="Content\Images\bg6 %281%29.jpg" />
+    <Content Include="Content\Images\bgfc33.jpg" />
+    <Content Include="Content\Images\bgfx.jpg" />
+    <Content Include="Content\Images\bgfx1.jpg" />
+    <Content Include="Content\Images\bgfx21.jpg" />
+    <Content Include="Content\Images\bgfx3.png" />
+    <Content Include="Content\Images\bgfx33.jpg" />
+    <Content Include="Content\Images\bgfx4.jpg" />
     <Content Include="Content\Images\crossFilter.png" />
+    <Content Include="Content\Images\green.png" />
+    <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\logo1.png" />
+    <Content Include="Content\Images\logo2.png" />
+    <Content Include="Content\Images\red.png" />
     <Content Include="Content\Images\rightArrow.jpg" />
     <Content Include="Content\Images\brand.png" />
     <Content Include="Content\Images\category.png" />
@@ -131,6 +145,8 @@
     <Content Include="Content\Images\Home.png" />
     <Content Include="Content\Images\LogOut.png" />
     <Content Include="Content\Images\Register.png" />
+    <Content Include="Content\Images\shopping-cart-with-groceries.jpg" />
+    <Content Include="Content\Images\shopping-cart-with-groceries.png" />
     <Content Include="Content\Images\Stationary.png" />
     <Content Include="Content\Images\vegetables.png" />
     <Content Include="Content\Images\WoodDivBackground.jpg" />
@@ -148,16 +164,36 @@
     <Content Include="Content\jquery-ui\images\ui-icons_454545_256x240.png" />
     <Content Include="Content\jquery-ui\images\ui-icons_888888_256x240.png" />
     <Content Include="Content\jquery-ui\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="Content\jquery-ui\jquery-ui-1.10.4.custom.css" />
-    <Content Include="Content\jquery-ui\jquery-ui-1.10.4.custom.min.css" />
+    <Content Include="Content\jquery-ui\jquery-ui.css" />
+    <Content Include="Content\jquery-ui\jquery.ui.accordion.css" />
+    <Content Include="Content\jquery-ui\jquery.ui.all.css" />
+    <Content Include="Content\jquery-ui\jquery.ui.autocomplete.css" />
+    <Content Include="Content\jquery-ui\jquery.ui.base.css" />
+    <Content Include="Content\jquery-ui\jquery.ui.button.css" />
+    <Content Include="Content\jquery-ui\jquery.ui.core.css" />
+    <Content Include="Content\jquery-ui\jquery.ui.datepicker.css" />
+    <Content Include="Content\jquery-ui\jquery.ui.dialog.css" />
+    <Content Include="Content\jquery-ui\jquery.ui.menu.css" />
+    <Content Include="Content\jquery-ui\jquery.ui.progressbar.css" />
+    <Content Include="Content\jquery-ui\jquery.ui.resizable.css" />
+    <Content Include="Content\jquery-ui\jquery.ui.selectable.css" />
+    <Content Include="Content\jquery-ui\jquery.ui.slider.css" />
+    <Content Include="Content\jquery-ui\jquery.ui.spinner.css" />
+    <Content Include="Content\jquery-ui\jquery.ui.tabs.css" />
+    <Content Include="Content\jquery-ui\jquery.ui.theme.css" />
+    <Content Include="Content\jquery-ui\jquery.ui.tooltip.css" />
     <Content Include="Content\kendo\Default\sprite.png" />
     <Content Include="Content\kendo\kendo.common.min.css" />
     <Content Include="Content\kendo\kendo.default.min.css" />
     <Content Include="Content\kendo\kendo.rtl.min.css" />
     <Content Include="Content\lhsMenu.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="DBScripts\BrandMaster.sql" />
     <Content Include="DBScripts\DataScript.SQL" />
     <Content Include="DBScripts\EazyWizy Database Script.sql" />
+    <Content Include="DBScripts\LHSMenu Create Script.sql" />
+    <Content Include="DBScripts\sp LHSGetMenu.sql" />
+    <Content Include="DBScripts\sp_Select_GetBrandSubMenu.sql" />
     <Content Include="DBScripts\TopMenu Create Script.sql" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -169,7 +205,9 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-ui-1.10.4.custom.js" />
+    <Content Include="Scripts\jquery.ui.accordion.js" />
+    <Content Include="Scripts\jquery.ui.core.js" />
+    <Content Include="Scripts\jquery.ui.widget.js" />
     <Content Include="Scripts\kendo\jquery.min.js" />
     <Content Include="Scripts\kendo\kendo.web.min.js" />
     <Content Include="Scripts\Site\jsHeader.js" />
@@ -202,6 +240,7 @@
     <Content Include="Views\Shared\Menu\_PartialLHSMenu.cshtml" />
     <Content Include="Views\Content\ProductDisplay.cshtml" />
     <Content Include="Views\Shared\Menu\_PartialBrandFilter.cshtml" />
+    <Content Include="Content\Images\bgfx.2jpg" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -231,7 +270,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>3549</DevelopmentServerPort>
+          <DevelopmentServerPort>3418</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
