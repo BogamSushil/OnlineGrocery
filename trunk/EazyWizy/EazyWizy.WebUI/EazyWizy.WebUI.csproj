@@ -161,6 +161,7 @@
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\kendo\jquery.min.js" />
     <Content Include="Scripts\kendo\kendo.web.min.js" />
+    <Content Include="Scripts\Site\jsCartFunctions.js" />
     <Content Include="Scripts\Site\jsHeader.js" />
     <Content Include="Scripts\Site\jsLHSMenu.js" />
     <Content Include="Scripts\Site\jsproductList.js" />
@@ -172,12 +173,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Binder\CartModelBinder.cs" />
+    <Compile Include="Controllers\Cart\CartController.cs" />
     <Compile Include="Controllers\Content\ProductDisplayController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Menu\LHSMenuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartIndexViewModel.cs" />
     <Compile Include="Models\ContentModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -202,6 +206,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Cart\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EazyWizy.Domain\EazyWizy.Domain.csproj">

@@ -23,5 +23,10 @@ namespace EazyWizy.Domain.Concrete
         {
             throw new System.NotImplementedException();
         }
+
+        public IEnumerable<Product> Products
+        {
+            get { throw new System.NotImplementedException(); }
+        }
     }
 }

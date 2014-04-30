@@ -53,8 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\ICart.cs" />
     <Compile Include="Abstract\IMenuRepository.cs" />
     <Compile Include="Abstract\IProductRepository.cs" />
+    <Compile Include="Concrete\Cart.cs" />
     <Compile Include="Concrete\ProductRepository.cs" />
     <Compile Include="Concrete\EFMenuRepository.cs" />
     <Compile Include="Entities\EazyWizy.Context.cs">
