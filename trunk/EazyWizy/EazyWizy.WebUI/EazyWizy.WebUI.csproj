@@ -204,7 +204,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\EazyWizy.Domain\EazyWizy.Domain.csproj">
+    <ProjectReference Include="..\EazyWizy.Domain\EazyWizy.Domain.csproj">
       <Project>{fb2e6f57-6ac1-4dfd-ad40-16b017b6b7f7}</Project>
       <Name>EazyWizy.Domain</Name>
     </ProjectReference>

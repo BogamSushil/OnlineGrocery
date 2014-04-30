@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{AB9262
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EazyWizy.Domain", "..\EazyWizy.Domain\EazyWizy.Domain.csproj", "{FB2E6F57-6AC1-4DFD-AD40-16B017B6B7F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EazyWizy.Domain", "EazyWizy.Domain\EazyWizy.Domain.csproj", "{FB2E6F57-6AC1-4DFD-AD40-16B017B6B7F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
