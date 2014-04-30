@@ -27,7 +27,7 @@ namespace EazyWizy.WebUI
                    "~/Content/Site.css",
                   "~/Content/EazyWizy.css",
                   "~/Content/Header.css",
-                  "~/Content/lhsMenu.css"));
+                  "~/Content/lhsMenu.css", "~/Content/productList.css"));
         }       
     }
 }

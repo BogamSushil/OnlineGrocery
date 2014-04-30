@@ -1,28 +1,36 @@
-﻿using EazyWizy.WebUI.Models;
+﻿using EazyWizy.Domain.Abstract;
+using EazyWizy.Domain.Concrete;
+using EazyWizy.Domain.Entities;
+using EazyWizy.WebUI.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.Mvc;
-using Service.Business;
 
 namespace EazyWizy.WebUI.Controllers.Content
 {
     public class ContentController : Controller
     {
-        private MenuService _mManager;
-        public MenuService Manager
+        private IMenuRepository menuRepository;
+        public ContentController()
         {
-            get { return _mManager ?? (_mManager = new MenuService()); }
+            this.menuRepository = new EFMenuRepository();
         }
         public ActionResult ProductDisplay()
         {
-            var contentModel = new ContentModel
+            ContentModel contentModel = new ContentModel();
+            contentModel.topMenu = this.menuRepository.TopMenu;
+            
+            contentModel.lhsAllMenu = new LHSAllMenu()
             {
-                topMenu = Manager.GetAllTopMenu(),
-                lhsAllMenu = new LHSAllMenu()
-                {
-                    lhsMenu = Manager.GetAllLhsMenu(),
-                    lhsSubMenuBrand = Manager.GetAllSubMenu()
-                }
+                lhsMenu = this.menuRepository.LHSMenu,
+                lhsSubMenuBrand = this.menuRepository.LHSSubMenuBrand
             };
+            contentModel.Products = (new ProductRepository()).GetAllProduct();
             return View("ProductDisplay", contentModel);
         }
 	}
+
+    
 }
