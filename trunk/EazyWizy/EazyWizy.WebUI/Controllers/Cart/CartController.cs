@@ -20,12 +20,12 @@ namespace EazyWizy.WebUI.Controllers.Cart
             repository = repo;
         }
 
-        public RedirectToRouteResult AddToCart(DE.Cart cart, int productId, string returnUrl)
+        public RedirectToRouteResult AddToCart(DE.Cart cart, int productId, int quantity, string returnUrl)
         {
             Product product = repository.Products.FirstOrDefault(p => p.product_id == productId);
             if (product != null)
             {
-                cart.AddItem(product, 1);
+                cart.AddItem(product, quantity);
             }
 
             return RedirectToAction("Index", new { returnUrl });
