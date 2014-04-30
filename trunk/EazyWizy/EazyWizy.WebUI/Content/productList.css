@@ -1,0 +1,450 @@
+﻿   
+.panel {
+    
+    position: relative;
+   
+    
+}
+.panel>div{ 
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+.panel .front {   
+    z-index: 900;  
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    transform: rotateY(0deg); 
+}
+.panel.flip .front {
+    z-index: 900;     
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    transform: rotateY(180deg);     
+}
+
+.panel .back {  
+    z-index: 800;    
+    -webkit-transform: rotateY(-180deg);     
+    -moz-transform: rotateY(-180deg);     
+    transform: rotateY(-180deg); 
+}
+
+.panel.flip .back {
+    z-index: 1000; 
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    transform: rotateY(0deg);  
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%; 
+    /* ReSharper disable once Html.PathError */
+    background-image: url('images/bgfx.jpg')
+}
+
+.content {
+	min-height: 100%;
+	position: relative;
+	
+	z-index: 0; 
+}
+
+.background {
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	bottom: 0;
+	margin: 0;
+	padding: 0;
+}
+
+.top_block {
+	width: 100%;
+	display: block; 
+}
+
+.bottom_block {
+	position: absolute;
+	width: 100%;
+	display: block;
+	bottom: 0; 
+}
+
+.left_block {
+	display: block;
+	float: left; 
+}
+
+.right_block {
+	display: block;
+	float: right; 
+}
+
+.center_block {
+	display: block;
+	width: auto; 
+}
+
+.Header {
+	width: 100%;
+	height: 10%;
+    text-align: center;
+}
+
+.TopMenu {
+	width: 100%;
+	height: 10%;
+	
+}
+
+.background.LeftMenu {
+	height: auto !important;
+	padding-bottom: 0;
+	left: 0;
+	width: 100%;
+
+	 
+}
+
+.LeftMenu {
+	height: auto;
+	width: 100%;
+
+}
+.LeftMenu .content {
+	min-height: 100%;
+	position: relative;
+	z-index: 0; 
+}
+.background.RightMenu {
+	height: auto !important;
+	padding-bottom: 0;
+	right: 0;
+	width: 20%;
+	
+	
+}
+
+.RightMenu {
+	height: auto;
+	width: 20%;
+	
+}
+
+.background.ProductDiv {
+	height: auto !important;
+	padding-bottom: 0;
+	left: 0;
+	right: 0;
+
+	
+}
+
+.ProductDiv {
+	width: auto;
+	height: auto;
+	
+}
+
+.Footer {
+    text-align: center;
+	width: 100%;
+	height: 5%;
+	background-color: #fff;
+}
+
+/* Prodcut List*/
+
+
+.tabs {
+    margin: 3px;
+    float: left;
+    background-color: #FFF;
+    border: 1px solid #e3e3e3;
+    /*margin: 10px 10px; */
+    *margin: 1px 1px;
+    /*    width: 166px;  */
+    width: 200px;
+    height: 240px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    position: relative;
+}
+
+    .tabs ul {
+        width: 165px;
+        margin: 3px 3px 0 3px;
+        background: gray;
+    }
+
+    .tabs li {
+        list-style: none outside none;
+        float: left;
+        width: 80px;
+        height: 16px;
+        line-height: 16px;
+        font-size: 9px;
+        font-weight: bold;
+        text-align: center;
+        border: 1px solid #cbcbcb;
+        background: #f1f1f2;
+    }
+
+        .tabs li a {
+            color: #000;
+            float: left;
+            width: 100%;
+            outline: medium none;
+        }
+
+        .tabs li:nth-child(1) {
+            -webkit-border-top-left-radius: 10px;
+            -moz-border-radius-topleft: 10px;
+            border-top-left-radius: 10px;
+        }
+
+        .tabs li:nth-child(2) {
+            -webkit-border-top-right-radius: 10px;
+            -moz-border-radius-topright: 10px;
+            border-top-right-radius: 10px;
+        }
+
+    .tabs ul li.active {
+        border: 1px solid #7f7d7d;
+        background: #b2b0b0;
+        background: -webkit-linear-gradient(top, rgb(133, 131, 132) 0%, rgb(177, 175, 176) 43%, rgb(189, 187, 188) 100%);
+        background: -o-linear-gradient(top, rgb(133, 131, 132) 0%, rgb(177, 175, 176) 43%, rgb(189, 187, 188) 100%);
+        background: -ms-linear-gradient(top, rgb(133, 131, 132) 0%, rgb(177, 175, 176) 43%, rgb(189, 187, 188) 100%);
+        background: -moz-linear-gradient(top, rgb(133, 131, 132) 0%, rgb(177, 175, 176) 43%, rgb(189, 187, 188) 100%);
+        background: linear-gradient(to bottom, rgb(133, 131, 132) 0%, rgb(177, 175, 176) 43%, rgb(189, 187, 188) 100%);
+    }
+
+    .tabs ul li.disabled_block {
+        background: #FFF;
+    }
+
+    .tabs ul li.disabled_block2 {
+        background: #FFF;
+        border: none;
+    }
+
+    .tabs .off {
+        background: url('../img/off-bg.png') no-repeat;
+        width: 60px;
+        height: 24px;
+        text-align: left;
+        overflow: hidden;
+        font-size: 11px;
+        padding: 4px 0 0 2px;
+        color: #000;
+        font-weight: bold;
+        position: absolute;
+        top: 55px;
+        left: -5px;
+        z-index: 99;
+    }
+
+    .tabs .veg {
+        /*background:url('../img/veg_s.jpg') no-repeat;*/
+        width: 12px;
+        height: 13px;
+        text-align: left;
+        overflow: hidden;
+        font-size: 11px;
+        color: #000;
+        border: none;
+        font-weight: bold;
+        position: absolute;
+        top: 130px;
+        /* left:1px;*/
+        right: 20px;
+        z-index: 99;
+    }
+
+    .tabs .list-group_image {
+        text-align: center;
+        padding: 2px 0 2px 0;
+    }
+
+    .tabs .list-group_image1 {
+        padding-top: 20px;
+    }
+
+.upperList {
+    margin: 4px;
+}
+
+.contentBlocks {
+    height: 58px;
+}
+
+.listHeader {
+    background-color: #adff2f;
+    height: 19px;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    text-align: center;
+}
+
+.prodName {
+    color: #000000 !important;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 10px 0 0;
+    text-align: center;
+}
+
+.prodDescription {
+    color: #656565;
+    display: block;
+    margin-top: 0;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.prodctImage {
+    padding: 5px;
+    text-align: center;
+}
+
+.prodImage_img {
+    height: 90px;
+    width: 80px;
+}
+
+.itemselect {
+    position: absolute;
+    top: 185px;
+    left: 79px;
+}
+
+.product_shopping-cart {
+    text-align: center;
+}
+
+
+.tabs .shopping-cart {
+    background: url('../img/boxmid.png') no-repeat center 5px;
+    height: 50px;
+    margin-top: 0px;
+    position: absolute;
+    bottom: 0;
+    width: 166px;
+}
+
+.tabs .price {
+    width: 20px;
+    float: left;
+    margin-top: 15px;
+    margin-left: 6px;
+}
+
+.tabs .pricebox {
+    width: 60px;
+    float: left;
+}
+
+.tabs .old_price {
+    font-size: 13px;
+    line-height: 17px;
+    color: #ccc;
+    float: left;
+    color: #666666;
+    font-weight: bold;
+    padding-left: 2px;
+    padding-bottom: 3px;
+    margin: 10px 0 0px 0;
+    text-align: left;
+    text-decoration: line-through;
+    width: auto;
+    text-align: center;
+}
+
+.tabs .new_price {
+    font-size: 16px;
+    line-height: 18px;
+    float: left;
+    text-align: left;
+    color: #2FAEE9;
+    font-weight: bold;
+    padding-left: 0px;
+    position: relative;
+    top: 1px;
+    width: auto;
+    clear: left;
+    text-align: center;
+}
+
+.tabs .addBtn {
+    float: right;
+    margin-top: 13px;
+    margin-right: 4px;
+}
+
+.bundle_items_container {
+    overflow: auto;
+    overflow-y: hidden;
+}
+
+.bundle_items {
+    display: inline-block;
+    width: 115px;
+    height: 150px;
+    border: 1px dotted #E3E3E3;
+    padding: 5px;
+    text-align: center;
+    overflow: hidden;
+}
+
+    .bundle_items:hover {
+        border: 1px solid #D0D0D0;
+    }
+
+    .bundle_items .list-group_image {
+        height: 80px;
+    }
+
+    .bundle_items .prod_name {
+        margin-top: 5px;
+        font-weight: bold;
+    }
+
+        .bundle_items .prod_name:hover {
+            text-decoration: underline;
+        }
+
+.tabs .new {
+    position: absolute;
+    top: 90px;
+    right: -5px;
+}
+
+.tabs .featured {
+    position: absolute;
+    top: 40px;
+    right: -5px;
+}
+
+.tabs .hotselling {
+    position: absolute;
+    top: 68px;
+    right: -5px;
+}
+
+.tabs .limited {
+    position: absolute;
+    top: 107px;
+}

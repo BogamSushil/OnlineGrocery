@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio Express 2012 for Web
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroceryAdmin", "GroceryAdmin\GroceryAdmin.csproj", "{C9B54A33-2C46-4FA8-8113-878FD0DD676D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{2DE2C3C8-22FB-4E02-9CED-B3E2EF8D7CD5}"
@@ -9,7 +9,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{DFF60778-AB6E-4605-8D89-AA1A5C81BF2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroceryMart", "GroceryMart\GroceryMart.csproj", "{32E24FD9-2DC2-4F21-B310-7D80021A0AE8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EazyWizy.WebUI", "EazyWizy\EazyWizy.WebUI\EazyWizy.WebUI.csproj", "{8B3AC6AA-E2B6-4062-80C2-CA125A1732B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{32494ABF-0E21-4CDC-BF2B-156C06705857}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +40,10 @@ Global
 		{DFF60778-AB6E-4605-8D89-AA1A5C81BF2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFF60778-AB6E-4605-8D89-AA1A5C81BF2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFF60778-AB6E-4605-8D89-AA1A5C81BF2E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{32E24FD9-2DC2-4F21-B310-7D80021A0AE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{32E24FD9-2DC2-4F21-B310-7D80021A0AE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{32E24FD9-2DC2-4F21-B310-7D80021A0AE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{32E24FD9-2DC2-4F21-B310-7D80021A0AE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B3AC6AA-E2B6-4062-80C2-CA125A1732B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B3AC6AA-E2B6-4062-80C2-CA125A1732B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B3AC6AA-E2B6-4062-80C2-CA125A1732B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B3AC6AA-E2B6-4062-80C2-CA125A1732B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

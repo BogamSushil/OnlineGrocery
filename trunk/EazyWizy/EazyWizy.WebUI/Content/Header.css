@@ -1,13 +1,11 @@
 ﻿#divHeader1 > div {   
-    height:50px;   
-    border-radius:0px 0px 11px 11px;
+    height:75px;     
     margin-right:-4px;
     display:inline-block;
     cursor:pointer;     
     text-align:center;
     vertical-align:top;
-    padding:3px;
-    font-stretch: expanded;
+    padding:3px;  
 }
 #TopMenu {
      margin-top:-8px;
