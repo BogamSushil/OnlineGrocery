@@ -53,8 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\ITopMenuRepository.cs" />
-    <Compile Include="Concrete\EFTopMenuRepository.cs" />
+    <Compile Include="Abstract\IMenuRepository.cs" />
+    <Compile Include="Abstract\IProductRepository.cs" />
+    <Compile Include="Concrete\ProductRepository.cs" />
+    <Compile Include="Concrete\EFMenuRepository.cs" />
     <Compile Include="Entities\EazyWizy.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -70,7 +72,28 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EazyWizy.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Entities\LHSMenu.cs">
+      <DependentUpon>EazyWizy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Product.cs">
+      <DependentUpon>EazyWizy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ProductCategory.cs">
+      <DependentUpon>EazyWizy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Role.cs">
+      <DependentUpon>EazyWizy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SubMenu.cs">
+      <DependentUpon>EazyWizy.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\TopMenu.cs">
+      <DependentUpon>EazyWizy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\User.cs">
+      <DependentUpon>EazyWizy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntity.cs">
       <DependentUpon>EazyWizy.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

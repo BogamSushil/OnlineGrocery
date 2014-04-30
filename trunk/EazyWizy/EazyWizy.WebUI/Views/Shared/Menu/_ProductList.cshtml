@@ -1,0 +1,49 @@
+﻿@model IEnumerable<EazyWizy.Domain.Entities.Product>
+
+<div id="inner" class="items" style="position: absolute; width: 735px; height: 500px; margin-left: 211px; top: 84px; overflow: auto;">
+    <div class="content infinite-scroll">
+        <div class="jscroll-inner">
+
+            @if (null != Model)
+            {
+                foreach (var product in Model)
+                {
+                <div>
+                    <div class="shelf_in tabs">
+                        <div class="listHeader">
+                            More Info
+                        </div>
+                        <div class="Pages tab-0">
+                            <div class="prodctImage">
+                                <img class="prodImage_img" src="@string.IsNullOrWhiteSpace(product.productImageName)? /Content/Images/photo_na1.png : @product.productImageName" onerror="$(this).attr('src', '/Content/Images/photo_na1.png')" />
+                            </div>
+                            <div class="prodName">
+                                <p>
+                                    @product.product_name
+                                </p>
+                                <p>
+                                    @product.product_description
+                                </p>
+                            </div>
+                            <div class="product_shopping-cart">
+
+                                <img style="width: 20%" src="~/Content/Images/red.png" />
+                                <span class="itemselect">
+                                    <select>
+                                        <option value="0">1</option>
+                                        <option value="0">2</option>
+                                        <option value="0">3</option>
+                                        <option value="0">4</option>
+                                    </select>
+                                    <p>Kilo</p>
+                                </span>
+                                <img style="padding-left: 80px; width: 20%" src="~/Content/Images/green.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+            }
+        </div>
+    </div>
+</div>
