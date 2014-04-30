@@ -55,8 +55,8 @@
   <ItemGroup>
     <Compile Include="Abstract\IMenuRepository.cs" />
     <Compile Include="Abstract\IProductRepository.cs" />
+    <Compile Include="Concrete\ProductRepository.cs" />
     <Compile Include="Concrete\EFMenuRepository.cs" />
-    <Compile Include="Entities\Cart.cs" />
     <Compile Include="Entities\EazyWizy.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -75,14 +75,25 @@
     <Compile Include="Entities\LHSMenu.cs">
       <DependentUpon>EazyWizy.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\LHSSubMenuBrand.cs">
+    <Compile Include="Entities\Product.cs">
       <DependentUpon>EazyWizy.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Product.cs" />
-    <Compile Include="Entities\sp_Select_GetSubMenuBrand_Result.cs">
+    <Compile Include="Entities\ProductCategory.cs">
+      <DependentUpon>EazyWizy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Role.cs">
+      <DependentUpon>EazyWizy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SubMenu.cs">
       <DependentUpon>EazyWizy.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\TopMenu.cs">
+      <DependentUpon>EazyWizy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\User.cs">
+      <DependentUpon>EazyWizy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserEntity.cs">
       <DependentUpon>EazyWizy.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

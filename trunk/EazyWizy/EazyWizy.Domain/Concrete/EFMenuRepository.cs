@@ -11,7 +11,7 @@ namespace EazyWizy.Domain.Concrete
         IEnumerable<Entities.TopMenu> IMenuRepository.TopMenu
         {
             get {
-               return ewEntities.sp_Select_GetMenu();
+                return ewEntities.sp_GetTopMenu();
             }
         }
         IList<Entities.LHSMenu> IMenuRepository.LHSMenu
@@ -21,7 +21,7 @@ namespace EazyWizy.Domain.Concrete
                 return ewEntities.sp_Select_GetLHSMenu().ToList();
             }
         }
-        IList<Entities.LHSSubMenuBrand> IMenuRepository.LHSSubMenuBrand
+        IList<Entities.SubMenu> IMenuRepository.LHSSubMenuBrand
         {
             get
             {

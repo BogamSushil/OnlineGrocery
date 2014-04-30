@@ -10,6 +10,6 @@ namespace EazyWizy.Domain.Abstract
 
         IList<LHSMenu> LHSMenu { get; }
 
-        IList<LHSSubMenuBrand> LHSSubMenuBrand { get; }
+        IList<SubMenu> LHSSubMenuBrand { get; }
     }
 }
