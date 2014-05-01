@@ -6,6 +6,8 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using EazyWizy.Domain.Concrete;
+using EazyWizy.WebUI.Binder;
 
 namespace EazyWizy.WebUI
 {
@@ -17,6 +19,8 @@ namespace EazyWizy.WebUI
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            ModelBinders.Binders.Add(typeof(Cart), new CartModelBinder());
         }
     }
 }
