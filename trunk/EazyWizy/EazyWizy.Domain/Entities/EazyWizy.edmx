@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EazyWizy.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EazyWizy.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="RoleID" />
@@ -103,7 +103,6 @@
         </Function>
         <Function Name="sp_GetTopMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_Select_GetLHSMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="sp_Select_GetMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_Select_GetSubMenuBrand" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="EazyWizyStoreContainer">
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
@@ -113,8 +112,7 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EazyWizy" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -169,24 +167,24 @@
             <Parameter Name="HashPassword" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetAllProduct" ReturnType="Collection(EazyWizy.Product)">
-            <Parameter Name="product_id" Mode="In" Type="Int32" />
+          <Parameter Name="product_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetAllProductCategory" ReturnType="Collection(EazyWizy.ProductCategory)" />
           <FunctionImport Name="GetAllUsers" ReturnType="Collection(EazyWizy.UserEntity)" />
           <FunctionImport Name="GetChieldProductCategorys" ReturnType="Collection(EazyWizy.ProductCategory)">
-            <Parameter Name="parent_product_type_code" Mode="In" Type="String" />
+          <Parameter Name="parent_product_type_code" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetProduct" ReturnType="Collection(EazyWizy.Product)">
-            <Parameter Name="product_id" Mode="In" Type="Int32" />
+          <Parameter Name="product_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetProductByCategory" ReturnType="Collection(EazyWizy.Product)">
-            <Parameter Name="product_type_code" Mode="In" Type="String" />
+          <Parameter Name="product_type_code" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetProductCategory" ReturnType="Collection(EazyWizy.ProductCategory)">
-            <Parameter Name="product_type_code" Mode="In" Type="String" />
+          <Parameter Name="product_type_code" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetUser" ReturnType="Collection(EazyWizy.UserEntity)">
-            <Parameter Name="EmailID" Mode="In" Type="String" />
+          <Parameter Name="EmailID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ManageProduct">
             <Parameter Name="product_id" Mode="In" Type="Int32" />
@@ -460,14 +458,6 @@
                 <ScalarProperty Name="IdLHSMenu" ColumnName="IdLHSMenu" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_Select_GetMenu" FunctionName="EazyWizy.Store.sp_Select_GetMenu">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EazyWizy.TopMenu">
-                <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
