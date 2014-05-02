@@ -9,7 +9,7 @@ namespace EazyWizy.Domain.Abstract
 {
   public  interface IProductRepository
   {
-      IEnumerable<Product> Products { get; }
+      IQueryable<Product> Products { get; }
       IList<Product> GetAllProduct();
       IList<Product> GetProductByCategory(int categoryId);
       IList<Product> GetProductByBrand(int brandId);

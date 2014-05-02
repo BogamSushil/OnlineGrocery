@@ -8,38 +8,87 @@ using EazyWizy.Domain.Concrete;
 using EazyWizy.Domain.Entities;
 using EazyWizy.WebUI.Models;
 using EDC = EazyWizy.Domain.Concrete;
+using EazyWizy.WebUI.Utilities;
 
 namespace EazyWizy.WebUI.Controllers.Cart
 {
     public class CartController : Controller
     {
         IProductRepository repository;
-
-        public CartController(IProductRepository repo)
+        
+        public CartController()
         {
-            repository = repo;
+            repository = new ProductRepository();
         }
 
-        public RedirectToRouteResult AddToCart(EDC.Cart cart, int productId, int quantity, string returnUrl)
+        //public RedirectToRouteResult AddToCart(EDC.Cart cart, int productId, string returnUrl)
+        //{
+        //    Product product = repository.Products.FirstOrDefault(p => p.product_id == productId);
+        //    if (product != null)
+        //    {
+        //        cart.AddItem(product, 1);
+        //    }
+
+        //    return RedirectToAction("Index", new { returnUrl });
+        //}
+        [HttpPost]
+        public ActionResult AddToCart(EDC.Cart cart, int productId, int quantity)
         {
             Product product = repository.Products.FirstOrDefault(p => p.product_id == productId);
             if (product != null)
             {
                 cart.AddItem(product, quantity);
+                var result = new CartResponseViewModel()
+                {
+                    Message = Server.HtmlEncode(string.Format(Constants.ADD_ITEM_TO_CART_MSG, product.product_name)),
+                    CartTotal = cart.ComputeTotalValue(),
+                    ItemCount = cart.Lines.Sum(c => c.Quantity)
+                };
+                return Json(result);
             }
-
-            return RedirectToAction("Index", new { returnUrl });
+            else
+                return Json(new CartResponseViewModel()
+                {
+                    Message = Constants.PRODUCT_CURRENTLY_UNAVAILABLE,
+                    CartTotal = cart.ComputeTotalValue(),
+                    ItemCount = cart.Lines.Sum(c => c.Quantity)
+                });
         }
 
-        public RedirectToRouteResult RemoveFromCart(EDC.Cart cart, int productId, string returnUrl)
+        //public RedirectToRouteResult RemoveFromCart(EDC.Cart cart, int productId, string returnUrl)
+        //{
+        //    Product product = repository.Products
+        //    .FirstOrDefault(p => p.product_id == productId);
+        //    if (product != null)
+        //    {
+        //        cart.RemoveLine(product);
+        //    }
+        //    return RedirectToAction("Index", new { returnUrl });
+        //}
+
+        [HttpPost]
+        public ActionResult RemoveFromCart(EDC.Cart cart, int productId)
         {
-            Product product = repository.Products
-            .FirstOrDefault(p => p.product_id == productId);
+            Product product = repository.Products.FirstOrDefault(p => p.product_id == productId);
             if (product != null)
             {
-                cart.RemoveLine(product);
+                if (cart.Lines.Select(x => x.Product.product_id == productId).Count() > 0)
+                {
+                    cart.RemoveLine(product);
+                    return Json(new CartResponseViewModel()
+                    {
+                        Message = string.Format(Constants.REMOVE_ITEM_FROM_CART_MSG, product.product_name),
+                        CartTotal = cart.ComputeTotalValue(),
+                        ItemCount = cart.Lines.Sum(c => c.Quantity)
+                    });
+                }
             }
-            return RedirectToAction("Index", new { returnUrl });
+            return Json(new CartResponseViewModel()
+            {
+                Message = string.Format(Constants.NO_PRODUCT_TO_REMOVE_MSG, product.product_name),
+                CartTotal = cart.ComputeTotalValue(),
+                ItemCount = cart.Lines.Sum(c => c.Quantity)
+            });
         }
 
         public ViewResult Index(EDC.Cart cart, string returnUrl)
