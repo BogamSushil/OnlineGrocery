@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using EazyWizy.Domain.Abstract;
 using EazyWizy.Domain.Entities;
+using System;
 
 namespace EazyWizy.Domain.Concrete
 {
@@ -24,9 +25,9 @@ namespace EazyWizy.Domain.Concrete
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<Product> Products
+        public IQueryable<Product> Products
         {
-            get { throw new System.NotImplementedException(); }
+            get { return _dataSource.GetAllProduct(null).AsQueryable(); }
         }
     }
 }

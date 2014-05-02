@@ -3,41 +3,78 @@
 var CartFunctions = {
     CLICK: 'click',
     _init: function () {
-        //
         this._bindEvents();
     },
-    _destroy: function () {
-        //
+    _destroy: function (event) {
+        //Destrutor to be written here
+        event = null;
     },
 
     _bindEvents: function () {
         var thiz = this;
-        $('.product_shopping-cart').bind(thiz.CLICK, $.proxy(this._onCartClick, thiz));
+        $('.addToCart').bind(thiz.CLICK, $.proxy(thiz._onAddCartClick, thiz));
+        $('.removefromcart').bind(thiz.CLICK, $.proxy(thiz._removeFromCart, thiz));
     },
 
-    _onCartClick: function (event) {
-        //
-        //if the click comesfrom red call removed..wewill dealwith it later
-        //Now only using AddToCart
+    _onAddCartClick: function (event) {
         var thiz = this;
-        thiz._addToCart();
+        thiz._addToCart(event);
     },
 
-    _addToCart: function () {
+    _addToCart: function (event) {
         var thiz = this;
-        var prooduct_id = $(thiz).attr("productId");//product ID
+        var currentEvtSelector = event.target.className; //$('.' + $(event)[0].target.className);
+        var product_id = $("."+currentEvtSelector).attr('productid');//Still Issue with getting the product ID
+
         var product_quantity = 1;//$(thiz).attr("");//product quantity
-        if (producti_id != null && product_quantity != null && product_quantity > 0) {
-            $.post("/Cart/AddToCart", { "productId": product_id },
+        //Need To Add Quantity From DropDown
+        if (product_id != null && product_quantity != null && product_quantity > 0) {
+            $.post("/Cart/AddToCart", { "productId": product_id, "quantity": product_quantity },
                 function (data) {
-                    //Update the cart message
+                    alert(data.Message + " Total : Rs. " + data.CartTotal + " ItemCount : " + data.ItemCount);
+                })
+                .done(function () {
+                    //alert( "second success" );
+                })
+                .fail(function () {
+                    //alert( "error" );
+                })
+                .always(function () {
+                    //alert( "finished" );
+                }
+                );
+        }
+        thiz._destroy(event);
+    },
+
+    _removeFromCart: function (event) {
+        var thiz = this;
+        var currentEvtSelector = $('.' + $(event)[0].target.className);
+        var product_id = $(currentEvtSelector).attr('productid');
+                
+        if (product_id != null && product_id != '') {
+            $.post("/Cart/RemoveFromCart", { "productId": product_id },
+                function (data) {
+                    alert(data.Message + " Total : Rs. " + data.CartTotal + " ItemCount : " + data.ItemCount);
+                })
+                .done(function () {
+                    //alert( "second success" );
+                })
+                .fail(function () {
+                    //alert( "error" );
+                })
+                .always(function () {
+                    //alert( "finished" );
                 });
         }
-    },
-
-    _removeFromCart: function () { }
+    }
 }
+    
 
 $(document).ready(function () {
+   // debugger;
+    //$(document).on('click', '.removeFromCart', function () {
+    //    CartFunctions._addToCart();
+    //});
     CartFunctions._init();
 });
