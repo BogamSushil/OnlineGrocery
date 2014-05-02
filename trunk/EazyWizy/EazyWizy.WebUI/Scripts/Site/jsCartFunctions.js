@@ -22,7 +22,6 @@ var CartFunctions = {
     },
 
     _addToCart: function (event) {
-        //debugger;
         var thiz = this;
         var currentEvtSelector = event.target.className; //$('.' + $(event)[0].target.className);
         var product_id = $("."+currentEvtSelector).attr('productid');//Still Issue with getting the product ID
