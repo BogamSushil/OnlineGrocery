@@ -41,7 +41,7 @@ namespace EazyWizy.WebUI.Controllers.Cart
                 var result = new CartResponseViewModel()
                 {
                     Message = Server.HtmlEncode(string.Format(Constants.ADD_ITEM_TO_CART_MSG, product.product_name)),
-                    CartTotal = cart.ComputeTotalValue(),
+                    CartTotal = cart.ComputeTotalValue().ToString("c"),
                     ItemCount = cart.Lines.Sum(c => c.Quantity)
                 };
                 return Json(result);
@@ -50,7 +50,7 @@ namespace EazyWizy.WebUI.Controllers.Cart
                 return Json(new CartResponseViewModel()
                 {
                     Message = Constants.PRODUCT_CURRENTLY_UNAVAILABLE,
-                    CartTotal = cart.ComputeTotalValue(),
+                    CartTotal = cart.ComputeTotalValue().ToString("c"),
                     ItemCount = cart.Lines.Sum(c => c.Quantity)
                 });
         }
@@ -78,7 +78,7 @@ namespace EazyWizy.WebUI.Controllers.Cart
                     return Json(new CartResponseViewModel()
                     {
                         Message = string.Format(Constants.REMOVE_ITEM_FROM_CART_MSG, product.product_name),
-                        CartTotal = cart.ComputeTotalValue(),
+                        CartTotal = cart.ComputeTotalValue().ToString("c"),
                         ItemCount = cart.Lines.Sum(c => c.Quantity)
                     });
                 }
@@ -86,7 +86,7 @@ namespace EazyWizy.WebUI.Controllers.Cart
             return Json(new CartResponseViewModel()
             {
                 Message = string.Format(Constants.NO_PRODUCT_TO_REMOVE_MSG, product.product_name),
-                CartTotal = cart.ComputeTotalValue(),
+                CartTotal = cart.ComputeTotalValue().ToString("c"),
                 ItemCount = cart.Lines.Sum(c => c.Quantity)
             });
         }

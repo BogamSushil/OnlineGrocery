@@ -199,6 +199,7 @@
     <Content Include="Views\Shared\Menu\_PartialLHSMenu.cshtml" />
     <Content Include="Views\Content\ProductDisplay.cshtml" />
     <Content Include="Views\Shared\Menu\_ProductList.cshtml" />
+    <Content Include="Views\Cart\Summary.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -208,7 +209,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Cart\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EazyWizy.Domain\EazyWizy.Domain.csproj">
