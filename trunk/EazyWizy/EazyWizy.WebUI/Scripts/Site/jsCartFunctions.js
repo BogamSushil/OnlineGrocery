@@ -28,6 +28,7 @@ var CartFunctions = {
 
         var product_quantity = 1;//$(thiz).attr("");//product quantity
         //Need To Add Quantity From DropDown
+        //Identify product id
         if (product_id != null && product_quantity != null && product_quantity > 0) {
             $.post("/Cart/AddToCart", { "productId": product_id, "quantity": product_quantity },
                 function (data) {
