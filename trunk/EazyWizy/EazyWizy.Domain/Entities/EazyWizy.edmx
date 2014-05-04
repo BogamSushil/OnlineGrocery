@@ -17,6 +17,7 @@
           <FunctionImport Name="sp_Select_GetMenu" ReturnType="Collection(EazyWizyModel.TopMenu)" />
           <FunctionImport Name="sp_Select_GetLHSMenu" ReturnType="Collection(EazyWizyModel.LHSMenu)" />
           <FunctionImport Name="sp_Select_GetSubMenuBrand" ReturnType="Collection(EazyWizyModel.LHSSubMenuBrand)" />
+          <FunctionImport Name="sp_Select_GetSubMenuBrandFilter" ReturnType="Collection(EazyWizyModel.LHSBrandFilter)" />
         </EntityContainer>
         <ComplexType Name="TopMenu" >
           <Property Type="Int32" Name="IdMenu" Nullable="false" />
@@ -32,9 +33,10 @@
           <Property Type="String" Name="Name" Nullable="false" />
           <Property Type="String" Name="Image" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="sp_Select_GetSubMenuBrand_Result">
+        <ComplexType Name="LHSBrandFilter" >
           <Property Type="Int32" Name="IdBrand" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="70" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Image" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -60,6 +62,15 @@
           <FunctionImportMapping FunctionImportName="sp_Select_GetSubMenuBrand" FunctionName="EazyWizyModel.Store.sp_Select_GetSubMenuBrand">
           <ResultMapping>
               <ComplexTypeMapping TypeName="EazyWizyModel.LHSSubMenuBrand">
+                <ScalarProperty Name="IdBrand" ColumnName="IdBrand" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Select_GetSubMenuBrandFilter" FunctionName="EazyWizyModel.Store.sp_Select_GetSubMenuBrand">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EazyWizyModel.LHSBrandFilter">
                 <ScalarProperty Name="IdBrand" ColumnName="IdBrand" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Image" ColumnName="Image" />

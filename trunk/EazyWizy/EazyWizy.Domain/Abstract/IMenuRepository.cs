@@ -11,5 +11,8 @@ namespace EazyWizy.Domain.Abstract
         IList<LHSMenu> LHSMenu { get; }
 
         IList<LHSSubMenuBrand> LHSSubMenuBrand { get; }
+
+        //This to be changed once the Database Schema is available.
+        IList<LHSBrandFilter> LHSBrandFilter { get; }
     }
 }

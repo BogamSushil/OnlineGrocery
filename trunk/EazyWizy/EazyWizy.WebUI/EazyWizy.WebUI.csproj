@@ -130,7 +130,7 @@
     <Content Include="Content\Images\bgfx3.png" />
     <Content Include="Content\Images\bgfx33.jpg" />
     <Content Include="Content\Images\bgfx4.jpg" />
-    <Content Include="Content\Images\crossFilter.png" />
+    <Content Include="Content\Images\clearFilter.ico" />
     <Content Include="Content\Images\green.png" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\logo1.png" />

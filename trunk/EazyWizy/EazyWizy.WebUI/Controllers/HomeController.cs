@@ -22,11 +22,11 @@ namespace EazyWizy.WebUI.Controllers
         public ViewResult Index()
         {
             ContentModel contentModel = new ContentModel();
-            contentModel.topMenu = this.menuRepository.TopMenu;
+            contentModel.topMenu = this.menuRepository.TopMenu;       
             contentModel.lhsAllMenu = new LHSAllMenu()
             {
                 lhsMenu = this.menuRepository.LHSMenu,
-                lhsSubMenuBrand = this.menuRepository.LHSSubMenuBrand
+                lhsSubMenuBrand = this.menuRepository.LHSSubMenuBrand               
             }; 
             return View(contentModel);
         }

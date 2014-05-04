@@ -15,17 +15,14 @@
         @Scripts.Render("~/bundles/Site")   
     </head>
     <body>
-        <div id="divRoot" style="height:600px;background-image:url(/Content/Images/WoodDivBackground.jpg);background-repeat:repeat;">
+        <div id="divRoot">
            <div id="divRootInner">   
                 <div id="TopMenu">            
                      @Html.Partial("Menu/_PartialTopMenu")               
                 </div> 
-                <div>
-                    <div class="disp-Block div-index-lhs">
-                        @Html.Partial("Menu/_PartialLHSMenu",Model.lhsAllMenu)      
-                    </div>
+                <div>                 
                     <div class="disp-Block div-lhs-filter">
-                        @Html.Partial("Menu/_PartialBrandFilter",Model.lhsAllMenu)      
+                        @Html.Partial("Menu/_PartialBrandFilter",Model.lhsBrandFilter)    
                     </div> 
                 </div>            
 

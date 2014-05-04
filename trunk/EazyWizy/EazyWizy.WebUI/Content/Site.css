@@ -1,8 +1,8 @@
 ﻿body {
     font-size: .85em;
-    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
-    color: #232323;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif; 
     background-color: #fff;
+    scrollbar-face-color: #b46868;
 }
 
 header, footer, nav, section {
