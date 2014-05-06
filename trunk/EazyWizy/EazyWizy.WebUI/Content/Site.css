@@ -59,3 +59,15 @@ textarea {
 .validation-summary-valid {
     display: none;
 }
+
+/*Cart*/
+DIV#headercart DIV.title, DIV.item H3, DIV.item H4, DIV.pager A {
+font: bold 1em "Arial Narrow", "Franklin Gothic Medium", Arial;
+}
+DIV#headercart { background-color: #444; border-bottom: 2px solid #111; color: White; }
+
+/*padding: .5em .5em .5em 1em;*/
+DIV#cart { float:right; margin-top:-36px; position:relative; color: Silver;
+background-color: #555;padding: .2em .5em .2em .5em;  }
+DIV#cart A { text-decoration: none; padding: .4em .5em .4em .5em; line-height:2.1em;
+margin-left: .5em; background-color: #333; color:White; border: 1px solid black;}

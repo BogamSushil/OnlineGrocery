@@ -9,7 +9,7 @@ namespace EazyWizy.WebUI.Models
     public class CartResponseViewModel
     {
         public string Message { get; set; }
-        public decimal CartTotal { get; set; }
+        public string CartTotal { get; set; }
         public int ItemCount { get; set; }
     }
 }

@@ -28,10 +28,14 @@ var CartFunctions = {
 
         var product_quantity = 1;//$(thiz).attr("");//product quantity
         //Need To Add Quantity From DropDown
+        //Identify product id
         if (product_id != null && product_quantity != null && product_quantity > 0) {
             $.post("/Cart/AddToCart", { "productId": product_id, "quantity": product_quantity },
                 function (data) {
-                    alert(data.Message + " Total : Rs. " + data.CartTotal + " ItemCount : " + data.ItemCount);
+                    alert(data.Message + " Total : " + data.CartTotal + " ItemCount : " + data.ItemCount);
+                    $.post('Cart/Summary', function (result) {
+                        $('#headercart').html(result);
+                    });
                 })
                 .done(function () {
                     //alert( "second success" );
@@ -43,9 +47,12 @@ var CartFunctions = {
                     //alert( "finished" );
                 }
                 );
-        }
-        thiz._destroy(event);
+            
+        }       
+        //thiz._destroy(event);
     },
+
+    
 
     _removeFromCart: function (event) {
         var thiz = this;
@@ -55,7 +62,10 @@ var CartFunctions = {
         if (product_id != null && product_id != '') {
             $.post("/Cart/RemoveFromCart", { "productId": product_id },
                 function (data) {
-                    alert(data.Message + " Total : Rs. " + data.CartTotal + " ItemCount : " + data.ItemCount);
+                    alert(data.Message + " Total : " + data.CartTotal + " ItemCount : " + data.ItemCount);
+                    $.post('Cart/Summary', function (result) {
+                        $('#headercart').html(result);
+                    });
                 })
                 .done(function () {
                     //alert( "second success" );
@@ -72,9 +82,5 @@ var CartFunctions = {
     
 
 $(document).ready(function () {
-   // debugger;
-    //$(document).on('click', '.removeFromCart', function () {
-    //    CartFunctions._addToCart();
-    //});
-    CartFunctions._init();
+   CartFunctions._init();
 });
