@@ -1,6 +1,5 @@
 ﻿using EazyWizy.Domain.Abstract;
 using EazyWizy.Domain.Concrete;
-using EazyWizy.Domain.Entities;
 using EazyWizy.WebUI.Models;
 using System;
 using System.Collections.Generic;
@@ -20,17 +19,13 @@ namespace EazyWizy.WebUI.Controllers.Content
         public ActionResult ProductDisplay()
         {
             ContentModel contentModel = new ContentModel();
-            contentModel.topMenu = this.menuRepository.TopMenu;
-            
+            contentModel.lhsBrandFilter = this.menuRepository.LHSBrandFilter;
             contentModel.lhsAllMenu = new LHSAllMenu()
             {
                 lhsMenu = this.menuRepository.LHSMenu,
                 lhsSubMenuBrand = this.menuRepository.LHSSubMenuBrand
             };
-            contentModel.Products = (new ProductRepository()).GetAllProduct();
             return View("ProductDisplay", contentModel);
         }
 	}
-
-    
 }

@@ -1,48 +1,58 @@
-﻿<div class="ew-lhs-div-brand-filter">
-  <h3>Section 1</h3>
-  <div>
-    <p>
-    Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
-    ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
-    amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
-    odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
-    </p>
-  </div>
-  <h3>Section 2</h3>
-  <div>
-    <p>
-    Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
-    purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
-    velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
-    suscipit faucibus urna.
-    </p>
-  </div>
-  <h3>Section 3</h3>
-  <div>
-    <p>
-    Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
-    Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
-    ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
-    lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
-    </p>
-    <ul>
-      <li>List item one</li>
-      <li>List item two</li>
-      <li>List item three</li>
-    </ul>
-  </div>
-  <h3>Section 4</h3>
-  <div>
-    <p>
-    Cras dictum. Pellentesque habitant morbi tristique senectus et netus
-    et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
-    faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
-    mauris vel est.
-    </p>
-    <p>
-    Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
-    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-    inceptos himenaeos.
-    </p>
-  </div>
+﻿@model IList<EazyWizy.Domain.Entities.LHSBrandFilter>
+<div class="ew-lhs-div-brand-filter">
+    <div class="ew-lhs-brand-header-filter ew-cursor">
+        <div class="ew-lhs-filter-header-font">Brands</div>
+        <div class="ew-lhs-div-filterclear">
+            <img src="~/Content/Images/clearFilter.ico" class="ew-lhs-filterclear-image" alt="" />
+            <span style="color:lightgrey">clear</span>        
+        </div>
+    </div>  
+    <div class="ew-lhs-div-brandlist-filter">
+        <ul class="ew-lhs-ul">
+            @foreach (var item in Model.ToList())
+            {
+                <li class='ew-lhs-filter-li ew-lhs-font'>
+                    <input type="checkbox" style="cursor:inherit;" id="@item.IdBrand" />
+                    <span>                   
+                        @item.Name                  
+                    </span>     
+                </li>
+            }
+        </ul>
+    </div>  
 </div>
+<div class="ew-lhs-div-rating-filter ew-lhs-filter-margin">
+    @*Rating Related *@
+    <div class="ew-lhs-rating-header-filter">
+        <div style="display:inherit;font-size:17px">Ratings</div>
+        <div class="ew-lhs-div-filterclear" style="display:inherit;float:right;cursor:pointer;margin-top:2px">
+            <img src="~/Content/Images/clearFilter.ico" style="width:15px;vertical-align:middle;margin-top:-2px" alt="" />
+            <span style="color:lightgrey">clear</span>         
+        </div>
+    </div>        
+    <div class="ew-lhs-div-ratinglist-filter">
+        <ul class="ew-lhs-ul">          
+            <li class='ew-lhs-filter-li ew-lhs-font'>
+                <input type="checkbox" style="cursor:inherit;"/>
+                <span>5 Star</span>     
+            </li>          
+            <li class='ew-lhs-filter-li ew-lhs-font'>
+                <input type="checkbox" style="cursor:inherit;"/>
+                <span>4 Star</span>     
+            </li>          
+            <li class='ew-lhs-filter-li ew-lhs-font'>
+                <input type="checkbox" style="cursor:inherit;"/>
+                <span>3 Star</span>     
+            </li>          
+            <li class='ew-lhs-filter-li ew-lhs-font'>
+                <input type="checkbox" style="cursor:inherit;"/>
+                <span>2 Star</span>     
+            </li>          
+            <li class='ew-lhs-filter-li ew-lhs-font'>
+                <input type="checkbox" style="cursor:inherit;"/>
+                <span>1 Star</span>     
+            </li>          
+        </ul>
+    </div>  
+</div>
+
