@@ -159,9 +159,11 @@
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery.hashchange.js" />
     <Content Include="Scripts\kendo\jquery.min.js" />
     <Content Include="Scripts\kendo\kendo.web.min.js" />
     <Content Include="Scripts\Site\jsCartFunctions.js" />
+    <Content Include="Scripts\Site\jsCheckOut.js" />
     <Content Include="Scripts\Site\jsHeader.js" />
     <Content Include="Scripts\Site\jsLHSMenu.js" />
     <Content Include="Scripts\Site\jsproductList.js" />
@@ -200,6 +202,10 @@
     <Content Include="Views\Content\ProductDisplay.cshtml" />
     <Content Include="Views\Shared\Menu\_ProductList.cshtml" />
     <Content Include="Views\Cart\Summary.cshtml" />
+    <Content Include="Views\Cart\CartDetails.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\_PartialPayments.cshtml" />
+    <Content Include="Views\Cart\TEST.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

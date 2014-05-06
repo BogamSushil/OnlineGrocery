@@ -104,5 +104,15 @@ namespace EazyWizy.WebUI.Controllers.Cart
         {
             return PartialView(cart);
         }
+
+        public PartialViewResult CartDetails(EDC.Cart cart)
+        {
+            return PartialView(cart);
+        }
+
+        public PartialViewResult CheckOutDetails(EDC.Cart cart)
+        {
+            return PartialView();
+        }        
 	}
 }

@@ -2,6 +2,8 @@
 //Currently using dummy data
 var CartFunctions = {
     CLICK: 'click',
+    HOVER: 'hover',
+    MOUSELEAVE:'mouseleave',
     _init: function () {
         this._bindEvents();
     },
@@ -14,11 +16,23 @@ var CartFunctions = {
         var thiz = this;
         $('.addToCart').bind(thiz.CLICK, $.proxy(thiz._onAddCartClick, thiz));
         $('.removefromcart').bind(thiz.CLICK, $.proxy(thiz._removeFromCart, thiz));
+        $('#headercart').bind(thiz.HOVER, $.proxy(thiz._onCartHover, thiz));
+        $('#bodycart').bind(thiz.MOUSELEAVE, $.proxy(thiz._onCartMouseLeave, thiz));
     },
 
     _onAddCartClick: function (event) {
         var thiz = this;
         thiz._addToCart(event);
+    },
+
+    _onCartHover:function () {
+        $('#bodycart').slideDown("slow");
+        //$('#search').css('margin-right', '98px');
+    },
+
+    _onCartMouseLeave:function () {
+        $('#bodycart').slideUp("slow");
+        //$('#search').css('margin-right', '324px');
     },
 
     _addToCart: function (event) {
@@ -35,6 +49,9 @@ var CartFunctions = {
                     alert(data.Message + " Total : " + data.CartTotal + " ItemCount : " + data.ItemCount);
                     $.post('Cart/Summary', function (result) {
                         $('#headercart').html(result);
+                    });
+                    $.post('Cart/CartDetails', function (result) {
+                        $('#bodycart').html(result);
                     });
                 })
                 .done(function () {
@@ -82,5 +99,8 @@ var CartFunctions = {
     
 
 $(document).ready(function () {
-   CartFunctions._init();
+    CartFunctions._init();
+    $('#headercart').hover(function () {
+        CartFunctions._onCartHover();
+    });
 });
