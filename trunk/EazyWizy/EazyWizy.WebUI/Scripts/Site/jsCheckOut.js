@@ -26,7 +26,7 @@
     // Bind the event hashchange, using jquery-hashchange-plugin
     $(window).hashchange(function () {
         showTab(location.hash.replace("#", ""));
-    })
+    });
 
     // Trigger the event hashchange on page load, using jquery-hashchange-plugin
     $(window).hashchange();

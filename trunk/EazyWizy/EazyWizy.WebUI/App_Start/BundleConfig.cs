@@ -31,6 +31,7 @@ namespace EazyWizy.WebUI
                    "~/Content/Site.css",
                   "~/Content/EazyWizy.css",
                   "~/Content/Header.css",
+                  "~/Content/productList.css",
                   "~/Content/lhsMenu.css"));
 
             bundles.Add(new StyleBundle("~/Content/jqueryui/css").Include(

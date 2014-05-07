@@ -27,7 +27,8 @@ namespace EazyWizy.WebUI.Controllers
             {
                 lhsMenu = this.menuRepository.LHSMenu,
                 lhsSubMenuBrand = this.menuRepository.LHSSubMenuBrand               
-            }; 
+            };
+            contentModel.Products = (new ProductRepository()).GetAllProduct();
             return View(contentModel);
         }
 	}

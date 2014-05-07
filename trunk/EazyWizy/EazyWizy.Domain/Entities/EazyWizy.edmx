@@ -4,7 +4,23 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="EazyWizyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EazyWizyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="GetAllProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="product_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetAllProductCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetChieldProductCategorys" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="parent_product_type_code" Type="char" Mode="In" />
+        </Function>
+        <Function Name="GetProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="product_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetProductByCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="product_type_code" Type="char" Mode="In" />
+        </Function>
+        <Function Name="GetProductCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="product_type_code" Type="char" Mode="In" />
+        </Function>
         <Function Name="sp_Select_GetLHSMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_Select_GetMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_Select_GetSubMenuBrand" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -18,6 +34,22 @@
           <FunctionImport Name="sp_Select_GetLHSMenu" ReturnType="Collection(EazyWizyModel.LHSMenu)" />
           <FunctionImport Name="sp_Select_GetSubMenuBrand" ReturnType="Collection(EazyWizyModel.LHSSubMenuBrand)" />
           <FunctionImport Name="sp_Select_GetSubMenuBrandFilter" ReturnType="Collection(EazyWizyModel.LHSBrandFilter)" />
+          <FunctionImport Name="GetAllProduct" ReturnType="Collection(EazyWizyModel.Product)">
+            <Parameter Name="product_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllProductCategory" ReturnType="Collection(EazyWizyModel.ProductCategory)" />
+          <FunctionImport Name="GetChieldProductCategorys" ReturnType="Collection(EazyWizyModel.ProductCategory)">
+            <Parameter Name="parent_product_type_code" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetProduct" ReturnType="Collection(EazyWizyModel.Product)">
+            <Parameter Name="product_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetProductByCategory" ReturnType="Collection(EazyWizyModel.Product)">
+            <Parameter Name="product_type_code" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetProductCategory" ReturnType="Collection(EazyWizyModel.ProductCategory)">
+            <Parameter Name="product_type_code" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="TopMenu" >
           <Property Type="Int32" Name="IdMenu" Nullable="false" />
@@ -37,6 +69,23 @@
           <Property Type="Int32" Name="IdBrand" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" />
           <Property Type="String" Name="Image" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Product">
+          <Property Type="Int32" Name="product_id" Nullable="false" />
+          <Property Type="String" Name="product_type_code" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="product_name" Nullable="true" MaxLength="80" />
+          <Property Type="Decimal" Name="product_price" Nullable="true" Precision="19" />
+          <Property Type="String" Name="product_color" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="product_size" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="productImageName" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="product_description" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="other_product_details" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="ProductCategory">
+          <Property Type="String" Name="product_type_code" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="parent_product_type_code" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="product_type_description" Nullable="true" MaxLength="80" />
+          <Property Type="String" Name="productTypeImageName" Nullable="true" MaxLength="250" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -74,6 +123,81 @@
                 <ScalarProperty Name="IdBrand" ColumnName="IdBrand" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllProduct" FunctionName="EazyWizyModel.Store.GetAllProduct">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EazyWizyModel.Product">
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="product_type_code" ColumnName="product_type_code" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="product_price" ColumnName="product_price" />
+                <ScalarProperty Name="product_color" ColumnName="product_color" />
+                <ScalarProperty Name="product_size" ColumnName="product_size" />
+                <ScalarProperty Name="productImageName" ColumnName="productImageName" />
+                <ScalarProperty Name="product_description" ColumnName="product_description" />
+                <ScalarProperty Name="other_product_details" ColumnName="other_product_details" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllProductCategory" FunctionName="EazyWizyModel.Store.GetAllProductCategory">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EazyWizyModel.ProductCategory">
+                <ScalarProperty Name="product_type_code" ColumnName="product_type_code" />
+                <ScalarProperty Name="parent_product_type_code" ColumnName="parent_product_type_code" />
+                <ScalarProperty Name="product_type_description" ColumnName="product_type_description" />
+                <ScalarProperty Name="productTypeImageName" ColumnName="productTypeImageName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetChieldProductCategorys" FunctionName="EazyWizyModel.Store.GetChieldProductCategorys">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EazyWizyModel.ProductCategory">
+                <ScalarProperty Name="product_type_code" ColumnName="product_type_code" />
+                <ScalarProperty Name="parent_product_type_code" ColumnName="parent_product_type_code" />
+                <ScalarProperty Name="product_type_description" ColumnName="product_type_description" />
+                <ScalarProperty Name="productTypeImageName" ColumnName="productTypeImageName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetProduct" FunctionName="EazyWizyModel.Store.GetProduct">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EazyWizyModel.Product">
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="product_type_code" ColumnName="product_type_code" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="product_price" ColumnName="product_price" />
+                <ScalarProperty Name="product_color" ColumnName="product_color" />
+                <ScalarProperty Name="product_size" ColumnName="product_size" />
+                <ScalarProperty Name="productImageName" ColumnName="productImageName" />
+                <ScalarProperty Name="product_description" ColumnName="product_description" />
+                <ScalarProperty Name="other_product_details" ColumnName="other_product_details" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetProductByCategory" FunctionName="EazyWizyModel.Store.GetProductByCategory">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EazyWizyModel.Product">
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="product_type_code" ColumnName="product_type_code" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="product_price" ColumnName="product_price" />
+                <ScalarProperty Name="product_color" ColumnName="product_color" />
+                <ScalarProperty Name="product_size" ColumnName="product_size" />
+                <ScalarProperty Name="productImageName" ColumnName="productImageName" />
+                <ScalarProperty Name="product_description" ColumnName="product_description" />
+                <ScalarProperty Name="other_product_details" ColumnName="other_product_details" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetProductCategory" FunctionName="EazyWizyModel.Store.GetProductCategory">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EazyWizyModel.ProductCategory">
+                <ScalarProperty Name="product_type_code" ColumnName="product_type_code" />
+                <ScalarProperty Name="parent_product_type_code" ColumnName="parent_product_type_code" />
+                <ScalarProperty Name="product_type_description" ColumnName="product_type_description" />
+                <ScalarProperty Name="productTypeImageName" ColumnName="productTypeImageName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
