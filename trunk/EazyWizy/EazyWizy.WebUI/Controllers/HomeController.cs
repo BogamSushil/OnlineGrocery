@@ -18,20 +18,16 @@ namespace EazyWizy.WebUI.Controllers
         {
             this.menuRepository = new EFMenuRepository();
         }
-        public HomeController(IMenuRepository _menuRepository)
-        {
-            this.menuRepository = _menuRepository;
-        }
+
         public ViewResult Index()
         {
             ContentModel contentModel = new ContentModel();
-            contentModel.topMenu = this.menuRepository.TopMenu;
+            contentModel.topMenu = this.menuRepository.TopMenu;       
             contentModel.lhsAllMenu = new LHSAllMenu()
             {
                 lhsMenu = this.menuRepository.LHSMenu,
-                lhsSubMenuBrand = this.menuRepository.LHSSubMenuBrand
-            };
-            contentModel.Products = (new ProductRepository()).GetAllProduct();
+                lhsSubMenuBrand = this.menuRepository.LHSSubMenuBrand               
+            }; 
             return View(contentModel);
         }
 	}

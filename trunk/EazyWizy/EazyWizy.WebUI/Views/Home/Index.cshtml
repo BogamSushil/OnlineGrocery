@@ -9,13 +9,13 @@
         <meta charset="utf-8" />
         <title>EazyWizy.com</title>
         @Styles.Render("~/Content/Site/css")    
-        @Styles.Render("~/Content/kendo/css") 
+        @Styles.Render("~/Content/kendo/css")  
         @Scripts.Render("~/bundles/jquery")  
         @Scripts.Render("~/bundles/kendo")   
         @Scripts.Render("~/bundles/Site")   
     </head>
     <body>
-        <div id="divRoot" style="height:600px;background-image:url(/Content/Images/WoodDivBackground.jpg);background-repeat:repeat;">
+        <div id="divRoot">
            <div id="divRootInner">   
              <div id="TopMenu">            
                  @Html.Partial("Menu/_PartialTopMenu")               
@@ -25,8 +25,7 @@
              </div>*@
              <div class="disp-Block div-index-lhs">
                  @Html.Partial("Menu/_PartialLHSMenu",Model.lhsAllMenu)      
-             </div> 
-                <div> @Html.Partial("Menu/_ProductList", Model.Products)      </div>                 
+             </div>             
            </div>
         </div>      
     </body>
