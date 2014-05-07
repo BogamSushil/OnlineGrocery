@@ -1,0 +1,368 @@
+﻿
+<script type="text/javascript">
+    
+    var toggle= function() {
+        alert('in');
+        $(this).closest('') .toggleClass('flip').find('.back').html(new Date().getTime());
+
+    }
+    $(document).ready(function () {
+        $('.hover').hover(function () {
+            $(this).closest(".panel").addClass('flip');
+        }, function () {
+            $(this).closest(".panel").removeClass('flip');
+        });
+
+        $('.click').click(function () { $(this).toggleClass('flip').find('.back').html(new Date().getTime()); });
+    });
+</script>
+<style type="text/css">
+    
+    
+.panel {
+    
+    position: relative;
+   
+    
+}
+.panel>div{ 
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+.panel .front {   
+    z-index: 900;  
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    transform: rotateY(0deg); 
+}
+.panel.flip .front {
+    z-index: 900;     
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    transform: rotateY(180deg);     
+}
+
+.panel .back {  
+    z-index: 800;    
+    -webkit-transform: rotateY(-180deg);     
+    -moz-transform: rotateY(-180deg);     
+    transform: rotateY(-180deg); 
+}
+
+.panel.flip .back {
+    z-index: 1000; 
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    transform: rotateY(0deg);  
+}
+
+
+
+ 
+
+
+</style>
+<div id="inner" class="items" style="width: 718px; margin-left: 21px; margin-top: 5px;">
+    <div class="content infinite-scroll">
+        <div class="jscroll-inner">
+           
+ 
+
+            <div class="panel">
+                <div id="mainView" class="shelf_in tabs">
+                    <div class="front">
+                        <div class="front hover listHeader">
+                            More Info
+                        </div>
+                        <div class="Pages">
+                            <div class="prodctImage">
+                                <img class="prodImage_img" src="~/ProductImages/10520801021A.jpg" />
+                            </div>
+                            <div class="prodName">
+                                <p>
+                                    Payari Mango - Aam grade A
+                                </p>
+                                <p>
+                                    Brand
+                                </p>
+                            </div>
+                            <div class="product_shopping-cart">
+                       
+                                <img style="width: 20%" src="~/Content/Images/red.png" />
+                                <span class="itemselect">
+                                    <select>
+                                        <option value="0">1</option>
+                                        <option value="0">2</option>
+                                        <option value="0">3</option>
+                                        <option value="0">4</option>
+                                    </select>
+                                    <p>
+                                        Kilo
+                                    </p>
+
+                                </span>
+                       
+                        
+                                <img style="padding-left:80px; width: 20%" src="~/Content/Images/green.png" />
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class ="back" style="position: absolute; top:0; left:0">
+                        <div class="hover listHeader">
+                            Less Info
+                        </div>
+                        <div class="prodctImage">
+                            <img class="prodImage_img" src="~/ProductImages/10520801021A.jpg" />
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div>
+                <div class="shelf_in tabs">
+                    <div class="listHeader">
+                        More Info
+                    </div>
+                    <div class="Pages tab-0">
+                        <div class="prodctImage">
+                            <img class="prodImage_img" src="~/ProductImages/10520801021A.jpg" />
+                        </div>
+                        <div class="prodName">
+                            <p>
+                                Payari Mango - Aam grade A
+                            </p>
+                            <p>
+                                Brand
+                            </p>
+                        </div>
+                        <div class="product_shopping-cart">
+                       
+                            <img style="width: 20%" src="~/Content/Images/red.png" />
+                            <span class="itemselect">
+                                <select>
+                                    <option value="0">1</option>
+                                    <option value="0">2</option>
+                                    <option value="0">3</option>
+                                    <option value="0">4</option>
+                                </select>
+                                <p>
+                                    Kilo
+                                </p>
+
+                            </span>
+                       
+                        
+                            <img style="padding-left:80px; width: 20%" src="~/Content/Images/green.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="shelf_in tabs">
+                    <div class="listHeader">
+                        More Info
+                    </div>
+                    <div class="Pages tab-0">
+                        <div class="prodctImage">
+                            <img class="prodImage_img" src="~/ProductImages/10520801021A.jpg" />
+                        </div>
+                        <div class="prodName">
+                            <p>
+                                Payari Mango - Aam grade A
+                            </p>
+                            <p>
+                                Brand
+                            </p>
+                        </div>
+                        <div class="product_shopping-cart">
+                       
+                            <img style="width: 20%" src="~/Content/Images/red.png" />
+                            <span class="itemselect">
+                                <select>
+                                    <option value="0">1</option>
+                                    <option value="0">2</option>
+                                    <option value="0">3</option>
+                                    <option value="0">4</option>
+                                </select>
+                                <p>
+                                    Kilo
+                                </p>
+
+                            </span>
+                       
+                        
+                            <img style="padding-left:80px; width: 20%" src="~/Content/Images/green.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="shelf_in tabs">
+                    <div class="listHeader">
+                        More Info
+                    </div>
+                    <div class="Pages tab-0">
+                        <div class="prodctImage">
+                            <img class="prodImage_img" src="~/ProductImages/10520801021A.jpg" />
+                        </div>
+                        <div class="prodName">
+                            <p>
+                                Payari Mango - Aam grade A
+                            </p>
+                            <p>
+                                Brand
+                            </p>
+                        </div>
+                        <div class="product_shopping-cart">
+                       
+                            <img style="width: 20%" src="~/Content/Images/red.png" />
+                            <span class="itemselect">
+                                <select>
+                                    <option value="0">1</option>
+                                    <option value="0">2</option>
+                                    <option value="0">3</option>
+                                    <option value="0">4</option>
+                                </select>
+                                <p>
+                                    Kilo
+                                </p>
+
+                            </span>
+                       
+                        
+                            <img style="padding-left:80px; width: 20%" src="~/Content/Images/green.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="shelf_in tabs">
+                    <div class="listHeader">
+                        More Info
+                    </div>
+                    <div class="Pages tab-0">
+                        <div class="prodctImage">
+                            <img class="prodImage_img" src="~/ProductImages/10520801021A.jpg" />
+                        </div>
+                        <div class="prodName">
+                            <p>
+                                Payari Mango - Aam grade A
+                            </p>
+                            <p>
+                                Brand
+                            </p>
+                        </div>
+                        <div class="product_shopping-cart">
+                       
+                            <img style="width: 20%" src="~/Content/Images/red.png" />
+                            <span class="itemselect">
+                                <select>
+                                    <option value="0">1</option>
+                                    <option value="0">2</option>
+                                    <option value="0">3</option>
+                                    <option value="0">4</option>
+                                </select>
+                                <p>
+                                    Kilo
+                                </p>
+
+                            </span>
+                       
+                        
+                            <img style="padding-left:80px; width: 20%" src="~/Content/Images/green.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="shelf_in tabs">
+                    <div class="listHeader">
+                        More Info
+                    </div>
+                    <div class="Pages tab-0">
+                        <div class="prodctImage">
+                            <img class="prodImage_img" src="~/ProductImages/10520801021A.jpg" />
+                        </div>
+                        <div class="prodName">
+                            <p>
+                                Payari Mango - Aam grade A
+                            </p>
+                            <p>
+                                Brand
+                            </p>
+                        </div>
+                        <div class="product_shopping-cart">
+                       
+                            <img style="width: 20%" src="~/Content/Images/red.png" />
+                            <span class="itemselect">
+                                <select>
+                                    <option value="0">1</option>
+                                    <option value="0">2</option>
+                                    <option value="0">3</option>
+                                    <option value="0">4</option>
+                                </select>
+                                <p>
+                                    Kilo
+                                </p>
+
+                            </span>
+                       
+                        
+                            <img style="padding-left:80px; width: 20%" src="~/Content/Images/green.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="shelf_in tabs">
+                    <div class="listHeader">
+                        More Info
+                    </div>
+                    <div class="Pages tab-0">
+                        <div class="prodctImage">
+                            <img class="prodImage_img" src="~/ProductImages/10520801021A.jpg" />
+                        </div>
+                        <div class="prodName">
+                            <p>
+                                Payari Mango - Aam grade A
+                            </p>
+                            <p>
+                                Brand
+                            </p>
+                        </div>
+                        <div class="product_shopping-cart">
+                       
+                            <img style="width: 20%" src="~/Content/Images/red.png" />
+                            <span class="itemselect">
+                                <select>
+                                    <option value="0">1</option>
+                                    <option value="0">2</option>
+                                    <option value="0">3</option>
+                                    <option value="0">4</option>
+                                </select>
+                                <p>
+                                    Kilo
+                                </p>
+
+                            </span>
+                       
+                        
+                            <img style="padding-left:80px; width: 20%" src="~/Content/Images/green.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          
+        </div>
+    </div>
+</div>

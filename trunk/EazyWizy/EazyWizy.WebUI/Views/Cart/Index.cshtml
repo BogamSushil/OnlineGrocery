@@ -1,0 +1,148 @@
+﻿@model EazyWizy.WebUI.Models.CartIndexViewModel
+
+@{
+    Layout = null;
+    //ViewBag.Title = "Cheeckout";
+}
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>EazyWizy.com</title>
+        @Styles.Render("~/Content/Site/css")
+        @Styles.Render("~/Content/kendo/css")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/kendo")
+        @Scripts.Render("~/bundles/Site")         
+
+    </head>
+    <body>
+        <div id="divRoot" style="height:600px;background-image:url(/Content/Images/WoodDivBackground.jpg);background-repeat:repeat;">
+            <div id="divRootInner">
+                <div id="TopMenu">
+                    @Html.Partial("Menu/_PartialTopMenu")
+                </div> 
+                    
+                <div id="accordianpanel">
+                    <ul id="panelbar">
+                        <li class="k-state-active">
+                            Sign In
+                            <div style="height:200px;">
+                                This is sign In
+                            </div>
+                           
+                        </li>
+                        <li>
+                            Address
+                            <div>
+
+                                This is address
+                            </div>
+                        </li>
+                        <li>
+                            Order Summary
+                            <div>This is Order Summary</div>
+                        </li>
+                        <li>
+                            Payments
+                            <div style="height:350px;">
+                                @Html.Partial("_PartialPayments")
+                            </div>
+                        </li>                       
+                    </ul>
+                </div>             
+            </div>
+        </div>    
+        @*<script>
+            $(document).ready(function () {
+                var getItem = function (target) {
+                    var itemIndexes = target.val().split(/[.,]/),
+                        rootItem = panelBar.element.children("li").eq(itemIndexes[0]);
+
+                    return itemIndexes.length > 1 ?
+                        rootItem.find(".k-group > .k-item").eq(itemIndexes[1]) :
+                        rootItem;
+                },
+                    select = function (e) {
+                        if (e.type != "keypress" || kendo.keys.ENTER == e.keyCode)
+                            panelBar.select(getItem($("#selectIndex")));
+                    },
+                    append = function (e) {
+                        if (e.type != "keypress" || kendo.keys.ENTER == e.keyCode)
+                            panelBar.append({
+                                text: $("#appendText").val()
+                            }, panelBar.select());
+                    },
+                    before = function (e) {
+                        if (e.type != "keypress" || kendo.keys.ENTER == e.keyCode)
+                            panelBar.insertBefore({
+                                text: $("#beforeText").val()
+                            }, panelBar.select());
+                    },
+                    after = function (e) {
+                        if (e.type != "keypress" || kendo.keys.ENTER == e.keyCode)
+                            panelBar.insertAfter({
+                                text: $("#afterText").val()
+                            }, panelBar.select());
+                    };
+
+                $(".selectItem").click(select);
+                $("#selectIndex").keypress(select);
+
+                $(".appendItem").click(append);
+                $("#appendText").keypress(append);
+
+                $(".beforeItem").click(before);
+                $("#beforeText").keypress(before);
+
+                $(".afterItem").click(after);
+                $("#afterText").keypress(after);
+
+                $(".toggleItem").click(function (e) {
+                    var item = panelBar.select();
+                    panelBar.enable(item, item.hasClass("k-state-disabled"));
+                });
+
+                $(".triggerItem").click(function (e) {
+                    var item = panelBar.select();
+
+                    if (item.hasClass("k-state-active")) {
+                        panelBar.collapse(item);
+                    } else {
+                        panelBar.expand(item);
+                    }
+                });
+
+                $(".removeItem").click(function (e) {
+                    panelBar.remove(panelBar.select());
+                });
+
+            });
+
+            var panelBar = $("#panelbar").kendoPanelBar().data("kendoPanelBar");
+        </script>*@
+
+        <script>
+            $(document).ready(function () {
+                $("#panelbar").kendoPanelBar({
+                    expandMode: "single",
+                    contentUrls: [
+                        '../../content/web/panelbar/ajax/ajaxContent1.html',
+                        '../../content/web/panelbar/ajax/ajaxContent2.html',
+                        '../../content/web/panelbar/ajax/ajaxContent3.html',
+                        '../../content/web/panelbar/ajax/ajaxContent4.html'
+                    ]
+                });
+            });
+        </script>
+        <style scoped>
+            .configuration .k-textbox {
+                width: 40px;
+            }
+        </style>
+    </body>
+</html>
+
+
+
+

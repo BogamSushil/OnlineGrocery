@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using EazyWizy.Domain.Abstract;
 using EazyWizy.Domain.Entities;
+using System;
 
 namespace EazyWizy.Domain.Concrete
 {
-    public class ProductRepository : IProductRepository    
+    public class ProductRepository : IProductRepository
     {
         private readonly EazyWizyEntities _dataSource = new EazyWizyEntities();
 
@@ -22,6 +23,11 @@ namespace EazyWizy.Domain.Concrete
         public IList<Product> GetProductByBrand(int brandId)
         {
             throw new System.NotImplementedException();
+        }
+
+        public IQueryable<Product> Products
+        {
+            get { return _dataSource.GetAllProduct(null).AsQueryable(); }
         }
     }
 }

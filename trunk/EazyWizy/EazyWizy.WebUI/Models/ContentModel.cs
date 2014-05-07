@@ -12,11 +12,12 @@ namespace EazyWizy.WebUI.Models
     {
         public IEnumerable<TopMenu> topMenu { get; set; }
         public LHSAllMenu lhsAllMenu { get; set; }
+        public IList<LHSBrandFilter> lhsBrandFilter { get; set; }
         public IEnumerable<Product> Products { get; set; }
     }
     public class LHSAllMenu
     {
         public IEnumerable<LHSMenu> lhsMenu { get; set; }
-        public IEnumerable<SubMenu> lhsSubMenuBrand { get; set; }     
+        public IEnumerable<LHSSubMenuBrand> lhsSubMenuBrand { get; set; }     
     }
 }

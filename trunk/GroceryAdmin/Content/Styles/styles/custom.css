@@ -216,8 +216,8 @@ a.navbar-brand:hover {
 	width: 95%;
 }
 .loginbox {
-	margin: auto;
-	padding: 140px 0;
+	margin: 104px auto 0;
+	padding: 20px 0;
 	position: relative;
 	width: 148px;
 	display: block;
@@ -267,7 +267,6 @@ position: relative;
 	height: 30px;
 	border-radius: 0;
 	border-color: #158ad1;
-
 }
 .loginbox .k-button {
 	display: inline-block;

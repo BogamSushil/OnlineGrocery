@@ -235,20 +235,5 @@ namespace Data.EFData
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductCategory>("GetAllProductCategory");
         }
-    
-        public virtual ObjectResult<TopMenu> sp_GetTopMenu()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TopMenu>("sp_GetTopMenu");
-        }
-    
-        public virtual ObjectResult<LHSMenu> sp_Select_GetLHSMenu()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LHSMenu>("sp_Select_GetLHSMenu");
-        }
-    
-        public virtual ObjectResult<SubMenuBrand> sp_Select_GetSubMenuBrand()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SubMenuBrand>("sp_Select_GetSubMenuBrand");
-        }
     }
 }

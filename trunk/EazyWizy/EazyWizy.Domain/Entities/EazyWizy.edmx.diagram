@@ -4,11 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6529d0e388a84b41a2cd343854efb68e" Name="Diagram1">
-        <EntityTypeShape EntityType="EazyWizy.Role" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="EazyWizy.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="EazyWizy.FK__User__RoleID" ManuallyRouted="false" />
-      </Diagram>
+      <Diagram DiagramId="49e3a3b1fb3542efa0bd9c2be4983099" Name="Diagram1" />
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

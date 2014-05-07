@@ -64,9 +64,6 @@
           <Parameter Name="ModifiedDate" Type="datetime" Mode="In" />
           <Parameter Name="Operation" Type="int" Mode="In" />
         </Function>
-        <Function Name="sp_GetTopMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="sp_Select_GetLHSMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="sp_Select_GetSubMenuBrand" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="OnlineGroceryModelStoreContainer" />
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -129,12 +126,9 @@
           <Parameter Name="EmailID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetAllProduct" ReturnType="Collection(OnlineGroceryModel.Product)">
-          <Parameter Name="product_id" Mode="In" Type="Int32" />
+            <Parameter Name="product_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetAllProductCategory" ReturnType="Collection(OnlineGroceryModel.ProductCategory)" />
-          <FunctionImport Name="sp_GetTopMenu" ReturnType="Collection(OnlineGroceryModel.TopMenu)" />
-          <FunctionImport Name="sp_Select_GetLHSMenu" ReturnType="Collection(OnlineGroceryModel.LHSMenu)" />
-          <FunctionImport Name="sp_Select_GetSubMenuBrand" ReturnType="Collection(OnlineGroceryModel.SubMenuBrand)" />
         </EntityContainer>
         <ComplexType Name="ProductCategory">
           <Property Type="String" Name="product_type_code" Nullable="false" MaxLength="15" />
@@ -168,20 +162,6 @@
           <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
           <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="255" />
           <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
-        </ComplexType>
-        <ComplexType Name="TopMenu">
-          <Property Type="Int32" Name="IdMenu" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="70" />
-        </ComplexType>
-        <ComplexType Name="LHSMenu">
-          <Property Type="Int32" Name="IdLHSMenu" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="70" />
-          <Property Type="String" Name="Image" Nullable="true" MaxLength="100" />
-        </ComplexType>
-        <ComplexType Name="SubMenuBrand">
-          <Property Type="Int32" Name="IdBrand" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="70" />
-          <Property Type="String" Name="Image" Nullable="false" MaxLength="14" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -324,32 +304,6 @@
                 <ScalarProperty Name="parent_product_type_code" ColumnName="parent_product_type_code" />
                 <ScalarProperty Name="product_type_description" ColumnName="product_type_description" />
                 <ScalarProperty Name="productTypeImageName" ColumnName="productTypeImageName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_GetTopMenu" FunctionName="OnlineGroceryModel.Store.sp_GetTopMenu">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="OnlineGroceryModel.TopMenu">
-                <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_Select_GetLHSMenu" FunctionName="OnlineGroceryModel.Store.sp_Select_GetLHSMenu" >
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="OnlineGroceryModel.LHSMenu">
-                <ScalarProperty Name="IdLHSMenu" ColumnName="IdLHSMenu" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_Select_GetSubMenuBrand" FunctionName="OnlineGroceryModel.Store.sp_Select_GetSubMenuBrand" >
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="OnlineGroceryModel.SubMenuBrand">
-                <ScalarProperty Name="IdBrand" ColumnName="IdBrand" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
