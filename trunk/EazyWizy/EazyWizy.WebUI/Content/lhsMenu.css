@@ -93,7 +93,7 @@
 }
 
 /*Brand Filter*/
-.ew-lhs-div-brand-filter, .ew-lhs-div-rating-filter {
+.ew-lhs-div-filter {
     width: 202px;
     border:1px solid #D3D3D3;
 }
@@ -119,7 +119,7 @@
     font-size:17px;
 }
 
-.ew-lhs-brand-header-filter, .ew-lhs-rating-header-filter {
+.ew-lhs-header-filter {
     display: inline-block;
     width: inherit;
     height: 30px;

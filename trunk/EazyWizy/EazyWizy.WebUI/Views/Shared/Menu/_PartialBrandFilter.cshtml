@@ -1,6 +1,6 @@
 ﻿@model IList<EazyWizy.Domain.Entities.LHSBrandFilter>
-<div class="ew-lhs-div-brand-filter">
-    <div class="ew-lhs-brand-header-filter ew-cursor">
+<div class="ew-lhs-div-filter">
+    <div class="ew-lhs-header-filter ew-cursor">
         <div class="ew-lhs-filter-header-font">Brands</div>
         <div class="ew-lhs-div-filterclear">
             <img src="~/Content/Images/clearFilter.ico" class="ew-lhs-filterclear-image" alt="" />
@@ -21,9 +21,9 @@
         </ul>
     </div>  
 </div>
-<div class="ew-lhs-div-rating-filter ew-lhs-filter-margin">
+<div class="ew-lhs-div-filter ew-lhs-filter-margin">
     @*Rating Related *@
-    <div class="ew-lhs-rating-header-filter">
+    <div class="ew-lhs-header-filter ew-cursor">
         <div style="display:inherit;font-size:17px">Ratings</div>
         <div class="ew-lhs-div-filterclear" style="display:inherit;float:right;cursor:pointer;margin-top:2px">
             <img src="~/Content/Images/clearFilter.ico" style="width:15px;vertical-align:middle;margin-top:-2px" alt="" />
@@ -34,23 +34,53 @@
         <ul class="ew-lhs-ul">          
             <li class='ew-lhs-filter-li ew-lhs-font'>
                 <input type="checkbox" style="cursor:inherit;"/>
-                <span>5 Star</span>     
+                <span>
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                </span>     
             </li>          
             <li class='ew-lhs-filter-li ew-lhs-font'>
                 <input type="checkbox" style="cursor:inherit;"/>
-                <span>4 Star</span>     
+                <span>
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/NoRating16.png" alt="" />
+                </span>      
             </li>          
             <li class='ew-lhs-filter-li ew-lhs-font'>
                 <input type="checkbox" style="cursor:inherit;"/>
-                <span>3 Star</span>     
+                <span>
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/NoRating16.png" alt="" />
+                    <img src="~/Content/Images/NoRating16.png" alt="" />
+                </span>      
             </li>          
             <li class='ew-lhs-filter-li ew-lhs-font'>
                 <input type="checkbox" style="cursor:inherit;"/>
-                <span>2 Star</span>     
+                <span>
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/NoRating16.png" alt="" />
+                    <img src="~/Content/Images/NoRating16.png" alt="" />
+                    <img src="~/Content/Images/NoRating16.png" alt="" />
+                </span>           
             </li>          
             <li class='ew-lhs-filter-li ew-lhs-font'>
                 <input type="checkbox" style="cursor:inherit;"/>
-                <span>1 Star</span>     
+                <span>
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/NoRating16.png" alt="" />
+                    <img src="~/Content/Images/NoRating16.png" alt="" />
+                    <img src="~/Content/Images/NoRating16.png" alt="" />
+                    <img src="~/Content/Images/NoRating16.png" alt="" />
+                </span>           
             </li>          
         </ul>
     </div>  
