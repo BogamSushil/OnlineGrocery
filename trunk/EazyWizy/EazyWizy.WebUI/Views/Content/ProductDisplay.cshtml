@@ -20,13 +20,14 @@
                 <div id="TopMenu">            
                      @Html.Partial("Menu/_PartialTopMenu")               
                 </div> 
-                <div>                 
-                    <div class="disp-Block div-lhs-filter">
+                <div class="ew-disp-inBlock">                 
+                    <div class="ew-disp-Block div-lhs-filter">
                         @Html.Partial("Menu/_PartialBrandFilter",Model.lhsBrandFilter)    
                     </div> 
-                </div>            
-
-             <div class="disp-inBlock">Here the product list will be displayed</div>                        
+                </div>     
+                <div class="ew-div-productlist">
+                     @Html.Partial("Product/_PartialProduct",null)
+                </div>                        
            </div>
         </div>      
     </body>

@@ -438,3 +438,9 @@
     position: absolute;
     top: 107px;
 }
+
+/**/
+.ew-div-productlist {
+    display:inline-block;
+    vertical-align:top;
+}

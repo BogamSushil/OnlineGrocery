@@ -117,6 +117,7 @@
 .ew-lhs-filter-header-font {    
     display:inherit;
     font-size:17px;
+    margin-top:2px;
 }
 
 .ew-lhs-header-filter {
@@ -133,7 +134,7 @@
     line-height:20px;
 }
 
-.ew-lhs-div-brandlist-filter,.ew-lhs-div-ratinglist-filter  { 
+.ew-lhs-div-brandlist-filter,.ew-lhs-div-ratinglist-filter,.ew-lhs-div-companylist-filter  { 
     width:202px;  
 	max-height: 220px;
     overflow-x:hidden;
