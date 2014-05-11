@@ -73,7 +73,7 @@ var eazyWizyLHSSubFilter = {
     CLICK: 'click',
     ITEMSELECTOR: '.ew-lhs-filter-li',
     MENULISTCONTAINERDIVHEADER: '.ew-lhs-header-filter',
-    MENUSELECTOR: '.ew-lhs-div-filter',
+    MENUSELECTOR: '.ew-lhs-div-filter',   
 
     _init: function () {
         this._bindingEvents();
@@ -107,8 +107,10 @@ var eazyWizyLHSSubFilter = {
             //below is to avoid constinuous click of menu header.
             thiz._unBindOnClickHeaderFilter();
 
-            //Animation to close the menu
-            var _actHeight = $(listDiv).height();
+            //Animation to close the menu                
+            var _actHeight = $(listDiv).height();          
+            $(listDiv).clearQueue();
+            $(listDiv).stop();
             $(listDiv).toggle(function () {
                 $(this).animate({ height: "0px" }, 500, "linear", function () {
                     //Re-binding the click event once animation completes
@@ -126,6 +128,7 @@ var eazyWizyLHSSubFilter = {
 
     _onClick: function (event) {
         var targetElement = $(event.target);
+        //If the click event is because of input [checkbox] then there is no need to do anything.
         if (targetElement.is('input'))
         {
             return;
@@ -160,7 +163,7 @@ var eazyWizyLHSSubFilter = {
         var targetElement = event.target;
         var divMenuSelector = 'div' + this.MENUSELECTOR; //Remember div.ew-lhs-div-filter
         var topMostDivElement = $(targetElement).closest(divMenuSelector); //to find parent div so that only that checkboxes cleared
-                                                            //which below to particular filter.
+                                                            //which are present in that particual filter 
         topMostDivElement.find(':checkbox').each(function () {
             $(this).prop('checked', false);
         });

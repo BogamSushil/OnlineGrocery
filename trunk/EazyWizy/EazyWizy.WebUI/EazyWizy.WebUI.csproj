@@ -145,6 +145,7 @@
     <Content Include="Content\Images\NoRating32.png" />
     <Content Include="Content\Images\NoRating48.png" />
     <Content Include="Content\Images\photo_na1.png" />
+    <Content Include="Content\Images\ProductImages\AshirwadAtta.jpg" />
     <Content Include="Content\Images\Rating16.png" />
     <Content Include="Content\Images\Rating24.png" />
     <Content Include="Content\Images\Rating32.png" />
@@ -274,8 +275,8 @@
     <Content Include="Views\Content\_ProductList.cshtml" />
     <Content Include="Views\Cart\Summary.cshtml" />
     <Content Include="Views\Product\_ProductList.cshtml" />
-    <Content Include="Views\Shared\_ProductList.cshtml" />
     <Content Include="Views\Shared\Menu\_ProductList.cshtml" />
+    <Content Include="Views\Shared\Product\_PartialProduct.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

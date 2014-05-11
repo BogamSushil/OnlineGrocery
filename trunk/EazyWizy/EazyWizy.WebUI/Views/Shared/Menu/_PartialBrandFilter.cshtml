@@ -24,9 +24,9 @@
 <div class="ew-lhs-div-filter ew-lhs-filter-margin">
     @*Rating Related *@
     <div class="ew-lhs-header-filter ew-cursor">
-        <div style="display:inherit;font-size:17px">Ratings</div>
-        <div class="ew-lhs-div-filterclear" style="display:inherit;float:right;cursor:pointer;margin-top:2px">
-            <img src="~/Content/Images/clearFilter.ico" style="width:15px;vertical-align:middle;margin-top:-2px" alt="" />
+        <div class="ew-lhs-filter-header-font"">Ratings</div>
+        <div class="ew-lhs-div-filterclear">
+            <img src="~/Content/Images/clearFilter.ico" />
             <span style="color:lightgrey">clear</span>         
         </div>
     </div>        
@@ -85,4 +85,25 @@
         </ul>
     </div>  
 </div>
-
+<div class="ew-lhs-div-filter ew-lhs-filter-margin">
+    <div class="ew-lhs-header-filter ew-cursor">
+        <div class="ew-lhs-filter-header-font">Company</div>
+        <div class="ew-lhs-div-filterclear">
+            <img src="~/Content/Images/clearFilter.ico" class="ew-lhs-filterclear-image" alt="" />
+            <span style="color:lightgrey">clear</span>        
+        </div>
+    </div>  
+    <div class="ew-lhs-div-companylist-filter">
+        <ul class="ew-lhs-ul">
+            @foreach (var item in Model.ToList())
+            {
+                <li class='ew-lhs-filter-li ew-lhs-font'>
+                    <input type="checkbox" style="cursor:inherit;" id="C'@item.IdBrand'" />
+                    <span>                   
+                        @item.Name                  
+                    </span>     
+                </li>
+            }
+        </ul>
+    </div>  
+</div>
