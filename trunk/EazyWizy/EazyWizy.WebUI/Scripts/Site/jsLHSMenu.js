@@ -102,9 +102,9 @@ var eazyWizyLHSSubFilter = {
         var targetElement = $(event.target);
         var listDiv = targetElement.closest(thiz.MENULISTCONTAINERDIVHEADER).next();
         //Below condition is to avoid closing of list menu and if one clicks on "clear" lable or 'x' icon
-        //then it should work as clearing the filters
+        //then it should work as clearing the filters but not hiding the menu
         if (!(targetElement.is('span') || targetElement.is('img'))) {
-            //below is to avoid constinuous click of menu header.
+            //below is to avoid constinuous click of menu header so better unbind the click event.
             thiz._unBindOnClickHeaderFilter();
 
             //Animation to close the menu                
