@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Interfacas
+namespace Domain.Entites
 {
-    public interface IItemService
+    public class Brand
     {
     }
 }

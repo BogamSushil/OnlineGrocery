@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Domain.Interfacas;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain
+namespace Data
 {
-    public class Class1
+    public class DastabaseRepository : IDataBaseRepository
     {
     }
 }

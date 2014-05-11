@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Interfacas
+namespace Domain.Managers
 {
-    public interface IAdminService
+    public class AdminManager
     {
     }
 }

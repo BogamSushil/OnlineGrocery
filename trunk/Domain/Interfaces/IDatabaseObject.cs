@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Interfacas
+namespace Domain.Interfaces
 {
-    public interface IOrderService
+    public interface IDatabaseObject
     {
+        bool Add();
+        bool Update();
+        bool Delete();
     }
 }
