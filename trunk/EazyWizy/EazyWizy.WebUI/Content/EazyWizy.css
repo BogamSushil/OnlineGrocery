@@ -1,21 +1,18 @@
 ﻿#divRoot {
     width:954px; 
     margin: 0 auto;
-    background-color:lightgreen;
 }
-#divRootInner {
-    height:200px;
-}
-
-#divCategories > ul > li {
-    list-style:none;
-}
-
-.disp-Block {
+.ew-disp-Block {
     display:block;
 }
+
+.ew-disp-inBlock {
+    display:inline-block;
+}
+
 .div-mid-top {
-    height:25px;
+    min-height:25px;
+    margin: 10px 5px 10px 5px;
 }
 
 /*LHS Menu*/
@@ -30,31 +27,7 @@
     border-radius:0px 0px 11px 11px;
 }
 
-.li-style {
-    list-style:none;  
-    list-style-type: none;    
-    margin-top:0px;
-    margin-bottom:0px;
-    text-decoration:none;   
-    display: inline-block;
-    width:215px;
-    padding:0;
+.div-index-lhs {
+    margin-top:-1px;
 }
-#ulLHS li {
-    display:block;
-    line-height:30px;
-    border-bottom: 1px solid #808080;
-
-    font-family:Verdana,Arial;
-    font-size:14px;
-    font-weight:bold;
-    cursor:pointer;
-}
-#ulLHS li > img {
-    width:10px;
-    float:right;
-    margin-top:10px;
-    margin-right:5px;
-}
-
 /*------*/

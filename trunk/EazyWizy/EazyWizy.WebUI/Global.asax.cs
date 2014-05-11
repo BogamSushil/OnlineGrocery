@@ -7,7 +7,6 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
-
 namespace EazyWizy.WebUI
 {
     public class MvcApplication : System.Web.HttpApplication
@@ -15,6 +14,7 @@ namespace EazyWizy.WebUI
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+            WebApiConfig.Register(GlobalConfiguration.Configuration);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }

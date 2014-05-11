@@ -40,19 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Entites\DatabaseContext.cs" />
     <Compile Include="Entites\Product.cs" />
     <Compile Include="Entites\ProductCategory.cs" />
-    <Compile Include="Entites\Role.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Entites\Role.cs" />
     <Compile Include="Entites\User.cs" />
-    <Compile Include="Interfacas\IDatabaseObject.cs" />
-    <Compile Include="Interfacas\IDataBaseRepository.cs" />
-    <Compile Include="Interfacas\IAdminService.cs" />
-    <Compile Include="Interfacas\ICustomerService.cs" />
-    <Compile Include="Interfacas\IItemService.cs" />
-    <Compile Include="Interfacas\IOrderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,0 +1,109 @@
+﻿@model IList<EazyWizy.Domain.Entities.LHSBrandFilter>
+<div class="ew-lhs-div-filter">
+    <div class="ew-lhs-header-filter ew-cursor">
+        <div class="ew-lhs-filter-header-font">Brands</div>
+        <div class="ew-lhs-div-filterclear">
+            <img src="~/Content/Images/clearFilter.ico" class="ew-lhs-filterclear-image" alt="" />
+            <span style="color:lightgrey">clear</span>        
+        </div>
+    </div>  
+    <div class="ew-lhs-div-brandlist-filter">
+        <ul class="ew-lhs-ul">
+            @foreach (var item in Model.ToList())
+            {
+                <li class='ew-lhs-filter-li ew-lhs-font'>
+                    <input type="checkbox" style="cursor:inherit;" id="@item.IdBrand" />
+                    <span>                   
+                        @item.Name                  
+                    </span>     
+                </li>
+            }
+        </ul>
+    </div>  
+</div>
+<div class="ew-lhs-div-filter ew-lhs-filter-margin">
+    @*Rating Related *@
+    <div class="ew-lhs-header-filter ew-cursor">
+        <div class="ew-lhs-filter-header-font"">Ratings</div>
+        <div class="ew-lhs-div-filterclear">
+            <img src="~/Content/Images/clearFilter.ico" />
+            <span style="color:lightgrey">clear</span>         
+        </div>
+    </div>        
+    <div class="ew-lhs-div-ratinglist-filter">
+        <ul class="ew-lhs-ul">          
+            <li class='ew-lhs-filter-li ew-lhs-font'>
+                <input type="checkbox" style="cursor:inherit;"/>
+                <span>
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                </span>     
+            </li>          
+            <li class='ew-lhs-filter-li ew-lhs-font'>
+                <input type="checkbox" style="cursor:inherit;"/>
+                <span>
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/NoRating16.png" alt="" />
+                </span>      
+            </li>          
+            <li class='ew-lhs-filter-li ew-lhs-font'>
+                <input type="checkbox" style="cursor:inherit;"/>
+                <span>
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/NoRating16.png" alt="" />
+                    <img src="~/Content/Images/NoRating16.png" alt="" />
+                </span>      
+            </li>          
+            <li class='ew-lhs-filter-li ew-lhs-font'>
+                <input type="checkbox" style="cursor:inherit;"/>
+                <span>
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/NoRating16.png" alt="" />
+                    <img src="~/Content/Images/NoRating16.png" alt="" />
+                    <img src="~/Content/Images/NoRating16.png" alt="" />
+                </span>           
+            </li>          
+            <li class='ew-lhs-filter-li ew-lhs-font'>
+                <input type="checkbox" style="cursor:inherit;"/>
+                <span>
+                    <img src="~/Content/Images/Rating16.png" alt="" />
+                    <img src="~/Content/Images/NoRating16.png" alt="" />
+                    <img src="~/Content/Images/NoRating16.png" alt="" />
+                    <img src="~/Content/Images/NoRating16.png" alt="" />
+                    <img src="~/Content/Images/NoRating16.png" alt="" />
+                </span>           
+            </li>          
+        </ul>
+    </div>  
+</div>
+<div class="ew-lhs-div-filter ew-lhs-filter-margin">
+    <div class="ew-lhs-header-filter ew-cursor">
+        <div class="ew-lhs-filter-header-font">Company</div>
+        <div class="ew-lhs-div-filterclear">
+            <img src="~/Content/Images/clearFilter.ico" class="ew-lhs-filterclear-image" alt="" />
+            <span style="color:lightgrey">clear</span>        
+        </div>
+    </div>  
+    <div class="ew-lhs-div-companylist-filter">
+        <ul class="ew-lhs-ul">
+            @foreach (var item in Model.ToList())
+            {
+                <li class='ew-lhs-filter-li ew-lhs-font'>
+                    <input type="checkbox" style="cursor:inherit;" id="C'@item.IdBrand'" />
+                    <span>                   
+                        @item.Name                  
+                    </span>     
+                </li>
+            }
+        </ul>
+    </div>  
+</div>

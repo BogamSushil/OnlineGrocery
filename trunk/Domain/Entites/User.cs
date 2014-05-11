@@ -1,5 +1,4 @@
-﻿using Domain.Interfacas;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public partial class User:IDatabaseObject
+    public partial class User
     {
         public int UserID { get; set; }
         public string UserName { get; set; }
@@ -24,21 +23,6 @@ namespace Domain
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public string RoleName { get; set; }
 
-
-
-        public bool Add()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Update()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Delete()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

@@ -599,3 +599,15 @@ FROM    Shipment_Items
 GO
 
 
+
+CREATE TABLE TOPMENU
+(
+	IdMenu INT IDENTITY PRIMARY KEY,
+	Name NVARCHAR(70) NOT NULL,
+	CreatedBy INT,
+	CreatedDate DATETIME,
+	UpdatedBy INT,
+	UpdatedTime DATETIME,
+	SortedNumber INT,
+	IsActive BIT	
+)
