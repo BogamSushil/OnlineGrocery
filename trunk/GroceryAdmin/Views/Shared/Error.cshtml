@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Advantexe VLE | Error";
+}
+
+<style type ="text/css" >
+    .ErrorLogout {
+        color: #000;
+        padding: 2em;
+        font-weight: bold;
+        font-size: 16px;
+        font-family: Calibri, Arial, Helvetica, sans-serif;
+    }
+</style>
+<div class="container">
+    
+    <div>&nbsp</div>
+       <div class="errorContainer">
+           @ViewBag.Error
+           <br />
+           <br />
+      You may @Html.ActionLink("logout", "Logout", "AdvantexeAccount",null,new { @class = "ErrorLogout" }) and try again or contact the VLE support team @@ supportvle@advantexe.com 
+       </div>
+</div>

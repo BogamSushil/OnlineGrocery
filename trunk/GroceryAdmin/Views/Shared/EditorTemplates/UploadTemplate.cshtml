@@ -1,0 +1,216 @@
+﻿@using Kendo.Mvc.UI;
+@using Kendo.Mvc.Extensions;
+
+<script src="~/Scripts/common.js"></script>
+<script type="text/javascript">
+    function onUpload(e) {
+        var Check = false;
+        $(".ContentError").html(" ");
+        var type = $('#ConetntType').data("kendoDropDownList");
+        $.each(e.files, function (index, value) {
+            var TypeValue = type.value();
+            if (TypeValue == "" || TypeValue != 1) {
+                var ExtensionName = value.extension;
+                for (var i = 0; i < Extensions.length; i++) {
+                    if (ExtensionName.toLowerCase() == Extensions[i].toLowerCase())
+                        Check = true;
+                }
+                if (Check == false) {
+                    e.preventDefault();
+                    $(".errors").append(AlertsMessages.ContentUploadFileReq.value);
+                }
+            }
+            else if (TypeValue == 1) {
+                var ok = value.extension == ".pdf";
+                if (!ok) {
+                    e.preventDefault();
+                    $(".errors").append(AlertsMessages.ContentUploadProgramAgendaFile.value);
+                }
+            }
+        });
+        if (type.value() != "") {
+            if ($('#Name') && type) {
+                e.data = { id: $('#ContentID').val(), name: $('#Name').val(), typeId: type.value() };
+            }
+        }
+        else { e.data = { id: $('#ContentID').val(), name: $('#Name').val(), typeId: 0 }; }
+       
+        
+    }
+
+    function onSuccess(e) {       
+        if (e.response && e.response.length > 0) {
+            var validationTemplate = kendo.template($("#ContentValidationMessageTemplate").html());
+            var grid = $("#Content").data("kendoGrid");
+            var renderedTemplate = validationTemplate({ field: "ContentTypeID", messages: e.response });
+            grid.editable.element.find(".errors").append(renderedTemplate);
+            $('.k-icon k-i-close k-delete').click();
+            if (grid.preventDefault) {
+                grid.preventDefault();
+            }
+        }
+        else {
+            var fileName = e.files[0].name;
+            var grid = $("#Content").data("kendoGrid");
+            $(grid).attr("Uploaded", 1);
+            $(grid).attr("FileName", fileName);
+            $('.k-grid-update').click();
+        }
+    }
+    var error_report = function (ex) {
+        getServerError();
+        if (ex.errors) {
+            $(".ContentError").html(" ");
+            var grid = $("#Content").data("kendoGrid");
+            var validationTemplate = kendo.template($("#ContentValidationMessageTemplate").html());
+            grid.one("dataBinding", function (e) {
+                e.preventDefault();
+                $.each(ex.errors, function (propertyName) {
+                    var renderedTemplate = validationTemplate({ field: propertyName, messages: this.errors });
+                    grid.editable.element.find(".errors").append(renderedTemplate);
+                });
+            });
+        }
+    };
+
+    var getServerError = function () {
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action("GetErrors", "Uploader")',
+            error: function (xhr, ajaxOptions, error) {
+                loggError(xhr.status + " " + error + " " + xhr.responseText);
+            },
+            success: function (data) {  
+                if (data) {
+                    var validationTemplate = kendo.template($("#ContentValidationMessageTemplate").html());
+                    var grid = $("#Content").data("kendoGrid");
+                    var renderedTemplate = validationTemplate({ field: "ContentTypeID", messages: data });
+                    grid.editable.element.find(".errors").append(renderedTemplate);
+                    $('.k-icon k-i-close k-delete').click();
+                    if (grid.preventDefault) {
+                        grid.preventDefault();
+                    }
+                }
+            }
+        });
+    };
+
+    var onSelect = function (e) {
+        $(".ContentError").html(" ");
+        var type = $('#ConetntType').data("kendoDropDownList");
+        $.each(e.files, function (index, value) {
+            var Check = false;
+            var ExtensionName = value.extension;
+            var FileName = value.name;
+            var LengthFile = FileName.length;
+            if (LengthFile > 150)
+            {
+                e.preventDefault();
+                $(".errors").append(AlertsMessages.ContentUploadFileLength.value);
+            }
+            else if (type.value() == "" || type.value() != 1 ) {
+                for (var i = 0; i < Extensions.length; i++) {
+                    if (ExtensionName.toLowerCase() == Extensions[i].toLowerCase())
+                        Check = true;
+                }
+                if (Check == false) {
+                    e.preventDefault();
+                    $(".errors").append(AlertsMessages.ContentUploadFileReq.value);
+                }
+            }
+           if (type.value() == 1) {
+                var ok = value.extension == ".pdf";
+                if (!ok) {
+                    e.preventDefault();
+                    $(".errors").append(AlertsMessages.ContentUploadProgramAgendaFile.value);
+                }
+            }
+        });
+        setTimeout(function () {
+            kendoUploadButton = $(".k-upload-selected");
+            kendoUploadButton.hide();
+        }, 1)
+    }
+
+ 
+</script>
+<script type="text/x-kendo-template" id="ContentValidationMessageTemplate">
+    # if (messages.length) { #
+        <li>@*#=field#*@
+            <ul>
+                # for (var i = 0; i < messages.length; ++i) { #
+                    <li>#= messages[i] #</li>
+                # } #
+            </ul>
+        </li>
+    # } #
+</script>
+<script id="fileTemplate" type="text/x-kendo-template">
+    <span class='k-progress'></span>
+    <div class='file-wrapper'>
+        <h4 class='file-heading file-name-heading'>Name: #=name#</h4>
+        <h4 class='file-heading file-size-heading'>Size: #=size# bytes</h4>
+      <button type='button' class='k-upload-action'></button>
+      <button type="button" class="k-button k-button-bare k-upload-action">
+    <span id='removeFile' class="k-icon k-i-close k-delete" title="Remove"></span></button>
+
+    </div>
+</script>
+
+<style>
+    .file-heading {
+        /*font-family: Calibri;
+        font-size: 1.1em;
+        display: inline-block;
+        float: left;
+        width: 450px;
+        margin: 0 0 0 20px;
+        height: 25px;
+        -ms-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        word-wrap: break-word ;*/
+        color: #121212;
+        display: inline-block;
+        float: left;
+        font-family: Calibri;
+        font-size: 1.1em;
+        height: 52px;
+        line-height: 17px;
+        margin: 0 0 0 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 200px;
+        word-wrap: break-word;
+    }
+
+    .file-name-heading {
+        font-weight: bold;
+        
+    }
+
+    .file-size-heading {
+        font-weight: normal;
+        font-style: italic;
+    }
+
+    li.k-file .file-wrapper .k-upload-action {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    li.k-file div.file-wrapper {
+        position: relative;
+        height: 75px;
+    }
+</style>
+@(Html.Kendo().Upload()
+    .Name("attachment").Messages(m => m.Select("Select file..."))
+    .TemplateId("fileTemplate")
+    .Multiple(false)
+    .Async(async => async.Save("UploadFile", "Uploader").AutoUpload(false))
+    .Events(e => e.Success("onSuccess").Upload("onUpload").Select("onSelect").Error("error_report"))
+    )
+<input type="text" id="UrlPath" style="display: none" />

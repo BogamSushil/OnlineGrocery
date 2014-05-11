@@ -221,5 +221,19 @@ namespace Data.EFData
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UserEntity>("GetUser", emailIDParameter);
         }
+    
+        public virtual ObjectResult<Product> GetAllProduct(Nullable<int> product_id)
+        {
+            var product_idParameter = product_id.HasValue ?
+                new ObjectParameter("product_id", product_id) :
+                new ObjectParameter("product_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Product>("GetAllProduct", product_idParameter);
+        }
+    
+        public virtual ObjectResult<ProductCategory> GetAllProductCategory()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductCategory>("GetAllProductCategory");
+        }
     }
 }

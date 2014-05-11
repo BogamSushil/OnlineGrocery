@@ -1,0 +1,50 @@
+﻿@using Kendo.Mvc.UI
+@using Kendo.Mvc.Extensions
+@{
+    ViewBag.Title = "Admin Dashboard";  
+}
+
+@{Layout = "~/Views/Shared/_AdminLayout.cshtml";}
+<script type="text/javascript">
+    function Client() {
+        var url = getSiteUrl("/Client/ManageClient");
+        window.location.replace(url);
+    }
+
+    function report() {
+        var url = getSiteUrl("/AdvantexeReport/ClientReport");
+        window.location.replace(url);
+    }
+</script>
+<!-- Fixed navbar -->
+
+
+    <div class="dashboard-box-admin">
+       @(Html.Kendo().TabStrip()
+          .Name("tabstrip-images")
+          .Items(tabstrip =>
+          {
+              tabstrip.Add().Text("ToDo")
+                .Content(Html.Action("Manage", "ManageProductType").ToString()).Selected(true);
+
+              tabstrip.Add().Text("Manage Category")
+                 
+                  .Content(@<text>
+Manage the Product category                  </text>);
+
+              tabstrip.Add().Text("Manage Product")
+                
+                  .Content(@<text>
+Manage Products                  </text>);
+
+             
+          })
+          .SelectedIndex(0)
+    )
+
+        
+    </div>
+
+<div style="clear: both"></div>
+
+

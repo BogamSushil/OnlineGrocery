@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EazyWizy.WebUI", "EazyWizy.WebUI\EazyWizy.WebUI.csproj", "{8B3AC6AA-E2B6-4062-80C2-CA125A1732B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EazyWizy.Domain", "EazyWizy.Domain\EazyWizy.Domain.csproj", "{FB2E6F57-6AC1-4DFD-AD40-16B017B6B7F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EazyWizy.UnitTests", "EazyWizy.UnitTests\EazyWizy.UnitTests.csproj", "{735F49AE-0E1D-4B44-9BB0-7E133B2E8777}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{AB926278-E5A1-46FD-9C84-9E7CB3CF2134}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B3AC6AA-E2B6-4062-80C2-CA125A1732B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B3AC6AA-E2B6-4062-80C2-CA125A1732B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B3AC6AA-E2B6-4062-80C2-CA125A1732B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B3AC6AA-E2B6-4062-80C2-CA125A1732B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB2E6F57-6AC1-4DFD-AD40-16B017B6B7F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB2E6F57-6AC1-4DFD-AD40-16B017B6B7F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB2E6F57-6AC1-4DFD-AD40-16B017B6B7F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB2E6F57-6AC1-4DFD-AD40-16B017B6B7F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{735F49AE-0E1D-4B44-9BB0-7E133B2E8777}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{735F49AE-0E1D-4B44-9BB0-7E133B2E8777}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{735F49AE-0E1D-4B44-9BB0-7E133B2E8777}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{735F49AE-0E1D-4B44-9BB0-7E133B2E8777}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,151 @@
+﻿.ew-cursor {
+    cursor:pointer;
+}
+
+.ew-hover {
+    background-color:#ccc6c2;
+}
+
+.ew-lhs-image {
+    width:25px;
+    vertical-align:middle;
+}
+
+.ew-lhs-ul, .ew-lhs-submenu-ul {
+    list-style:none;
+    padding-left:0px;  
+    margin:0px;
+}
+
+.ew-lhs-li, .ew-lhs-sub-li {
+    cursor:pointer;
+    padding:0px 0px 0px 5px;
+    line-height:35px;
+    vertical-align:middle;
+}
+.ew-lhs-ul-span {
+    list-style:none;
+    margin:5px;
+    padding-left:0px;
+}
+
+.ew-lhs-right-arrow {
+    float:right;
+    margin-top:9px;
+}
+
+.ew-lhs-li-font {
+   font-family: "Segoe UI",Verdana,Helvetica,Sans-Serif;
+   font-size:0.89em;
+}
+
+.ew-lhs-div-border {
+    border-width:1px;
+    border-style:solid;
+    background-color:#ececec;
+    border-color:#c5c5c5;
+}
+
+.ew-lhs-subdiv {
+    cursor:default;
+    background-color:#FEFCFF;
+    border-width:1px;
+    border-style:solid;
+    border-color:#c5c5c5;
+    position:absolute;
+    display:none;
+
+    max-height:400px;
+    -moz-columns: 3 150px;
+    -webkit-columns: 3 150px;
+    columns: 3 150px;
+    max-width:571px;
+}
+
+.disp-inlineb {
+    display:inline-block;
+}
+
+.ew-div-filters {
+    display:inline-block;
+    width:inherit;
+    margin-top:2px;
+}
+
+.ew-lhs-filterimage {
+    width:17px;
+    margin-left:2px;
+    vertical-align:middle;
+}
+
+.ew-span-filter {
+    margin-right:5px;
+    cursor:pointer;    
+    margin-top:-2px;
+}
+
+.div-lhs-filter {
+   /*margin-top:5px;  */
+}
+
+.ui-helper-reset {
+    border-radius:0px !important;
+}
+
+/*Brand Filter*/
+.ew-lhs-div-filter {
+    width: 202px;
+    border:1px solid #D3D3D3;
+}
+.ew-lhs-div-rating-filter {
+    margin-top:-1px;
+}
+
+.ew-lhs-filterclear-image {
+    width:15px;
+    vertical-align:middle;
+    margin-top:-2px;
+}
+
+.ew-lhs-div-filterclear {
+    display:inherit;
+    float:right;
+    cursor:pointer;
+    margin-top:2px;
+}
+
+.ew-lhs-filter-header-font {    
+    display:inherit;
+    font-size:17px;
+    margin-top:2px;
+}
+
+.ew-lhs-header-filter {
+    display: inline-block;
+    width: inherit;
+    height: 30px;
+    background-color: #FFFBF2;
+}
+
+.ew-lhs-filter-li {
+    cursor:pointer;
+    padding:-1px 0px 0px 0px;   
+    vertical-align:middle;
+    line-height:20px;
+}
+
+.ew-lhs-div-brandlist-filter,.ew-lhs-div-ratinglist-filter,.ew-lhs-div-companylist-filter  { 
+    width:202px;  
+	max-height: 220px;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+
+.ew-brand-filter-hover {   
+    background-color:#726E6D;
+    color:white;
+}
+
+.ew-lhs-filter-margin {
+    margin-top:5px;
+}

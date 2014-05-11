@@ -1,0 +1,33 @@
+﻿#divRoot {
+    width:954px; 
+    margin: 0 auto;
+}
+.ew-disp-Block {
+    display:block;
+}
+
+.ew-disp-inBlock {
+    display:inline-block;
+}
+
+.div-mid-top {
+    min-height:25px;
+    margin: 10px 5px 10px 5px;
+}
+
+/*LHS Menu*/
+.div-TopUp {     
+    height:20px;
+    background-color:#373737;
+    border-radius:11px 11px 0px 0px;
+}
+.div-TopDown {     
+    height:20px;
+    background-color:#373737;
+    border-radius:0px 0px 11px 11px;
+}
+
+.div-index-lhs {
+    margin-top:-1px;
+}
+/*------*/
