@@ -59,13 +59,11 @@
   <ItemGroup>
     <Compile Include="Entites\Brand.cs" />
     <Compile Include="Entites\Category.cs" />
-    <Compile Include="Entites\DatabaseContext.cs" />
     <Compile Include="Entites\Product.cs" />
     <Compile Include="Entites\ProductCategory.cs" />
-    <Compile Include="Entites\Role.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Entites\Role.cs" />
     <Compile Include="Entites\User.cs" />
+    <Compile Include="Interfacas\IOrderService.cs" />
     <Compile Include="Interfaces\IDatabaseObject.cs" />
     <Compile Include="Interfaces\IDataBaseRepository.cs" />
     <Compile Include="IocContainer.cs" />
