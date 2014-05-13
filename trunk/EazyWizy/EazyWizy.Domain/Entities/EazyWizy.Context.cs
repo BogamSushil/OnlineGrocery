@@ -32,5 +32,70 @@ namespace EazyWizy.Domain.Entities
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TopMenu>("sp_Select_GetMenu");
         }
+    
+        public virtual ObjectResult<LHSMenu> sp_Select_GetLHSMenu()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LHSMenu>("sp_Select_GetLHSMenu");
+        }
+    
+        public virtual ObjectResult<LHSSubMenuBrand> sp_Select_GetSubMenuBrand()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LHSSubMenuBrand>("sp_Select_GetSubMenuBrand");
+        }
+    
+        public virtual ObjectResult<LHSBrandFilter> sp_Select_GetSubMenuBrandFilter()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LHSBrandFilter>("sp_Select_GetSubMenuBrandFilter");
+        }
+    
+        public virtual ObjectResult<Product> GetAllProduct(Nullable<int> product_id)
+        {
+            var product_idParameter = product_id.HasValue ?
+                new ObjectParameter("product_id", product_id) :
+                new ObjectParameter("product_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Product>("GetAllProduct", product_idParameter);
+        }
+    
+        public virtual ObjectResult<ProductCategory> GetAllProductCategory()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductCategory>("GetAllProductCategory");
+        }
+    
+        public virtual ObjectResult<ProductCategory> GetChieldProductCategorys(string parent_product_type_code)
+        {
+            var parent_product_type_codeParameter = parent_product_type_code != null ?
+                new ObjectParameter("parent_product_type_code", parent_product_type_code) :
+                new ObjectParameter("parent_product_type_code", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductCategory>("GetChieldProductCategorys", parent_product_type_codeParameter);
+        }
+    
+        public virtual ObjectResult<Product> GetProduct(Nullable<int> product_id)
+        {
+            var product_idParameter = product_id.HasValue ?
+                new ObjectParameter("product_id", product_id) :
+                new ObjectParameter("product_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Product>("GetProduct", product_idParameter);
+        }
+    
+        public virtual ObjectResult<Product> GetProductByCategory(string product_type_code)
+        {
+            var product_type_codeParameter = product_type_code != null ?
+                new ObjectParameter("product_type_code", product_type_code) :
+                new ObjectParameter("product_type_code", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Product>("GetProductByCategory", product_type_codeParameter);
+        }
+    
+        public virtual ObjectResult<ProductCategory> GetProductCategory(string product_type_code)
+        {
+            var product_type_codeParameter = product_type_code != null ?
+                new ObjectParameter("product_type_code", product_type_code) :
+                new ObjectParameter("product_type_code", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductCategory>("GetProductCategory", product_type_codeParameter);
+        }
     }
 }

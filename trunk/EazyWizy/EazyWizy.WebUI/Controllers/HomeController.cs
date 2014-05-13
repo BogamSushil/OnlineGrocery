@@ -13,20 +13,22 @@ namespace EazyWizy.WebUI.Controllers
 {
     public class HomeController : Controller
     {
-        private ITopMenuRepository topMenuRepository;
+        private IMenuRepository menuRepository;
         public HomeController()
         {
-            this.topMenuRepository = new EFTopMenuRepository();
-        }
-        public HomeController(ITopMenuRepository _topMenuRepository)
-        {
-            this.topMenuRepository = _topMenuRepository;
+            this.menuRepository = new EFMenuRepository();
         }
 
         public ViewResult Index()
         {
             ContentModel contentModel = new ContentModel();
-            contentModel.TopMenu = this.topMenuRepository.TopMenu;
+            contentModel.topMenu = this.menuRepository.TopMenu;       
+            contentModel.lhsAllMenu = new LHSAllMenu()
+            {
+                lhsMenu = this.menuRepository.LHSMenu,
+                lhsSubMenuBrand = this.menuRepository.LHSSubMenuBrand               
+            };
+            contentModel.Products = (new ProductRepository()).GetAllProduct();
             return View(contentModel);
         }
 	}

@@ -1,0 +1,34 @@
+﻿@model EazyWizy.WebUI.Models.ContentModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>EazyWizy.com</title>
+        @Styles.Render("~/Content/Site/css")    
+        @Styles.Render("~/Content/kendo/css") 
+        @Styles.Render("~/Content/jqueryui/css")   
+        @Scripts.Render("~/bundles/jquery")  
+        @Scripts.Render("~/bundles/kendo")   
+        @Scripts.Render("~/bundles/Site")   
+    </head>
+    <body>
+        <div id="divRoot">
+           <div id="divRootInner">   
+                <div id="TopMenu">            
+                     @Html.Partial("Menu/_PartialTopMenu")               
+                </div> 
+                <div class="ew-disp-inBlock">                 
+                    <div class="ew-disp-Block div-lhs-filter">
+                        @Html.Partial("Menu/_PartialBrandFilter",Model.lhsBrandFilter)    
+                    </div> 
+                </div>     
+                <div class="ew-div-productlist">
+                     @Html.Partial("Product/_PartialProduct",null)
+                </div>                        
+           </div>
+        </div>      
+    </body>
+</html>
