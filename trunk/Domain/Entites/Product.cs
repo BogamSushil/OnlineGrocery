@@ -32,6 +32,7 @@ namespace Domain
 
         public bool Delete()
         {
-            thr
+            throw new NotImplementedException();
+        }
     }
 }
