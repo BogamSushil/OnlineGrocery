@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 ﻿using Domain.Interfaces;
 using System;
-=======
-﻿using System;
->>>>>>> f189b6c9d5ea606ec3401b7343f6658c29aabda5
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
