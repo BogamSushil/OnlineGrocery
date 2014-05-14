@@ -13,6 +13,7 @@ namespace EazyWizy.WebUI
                  "~/Scripts/jquery-1.10.2.js",
                  "~/Scripts/jquery.ui.widget.js",
                  "~/Scripts/jquery.ui.core.js",
+                 "~/Scripts/jquery.hashchange.js",
                  "~/Scripts/jquery.ui.accordion.js"
                  ));            
 

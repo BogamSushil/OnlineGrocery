@@ -1,0 +1,187 @@
+<Request Token="regb1.99991314289995" TokenVersion="0" Cache="Y" AppID="HC" UserLogin="regb1">
+	<UserInfo UserGroup="get from c++" ApproveLevel="get from c++" UserID="regb1" CompanyID="5600" OrgID="12274" CompanyName="Regression Buyer 1"/>
+	<Find Source="">
+		<Document Type="AllBuyer" HybridDocSubType="" Number="abc" IsExact="0" Domain="" />
+		<Currencies>
+			<Currency value="GBP" />
+			<Currency value="CAD" />
+			<Currency value="CNY" />
+			<Currency value="CZK" />
+			<Currency value="EUR" />
+			<Currency value="MXN" />
+			<Currency value="NOK" />
+			<Currency value="PLN" />
+			<Currency value="RON" />
+			<Currency value="SGD" />
+			<Currency value="USD" />
+		</Currencies>
+		<Statuses LimitResultFlag="0" applyApproval="1">
+			<Financials>
+				<Financial Status="AF" />
+				<Financial Status="OP" />
+				<Financial Status="AE" />
+				<Financial Status="CA" />
+				<Financial Status="DN" />
+				<Financial Status="DR" />
+				<Financial Status="DU" />
+				<Financial Status="HD" />
+				<Financial Status="MA" />
+				<Financial Status="CO" />
+				<Financial Status="PA" />
+				<Financial Status="PI" />
+				<Financial Status="PS" />
+				<Financial Status="SU" />
+				<Financial Status="XP" />
+				<Financial Status="ON" />
+				<Financial Status="AP" />
+				<Financial Status="IC" />
+			</Financials>
+			<Fulfillments>
+				<Fulfillment Status="CO" />
+				<Fulfillment Status="DU" />
+				<Fulfillment Status="NR" />
+				<Fulfillment Status="PA" />
+				<Fulfillment Status="SU" />
+				<Fulfillment Status="XP" />
+			</Fulfillments>
+			<ReviewStatuses>
+				<ReviewStatus Status="AC" />
+				<ReviewStatus Status="AP" />
+				<ReviewStatus Status="AE" />
+				<ReviewStatus Status="CA" />
+				<ReviewStatus Status="DN" />
+				<ReviewStatus Status="HD" />
+				<ReviewStatus Status="MA" />
+				<ReviewStatus Status="NR" />
+				<ReviewStatus Status="SU" />
+			</ReviewStatuses>
+			<Prices>
+				<Price Status="NP" />
+				<Price Status="NV" />
+				<Price Status="CO" />
+				<Price Status="PR" />
+			</Prices>
+			<Compliances>
+				<Compliance Status="CO" />
+				<Compliance Status="NC" />
+				<Compliance Status="NR" />
+				<Compliance Status="SU" />
+				<Compliance Status="XP" />
+			</Compliances>
+		</Statuses>
+		<Reference Code="AB" Value="1355" IsExact="1" />
+		<ParticipantName Code="BY" Value="abc" IsExact="0" />
+		<Orgs>
+			<Org OrgID="12274" Type="Buyer" Qualifier="92" Synonym="ROrg1" OrgName="Regression Buyer 1" IsLookingDown="1" />
+		</Orgs>
+		<Dates Type="CR" RangeType="0" Date1="" Date2="" Days="90" />
+		<Notes Type="1" UserID="" UserName="" />
+		<Trans>
+			<Amount RangeType="0" value1="100" value2="" />
+			<Number value="1500" />
+		</Trans>
+		<ShipFrom city="Edina" state="MN" country="USA" postal="55555" />
+		<ShipTo city="Denver" state="CO" country="USA" postal="45455" />
+		<Modes PremiumTransportation="N">
+			<Mode value="A" />
+			<Mode value="AC" />
+			<Mode value="AE" />
+			<Mode value="AF" />
+			<Mode value="FA" />
+			<Mode value="ARG" />
+			<Mode value="ARO" />
+			<Mode value="AH" />
+			<Mode value="AIR" />
+			<Mode value="AR" />
+			<Mode value="K" />
+			<Mode value="B" />
+			<Mode value="BRG" />
+			<Mode value="T" />
+			<Mode value="BP" />
+			<Mode value="BU" />
+			<Mode value="BUS" />
+			<Mode value="TC" />
+			<Mode value="I" />
+			<Mode value="C" />
+			<Mode value="O" />
+			<Mode value="L" />
+			<Mode value="Q" />
+			<Mode value="H" />
+			<Mode value="CE" />
+			<Mode value="DW" />
+			<Mode value="DA" />
+			<Mode value="ED" />
+			<Mode value="E" />
+			<Mode value="FL" />
+			<Mode value="F" />
+			<Mode value="GR" />
+			<Mode value="GS" />
+			<Mode value="HI" />
+			<Mode value="HO" />
+			<Mode value="HR" />
+			<Mode value="HHG" />
+			<Mode value="HH" />
+			<Mode value="W" />
+			<Mode value="IM" />
+			<Mode value="X" />
+			<Mode value="LT" />
+			<Mode value="LTL" />
+			<Mode value="LA" />
+			<Mode value="7" />
+			<Mode value="Y" />
+			<Mode value="6" />
+			<Mode value="J" />
+			<Mode value="MB" />
+			<Mode value="VA" />
+			<Mode value="M" />
+			<Mode value="MP" />
+			<Mode value="GG" />
+			<Mode value="NP" />
+			<Mode value="S" />
+			<Mode value="Y1" />
+			<Mode value="Y2" />
+			<Mode value="SHP" />
+			<Mode value="D" />
+			<Mode value="PL" />
+			<Mode value="PP" />
+			<Mode value="PA" />
+			<Mode value="PG" />
+			<Mode value="PR" />
+			<Mode value="PT" />
+			<Mode value="P" />
+			<Mode value="U" />
+			<Mode value="N" />
+			<Mode value="QS" />
+			<Mode value="R" />
+			<Mode value="RC" />
+			<Mode value="RR" />
+			<Mode value="RT" />
+			<Mode value="SE" />
+			<Mode value="SC" />
+			<Mode value="SB" />
+			<Mode value="SD" />
+			<Mode value="SPA" />
+			<Mode value="SPE" />
+			<Mode value="SPS" />
+			<Mode value="SR" />
+			<Mode value="ST" />
+			<Mode value="SS" />
+			<Mode value="TT" />
+			<Mode value="RF" />
+			<Mode value="TA" />
+			<Mode value="TL" />
+			<Mode value="ZZ" />
+			<Mode value="USP" />
+			<Mode value="V" />
+			<Mode value="VL" />
+			<Mode value="VE" />
+			<Mode value="WP" />
+		</Modes>
+		<FindResultDefinition Type="" Owner="" Domain="" Label="" FieldList="aAcctCode;aAServiceDt;aActShipDt;aAttach;aBilledAmt;aBilledElse;aBuyer;aBuyerID;aBuyerIDType;aBID;aCkDt;aCkNum;aCompDt;aCInvNum;aCrDt;aCurrency;aShipmentDirection;aDueDate;aEstShipDt;aOrderAmt;aFinSt;aFinStDt;aAssignedTo;aFulSt;aGrossTotal;aInvDt;aIssDt;aAttachDt;aNoteDt;aLeft;aMasterDocNo;aRelDocDate;aRelDocNum;aRelDocRelNum;aRelDocType;aMode;aNetTotal;aNote;aNoteBy;aComSt;aCeStDt;aNumber;aPODt;aOrderNum;aPremium;aLastActor;aPriSt;aProcMdl;aRelease;aRServiceDt;aReviewSt;aSeller;aSellerID;aSellerIDType;aSID;aSellerOrdNum;aShipFromAddress;aShipFromCity;aShipFromCty;aShipFromLocCode;aShipFromLocType;aShipFrom;aShipFromZip;aShipFromSt;aShipToAddress;aShipToCity;aShipToCty;aShipToLocCode;aShipToLocType;aShipTo;aShipToZip;aShipToSt;aShipmentTerm;aWeight;aSource;aIndustry;aStatusReason;aTotal;aTotalBilled;aTransSt;aTransStDt;aType" />
+	</Find>
+	<Paging Length="50" Number="1" />
+	<Sorting>
+		<Sort ID="" Order="A" />
+	</Sorting>
+	<ActionType Code="Search" SubCode="" DownLoad="N" />
+</Request>

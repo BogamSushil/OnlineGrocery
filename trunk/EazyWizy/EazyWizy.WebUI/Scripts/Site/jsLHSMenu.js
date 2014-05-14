@@ -1,4 +1,8 @@
-﻿var eazyWizyLHSMenu = {
+﻿//Abhishek Vyas
+//01-May-2014
+//Caution: If you dont understand anything please ask me..
+
+var eazyWizyLHSMenu = {
     HOVERSTATE: 'ew-hover',
     MOUSEENTER: 'mouseenter',
     MOUSELEAVE: 'mouseleave',
@@ -62,21 +66,21 @@
 }
 
 //Brand Filter Menu Manipulation
-var eazyWizyBrandFilter = {
+var eazyWizyLHSSubFilter = {
     HOVERSTATE: 'ew-brand-filter-hover',
     MOUSEENTER: 'mouseenter',
     MOUSELEAVE: 'mouseleave',
     CLICK: 'click',
     ITEMSELECTOR: '.ew-lhs-filter-li',
-    ITEMSELECTORBRAND: '.ew-lhs-div-brand-filter',
-    ITEMSELECTORBRANDLIST: '.ew-lhs-div-brandlist-filter',
+    MENULISTCONTAINERDIVHEADER: '.ew-lhs-header-filter',
+    MENUSELECTOR: '.ew-lhs-div-filter',   
 
     _init: function () {
         this._bindingEvents();
     },
 
     _bindingEvents: function () {
-        $('.ew-lhs-div-brand-filter .ew-lhs-filter-li').bind(this.CLICK, $.proxy(this._onClick, this))
+        $(this.ITEMSELECTOR).bind(this.CLICK, $.proxy(this._onClick, this))
         $('.ew-lhs-div-filterclear').bind(this.CLICK, $.proxy(this._onClickClear, this))
 
         $('.div-lhs-filter').find(this.ITEMSELECTOR).bind(this.MOUSEENTER, $.proxy(this._onMouseEnter, this));
@@ -86,25 +90,36 @@ var eazyWizyBrandFilter = {
     },
 
     _bindOnClickHeaderFilter: function () {
-        $('.ew-lhs-brand-header-filter').bind(this.CLICK, $.proxy(this._onBrandFilterClick, this));
-    },
-    _unBindOnClickHeaderFilter: function () {
-        $('.ew-lhs-brand-header-filter').unbind(this.CLICK);
+        $('.ew-lhs-header-filter').bind(this.CLICK, $.proxy(this._onHeaderFilterClick, this));
     },
 
-    _onBrandFilterClick: function (event) {
+    _unBindOnClickHeaderFilter: function () {
+        $('.ew-lhs-header-filter').unbind(this.CLICK);
+    },
+
+    _onHeaderFilterClick: function (event) {
         var thiz = this;
         var targetElement = $(event.target);
+        var listDiv = targetElement.closest(thiz.MENULISTCONTAINERDIVHEADER).next();
+        //Below condition is to avoid closing of list menu and if one clicks on "clear" lable or 'x' icon
+        //then it should work as clearing the filters but not hiding the menu
         if (!(targetElement.is('span') || targetElement.is('img'))) {
+            //below is to avoid constinuous click of menu header so better unbind the click event.
             thiz._unBindOnClickHeaderFilter();
-            var _actHeight = $(this.ITEMSELECTORBRANDLIST).height();
-            $(this.ITEMSELECTORBRANDLIST).toggle(function(){
+
+            //Animation to close the menu                
+            var _actHeight = $(listDiv).height();          
+            $(listDiv).clearQueue();
+            $(listDiv).stop();
+            $(listDiv).toggle(function () {
                 $(this).animate({ height: "0px" }, 500, "linear", function () {
+                    //Re-binding the click event once animation completes
                     thiz._bindOnClickHeaderFilter();
                 })
             },
             function () {
-                $(this).animate({ height:_actHeight }, 500, "linear", function () {
+                $(this).animate({ height: _actHeight }, 500, "linear", function () {
+                    //Re-binding the click event once animation completes
                     thiz._bindOnClickHeaderFilter();
                 })           
             });
@@ -113,6 +128,7 @@ var eazyWizyBrandFilter = {
 
     _onClick: function (event) {
         var targetElement = $(event.target);
+        //If the click event is because of input [checkbox] then there is no need to do anything.
         if (targetElement.is('input'))
         {
             return;
@@ -143,14 +159,17 @@ var eazyWizyBrandFilter = {
         event.stopPropagation();
     },
 
-    _onClickClear: function () {
-        $(this.ITEMSELECTORBRAND).find(':checkbox').each(function () {
+    _onClickClear: function (event) {
+        var targetElement = event.target;
+        var divMenuSelector = 'div' + this.MENUSELECTOR; //Remember div.ew-lhs-div-filter
+        var topMostDivElement = $(targetElement).closest(divMenuSelector); //to find parent div so that only that checkboxes cleared
+                                                            //which are present in that particual filter 
+        topMostDivElement.find(':checkbox').each(function () {
             $(this).prop('checked', false);
         });
     }
 }
-
 $(document).ready(function () {
     eazyWizyLHSMenu._init();
-    eazyWizyBrandFilter._init();
+    eazyWizyLHSSubFilter._init();
 });

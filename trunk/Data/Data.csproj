@@ -48,7 +48,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Repository\EasyWizyRepository.cs" />
+    <Compile Include="EFData\EazyWizy.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EazyWizy.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFData\EazyWizy.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EazyWizy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFData\EazyWizy.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EazyWizy.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EFData\GetCategories_Result.cs">
+      <DependentUpon>EazyWizy.tt</DependentUpon>
+    </Compile>
     <Compile Include="EFData\GloceryModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -81,6 +99,23 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>GloceryModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="EFData\EazyWizy.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EazyWizy.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EFData\EazyWizy.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EazyWizy.edmx</DependentUpon>
+      <LastGenOutput>EazyWizy.Context.cs</LastGenOutput>
+    </None>
+    <None Include="EFData\EazyWizy.edmx.diagram">
+      <DependentUpon>EazyWizy.edmx</DependentUpon>
+    </None>
+    <None Include="EFData\EazyWizy.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EazyWizy.edmx</DependentUpon>
+      <LastGenOutput>EazyWizy.cs</LastGenOutput>
+    </None>
     <None Include="EFData\GloceryModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>GloceryModel.edmx</DependentUpon>
@@ -98,6 +133,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{2de2c3c8-22fb-4e02-9ced-b3e2ef8d7cd5}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
