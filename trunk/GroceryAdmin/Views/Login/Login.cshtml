@@ -44,7 +44,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            @Html.LabelFor(m => m.UserName, "Username",  new {@style="font-size:20px; font-weight:bold" })
+                            @Html.LabelFor(m => m.UserName, "Username")
                         </td>
                         <td id="inputtxt">
                             @Html.TextBoxFor(m => m.UserName, new { @class = "k-textbox o", @type = "text", @placeholder = "User Name", @id = "UserName", @name = "UserName", @style= "width:200px"})
@@ -53,7 +53,7 @@
                     </tr>
                     <tr>
                         <td>
-                            @Html.LabelFor(m => m.UserName,"Password ",  new {@style="font-size:20px; font-weight:bold" })
+                            @Html.LabelFor(m => m.UserName,"Password")
                         </td>
                         <td id="inputpassword">
                             @Html.TextBoxFor(m => m.Password, new { data_bind = "value: Name", @class = "k-textbox", @type = "password", @placeholder = "Password", @id = "Password", @name = "Password", })

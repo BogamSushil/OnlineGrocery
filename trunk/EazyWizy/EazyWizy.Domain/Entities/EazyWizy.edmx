@@ -4,466 +4,73 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="EazyWizy.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Role">
-          <Key>
-            <PropertyRef Name="RoleID" />
-          </Key>
-          <Property Name="RoleID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="100" />
-        </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="UserID" />
-          </Key>
-          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="EmailID" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="HashId" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="IsActive" Type="bit" />
-          <Property Name="RoleID" Type="tinyint" Nullable="false" />
-          <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
-          <Property Name="CreateDate" Type="datetime" />
-          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="255" />
-          <Property Name="ModifiedDate" Type="datetime" />
-        </EntityType>
-        <Association Name="FK__User__RoleID">
-          <End Role="Role" Type="Self.Role" Multiplicity="1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="RoleID" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="RoleID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Function Name="AuthenticateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="EmailID" Type="nvarchar" Mode="In" />
-          <Parameter Name="HashPassword" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="GetAllProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="product_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="GetAllProductCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="GetAllUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="GetChieldProductCategorys" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="parent_product_type_code" Type="char" Mode="In" />
-        </Function>
-        <Function Name="GetProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="product_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="GetProductByCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="product_type_code" Type="char" Mode="In" />
-        </Function>
-        <Function Name="GetProductCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="product_type_code" Type="char" Mode="In" />
-        </Function>
-        <Function Name="GetUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="EmailID" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="ManageProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="product_id" Type="int" Mode="In" />
-          <Parameter Name="product_type_code" Type="char" Mode="In" />
-          <Parameter Name="product_name" Type="varchar" Mode="In" />
-          <Parameter Name="product_price" Type="money" Mode="In" />
-          <Parameter Name="product_color" Type="varchar" Mode="In" />
-          <Parameter Name="product_size" Type="varchar" Mode="In" />
-          <Parameter Name="productImageName" Type="nvarchar" Mode="In" />
-          <Parameter Name="product_description" Type="varchar" Mode="In" />
-          <Parameter Name="other_product_details" Type="varchar" Mode="In" />
-          <Parameter Name="Operation" Type="int" Mode="In" />
-        </Function>
-        <Function Name="ManageProductCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="product_type_code" Type="char" Mode="In" />
-          <Parameter Name="parent_product_type_code" Type="char" Mode="In" />
-          <Parameter Name="product_type_description" Type="varchar" Mode="In" />
-          <Parameter Name="productTypeImageName" Type="nvarchar" Mode="In" />
-          <Parameter Name="Operation" Type="int" Mode="In" />
-        </Function>
-        <Function Name="ManageUserOperation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="UserID" Type="int" Mode="In" />
-          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
-          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
-          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
-          <Parameter Name="EmailID" Type="nvarchar" Mode="In" />
-          <Parameter Name="Password" Type="varchar" Mode="In" />
-          <Parameter Name="HashId" Type="nvarchar" Mode="In" />
-          <Parameter Name="IsActive" Type="bit" Mode="In" />
-          <Parameter Name="RoleID" Type="tinyint" Mode="In" />
-          <Parameter Name="CreatedBy" Type="nvarchar" Mode="In" />
-          <Parameter Name="CreateDate" Type="datetime" Mode="In" />
-          <Parameter Name="ModifiedBy" Type="nvarchar" Mode="In" />
-          <Parameter Name="ModifiedDate" Type="datetime" Mode="In" />
-          <Parameter Name="Operation" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_GetTopMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+    <Schema Namespace="EazyWizyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <Function Name="sp_Select_GetLHSMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Select_GetMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_Select_GetSubMenuBrand" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <EntityContainer Name="EazyWizyStoreContainer">
-          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__User__RoleID" Association="Self.FK__User__RoleID">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
-        </EntityContainer>
+        <EntityContainer Name="EazyWizyModelStoreContainer" />
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="EazyWizy" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Role">
-          <Key>
-            <PropertyRef Name="RoleID" />
-          </Key>
-          <Property Name="RoleID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__User__RoleID" FromRole="Role" ToRole="User" />
-        </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="UserID" />
-          </Key>
-          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="EmailID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HashId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="RoleID" Type="Byte" Nullable="false" />
-          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="CreateDate" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Role" Relationship="Self.FK__User__RoleID" FromRole="User" ToRole="Role" />
-        </EntityType>
-        <Association Name="FK__User__RoleID">
-          <End Role="Role" Type="Self.Role" Multiplicity="1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="RoleID" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="RoleID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="EazyWizyEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Roles" EntityType="Self.Role" />
-          <EntitySet Name="Users" EntityType="Self.User" />
-          <AssociationSet Name="FK__User__RoleID" Association="Self.FK__User__RoleID">
-            <End Role="Role" EntitySet="Roles" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
-          <FunctionImport Name="AuthenticateUser" ReturnType="Collection(EazyWizy.UserEntity)">
-            <Parameter Name="EmailID" Mode="In" Type="String" />
-            <Parameter Name="HashPassword" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="GetAllProduct" ReturnType="Collection(EazyWizy.Product)">
-          <Parameter Name="product_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="GetAllProductCategory" ReturnType="Collection(EazyWizy.ProductCategory)" />
-          <FunctionImport Name="GetAllUsers" ReturnType="Collection(EazyWizy.UserEntity)" />
-          <FunctionImport Name="GetChieldProductCategorys" ReturnType="Collection(EazyWizy.ProductCategory)">
-          <Parameter Name="parent_product_type_code" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="GetProduct" ReturnType="Collection(EazyWizy.Product)">
-          <Parameter Name="product_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="GetProductByCategory" ReturnType="Collection(EazyWizy.Product)">
-          <Parameter Name="product_type_code" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="GetProductCategory" ReturnType="Collection(EazyWizy.ProductCategory)">
-          <Parameter Name="product_type_code" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="GetUser" ReturnType="Collection(EazyWizy.UserEntity)">
-          <Parameter Name="EmailID" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="ManageProduct">
-            <Parameter Name="product_id" Mode="In" Type="Int32" />
-            <Parameter Name="product_type_code" Mode="In" Type="String" />
-            <Parameter Name="product_name" Mode="In" Type="String" />
-            <Parameter Name="product_price" Mode="In" Type="Decimal" />
-            <Parameter Name="product_color" Mode="In" Type="String" />
-            <Parameter Name="product_size" Mode="In" Type="String" />
-            <Parameter Name="productImageName" Mode="In" Type="String" />
-            <Parameter Name="product_description" Mode="In" Type="String" />
-            <Parameter Name="other_product_details" Mode="In" Type="String" />
-            <Parameter Name="Operation" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="ManageProductCategory">
-            <Parameter Name="product_type_code" Mode="In" Type="String" />
-            <Parameter Name="parent_product_type_code" Mode="In" Type="String" />
-            <Parameter Name="product_type_description" Mode="In" Type="String" />
-            <Parameter Name="productTypeImageName" Mode="In" Type="String" />
-            <Parameter Name="Operation" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="ManageUserOperation">
-            <Parameter Name="UserID" Mode="In" Type="Int32" />
-            <Parameter Name="UserName" Mode="In" Type="String" />
-            <Parameter Name="FirstName" Mode="In" Type="String" />
-            <Parameter Name="LastName" Mode="In" Type="String" />
-            <Parameter Name="EmailID" Mode="In" Type="String" />
-            <Parameter Name="Password" Mode="In" Type="String" />
-            <Parameter Name="HashId" Mode="In" Type="String" />
-            <Parameter Name="IsActive" Mode="In" Type="Boolean" />
-            <Parameter Name="RoleID" Mode="In" Type="Byte" />
-            <Parameter Name="CreatedBy" Mode="In" Type="String" />
-            <Parameter Name="CreateDate" Mode="In" Type="DateTime" />
-            <Parameter Name="ModifiedBy" Mode="In" Type="String" />
-            <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
-            <Parameter Name="Operation" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_GetTopMenu" ReturnType="Collection(EazyWizy.TopMenu)" />
-          <FunctionImport Name="sp_Select_GetLHSMenu" ReturnType="Collection(EazyWizy.LHSMenu)" />
-          <FunctionImport Name="sp_Select_GetMenu" ReturnType="Collection(EazyWizy.TopMenu)" />
-          <FunctionImport Name="sp_Select_GetSubMenuBrand" ReturnType="Collection(EazyWizy.SubMenu)" />
+      <Schema Namespace="EazyWizyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="EazyWizyEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="sp_Select_GetMenu" ReturnType="Collection(EazyWizyModel.TopMenu)" />
+          <FunctionImport Name="sp_Select_GetLHSMenu" ReturnType="Collection(EazyWizyModel.LHSMenu)" />
+          <FunctionImport Name="sp_Select_GetSubMenuBrand" ReturnType="Collection(EazyWizyModel.LHSSubMenuBrand)" />
+          <FunctionImport Name="sp_Select_GetSubMenuBrandFilter" ReturnType="Collection(EazyWizyModel.LHSBrandFilter)" />
         </EntityContainer>
-        <ComplexType Name="UserEntity">
-          <Property Type="Int32" Name="UserID" Nullable="false" />
-          <Property Type="String" Name="UserName" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="LastName" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="EmailID" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="Password" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="HashId" Nullable="false" MaxLength="200" />
-          <Property Type="Boolean" Name="IsActive" Nullable="true" />
-          <Property Type="Byte" Name="RoleID" Nullable="false" />
-          <Property Type="String" Name="RoleName" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="255" />
-          <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
-          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="255" />
-          <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
-        </ComplexType>
-        <ComplexType Name="Product">
-          <Property Type="Int32" Name="product_id" Nullable="false" />
-          <Property Type="String" Name="product_type_code" Nullable="false" MaxLength="15" />
-          <Property Type="String" Name="product_name" Nullable="true" MaxLength="80" />
-          <Property Type="Decimal" Name="product_price" Nullable="true" Precision="19" />
-          <Property Type="String" Name="product_color" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="product_size" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="productImageName" Nullable="true" MaxLength="250" />
-          <Property Type="String" Name="product_description" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="other_product_details" Nullable="true" MaxLength="255" />
-        </ComplexType>
-        <ComplexType Name="ProductCategory">
-          <Property Type="String" Name="product_type_code" Nullable="false" MaxLength="15" />
-          <Property Type="String" Name="parent_product_type_code" Nullable="true" MaxLength="15" />
-          <Property Type="String" Name="product_type_description" Nullable="true" MaxLength="80" />
-          <Property Type="String" Name="productTypeImageName" Nullable="true" MaxLength="250" />
-        </ComplexType>
-        <ComplexType Name="TopMenu">
+        <ComplexType Name="TopMenu" >
           <Property Type="Int32" Name="IdMenu" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="70" />
+          <Property Type="String" Name="Name" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="LHSMenu">
+        <ComplexType Name="LHSMenu" >
           <Property Type="Int32" Name="IdLHSMenu" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="70" />
-          <Property Type="String" Name="Image" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Image" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="SubMenu">
+        <ComplexType Name="LHSSubMenuBrand" >
           <Property Type="Int32" Name="IdBrand" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="70" />
-          <Property Type="String" Name="Image" Nullable="false" MaxLength="14" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Image" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="LHSBrandFilter" >
+          <Property Type="Int32" Name="IdBrand" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Image" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="EazyWizyStoreContainer" CdmEntityContainer="EazyWizyEntities">
-          <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="EazyWizy.Role">
-              <MappingFragment StoreEntitySet="Role">
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="EazyWizy.User">
-              <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="HashId" ColumnName="HashId" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="AuthenticateUser" FunctionName="EazyWizy.Store.AuthenticateUser">
+        <EntityContainerMapping StorageEntityContainer="EazyWizyModelStoreContainer" CdmEntityContainer="EazyWizyEntities" >
+          <FunctionImportMapping FunctionImportName="sp_Select_GetMenu" FunctionName="EazyWizyModel.Store.sp_Select_GetMenu" >
             <ResultMapping>
-              <ComplexTypeMapping TypeName="EazyWizy.UserEntity">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="HashId" ColumnName="HashId" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetAllProduct" FunctionName="EazyWizy.Store.GetAllProduct">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EazyWizy.Product">
-                <ScalarProperty Name="product_id" ColumnName="product_id" />
-                <ScalarProperty Name="product_type_code" ColumnName="product_type_code" />
-                <ScalarProperty Name="product_name" ColumnName="product_name" />
-                <ScalarProperty Name="product_price" ColumnName="product_price" />
-                <ScalarProperty Name="product_color" ColumnName="product_color" />
-                <ScalarProperty Name="product_size" ColumnName="product_size" />
-                <ScalarProperty Name="productImageName" ColumnName="productImageName" />
-                <ScalarProperty Name="product_description" ColumnName="product_description" />
-                <ScalarProperty Name="other_product_details" ColumnName="other_product_details" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetAllProductCategory" FunctionName="EazyWizy.Store.GetAllProductCategory">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EazyWizy.ProductCategory">
-                <ScalarProperty Name="product_type_code" ColumnName="product_type_code" />
-                <ScalarProperty Name="parent_product_type_code" ColumnName="parent_product_type_code" />
-                <ScalarProperty Name="product_type_description" ColumnName="product_type_description" />
-                <ScalarProperty Name="productTypeImageName" ColumnName="productTypeImageName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetAllUsers" FunctionName="EazyWizy.Store.GetAllUsers">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EazyWizy.UserEntity">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="HashId" ColumnName="HashId" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetChieldProductCategorys" FunctionName="EazyWizy.Store.GetChieldProductCategorys">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EazyWizy.ProductCategory">
-                <ScalarProperty Name="product_type_code" ColumnName="product_type_code" />
-                <ScalarProperty Name="parent_product_type_code" ColumnName="parent_product_type_code" />
-                <ScalarProperty Name="product_type_description" ColumnName="product_type_description" />
-                <ScalarProperty Name="productTypeImageName" ColumnName="productTypeImageName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetProduct" FunctionName="EazyWizy.Store.GetProduct">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EazyWizy.Product">
-                <ScalarProperty Name="product_id" ColumnName="product_id" />
-                <ScalarProperty Name="product_type_code" ColumnName="product_type_code" />
-                <ScalarProperty Name="product_name" ColumnName="product_name" />
-                <ScalarProperty Name="product_price" ColumnName="product_price" />
-                <ScalarProperty Name="product_color" ColumnName="product_color" />
-                <ScalarProperty Name="product_size" ColumnName="product_size" />
-                <ScalarProperty Name="productImageName" ColumnName="productImageName" />
-                <ScalarProperty Name="product_description" ColumnName="product_description" />
-                <ScalarProperty Name="other_product_details" ColumnName="other_product_details" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetProductByCategory" FunctionName="EazyWizy.Store.GetProductByCategory">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EazyWizy.Product">
-                <ScalarProperty Name="product_id" ColumnName="product_id" />
-                <ScalarProperty Name="product_type_code" ColumnName="product_type_code" />
-                <ScalarProperty Name="product_name" ColumnName="product_name" />
-                <ScalarProperty Name="product_price" ColumnName="product_price" />
-                <ScalarProperty Name="product_color" ColumnName="product_color" />
-                <ScalarProperty Name="product_size" ColumnName="product_size" />
-                <ScalarProperty Name="productImageName" ColumnName="productImageName" />
-                <ScalarProperty Name="product_description" ColumnName="product_description" />
-                <ScalarProperty Name="other_product_details" ColumnName="other_product_details" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetProductCategory" FunctionName="EazyWizy.Store.GetProductCategory">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EazyWizy.ProductCategory">
-                <ScalarProperty Name="product_type_code" ColumnName="product_type_code" />
-                <ScalarProperty Name="parent_product_type_code" ColumnName="parent_product_type_code" />
-                <ScalarProperty Name="product_type_description" ColumnName="product_type_description" />
-                <ScalarProperty Name="productTypeImageName" ColumnName="productTypeImageName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetUser" FunctionName="EazyWizy.Store.GetUser">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EazyWizy.UserEntity">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="HashId" ColumnName="HashId" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="ManageProduct" FunctionName="EazyWizy.Store.ManageProduct" />
-          <FunctionImportMapping FunctionImportName="ManageProductCategory" FunctionName="EazyWizy.Store.ManageProductCategory" />
-          <FunctionImportMapping FunctionImportName="ManageUserOperation" FunctionName="EazyWizy.Store.ManageUserOperation" />
-          <FunctionImportMapping FunctionImportName="sp_GetTopMenu" FunctionName="EazyWizy.Store.sp_GetTopMenu">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EazyWizy.TopMenu">
+              <ComplexTypeMapping TypeName="EazyWizyModel.TopMenu">
                 <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Select_GetLHSMenu" FunctionName="EazyWizyModel.Store.sp_Select_GetLHSMenu">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="EazyWizyModel.LHSMenu">
+                <ScalarProperty Name="IdLHSMenu" ColumnName="IdLHSMenu" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_Select_GetLHSMenu" FunctionName="EazyWizy.Store.sp_Select_GetLHSMenu">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EazyWizy.LHSMenu">
-                <ScalarProperty Name="IdLHSMenu" ColumnName="IdLHSMenu" />
+          <FunctionImportMapping FunctionImportName="sp_Select_GetSubMenuBrand" FunctionName="EazyWizyModel.Store.sp_Select_GetSubMenuBrand">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="EazyWizyModel.LHSSubMenuBrand">
+                <ScalarProperty Name="IdBrand" ColumnName="IdBrand" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_Select_GetSubMenuBrand" FunctionName="EazyWizy.Store.sp_Select_GetSubMenuBrand">
+          <FunctionImportMapping FunctionImportName="sp_Select_GetSubMenuBrandFilter" FunctionName="EazyWizyModel.Store.sp_Select_GetSubMenuBrand">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="EazyWizy.SubMenu">
+              <ComplexTypeMapping TypeName="EazyWizyModel.LHSBrandFilter">
                 <ScalarProperty Name="IdBrand" ColumnName="IdBrand" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Image" ColumnName="Image" />

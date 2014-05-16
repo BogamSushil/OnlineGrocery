@@ -8,24 +8,28 @@ namespace EazyWizy.Domain.Concrete
     public class EFMenuRepository : IMenuRepository    
     {
         private EazyWizyEntities ewEntities = new EazyWizyEntities();        
-        IEnumerable<Entities.TopMenu> IMenuRepository.TopMenu
+        IEnumerable<TopMenu> IMenuRepository.TopMenu
         {
             get {
-                return ewEntities.sp_GetTopMenu();
+               return ewEntities.sp_Select_GetMenu();
             }
         }
-        IList<Entities.LHSMenu> IMenuRepository.LHSMenu
+        IList<LHSMenu> IMenuRepository.LHSMenu
         {
-            get
-            {
+            get {
                 return ewEntities.sp_Select_GetLHSMenu().ToList();
             }
         }
-        IList<Entities.SubMenu> IMenuRepository.LHSSubMenuBrand
+        IList<LHSSubMenuBrand> IMenuRepository.LHSSubMenuBrand
         {
-            get
-            {
+            get {
                 return ewEntities.sp_Select_GetSubMenuBrand().ToList();
+            }
+        }
+        IList<LHSBrandFilter> IMenuRepository.LHSBrandFilter
+        {
+            get {
+                return ewEntities.sp_Select_GetSubMenuBrandFilter().ToList();
             }
         }
     }

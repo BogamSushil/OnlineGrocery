@@ -4,8 +4,6 @@
     MOUSELEAVE: 'mouseleave',
     CLICK: 'click',
     ITEMSELECTOR: '.ew-lhs-li',
-    FILTERSELECTOR: '.ew-div-filters',
-    FILTERTEMPLATE: "<span class='ew-span-filter'><span>#data#<span/><img class='ew-lhs-filterimage' src='Content/Images/crossFilter.png' alt='' /></span>",
 
     _init: function () {
         this._bindingEvents();
@@ -13,8 +11,8 @@
     },
 
     _bindingEvents: function () {
-        $('#divLHSMenu').find('.ew-lhs-li').bind(this.MOUSEENTER, $.proxy(this._onMouseEnter, this));
-        $('#divLHSMenu').find('.ew-lhs-li').bind(this.MOUSELEAVE, $.proxy(this._onMouseLeave, this));
+        $('#divLHSMenu').find(this.ITEMSELECTOR).bind(this.MOUSEENTER, $.proxy(this._onMouseEnter, this));
+        $('#divLHSMenu').find(this.ITEMSELECTOR).bind(this.MOUSELEAVE, $.proxy(this._onMouseLeave, this));
     },
 
     _onMouseEnter: function (event) {
@@ -57,22 +55,102 @@
         $('.ew-lhs-sub-li').bind(this.CLICK, $.proxy(this._addFilter, this))
     },
 
-    _addFilter: function (event) {
-        //var targetElement = $(event.target).closest('li');
-        //var txt = targetElement.text();
-        //var fs = $(this.FILTERSELECTOR);
-        //var ft = this.FILTERTEMPLATE;
-        //fs.append(ft.replace('#data#', txt));
-
-        //ft.find('.ew-span-filter').bind(this.CLICK, $.proxy(this._removeFilter, this));
-    },
-
     _removeFilter: function (event) {
         var targetElement = $(event.target).closest('ew-span-filter');
         targetElement.remove();
     }
 }
 
+//Brand Filter Menu Manipulation
+var eazyWizyBrandFilter = {
+    HOVERSTATE: 'ew-brand-filter-hover',
+    MOUSEENTER: 'mouseenter',
+    MOUSELEAVE: 'mouseleave',
+    CLICK: 'click',
+    ITEMSELECTOR: '.ew-lhs-filter-li',
+    ITEMSELECTORBRAND: '.ew-lhs-div-brand-filter',
+    ITEMSELECTORBRANDLIST: '.ew-lhs-div-brandlist-filter',
+
+    _init: function () {
+        this._bindingEvents();
+    },
+
+    _bindingEvents: function () {
+        $('.ew-lhs-div-brand-filter .ew-lhs-filter-li').bind(this.CLICK, $.proxy(this._onClick, this))
+        $('.ew-lhs-div-filterclear').bind(this.CLICK, $.proxy(this._onClickClear, this))
+
+        $('.div-lhs-filter').find(this.ITEMSELECTOR).bind(this.MOUSEENTER, $.proxy(this._onMouseEnter, this));
+        $('.div-lhs-filter').find(this.ITEMSELECTOR).bind(this.MOUSELEAVE, $.proxy(this._onMouseLeave, this));
+
+        this._bindOnClickHeaderFilter();  
+    },
+
+    _bindOnClickHeaderFilter: function () {
+        $('.ew-lhs-brand-header-filter').bind(this.CLICK, $.proxy(this._onBrandFilterClick, this));
+    },
+    _unBindOnClickHeaderFilter: function () {
+        $('.ew-lhs-brand-header-filter').unbind(this.CLICK);
+    },
+
+    _onBrandFilterClick: function (event) {
+        var thiz = this;
+        var targetElement = $(event.target);
+        if (!(targetElement.is('span') || targetElement.is('img'))) {
+            thiz._unBindOnClickHeaderFilter();
+            var _actHeight = $(this.ITEMSELECTORBRANDLIST).height();
+            $(this.ITEMSELECTORBRANDLIST).toggle(function(){
+                $(this).animate({ height: "0px" }, 500, "linear", function () {
+                    thiz._bindOnClickHeaderFilter();
+                })
+            },
+            function () {
+                $(this).animate({ height:_actHeight }, 500, "linear", function () {
+                    thiz._bindOnClickHeaderFilter();
+                })           
+            });
+        }       
+    },
+
+    _onClick: function (event) {
+        var targetElement = $(event.target);
+        if (targetElement.is('input'))
+        {
+            return;
+        }
+        else {
+            if (!targetElement.is('li')) {
+                targetElement = targetElement.closest(this.ITEMSELECTOR);
+            }
+            var _checkbox = targetElement.find(':checkbox');
+            if (_checkbox.prop('checked')) {
+                _checkbox.prop('checked', false);
+            }
+            else {
+                _checkbox.prop('checked', true);
+            }
+        }
+    },
+
+    _onMouseEnter: function (event) {
+        var targetElement = $(event.target).closest(this.ITEMSELECTOR);
+        targetElement.addClass(this.HOVERSTATE);
+        event.stopPropagation();
+    },
+
+    _onMouseLeave: function (event) {
+        var targetElement = $(event.target).closest(this.ITEMSELECTOR);       
+        targetElement.removeClass(this.HOVERSTATE);
+        event.stopPropagation();
+    },
+
+    _onClickClear: function () {
+        $(this.ITEMSELECTORBRAND).find(':checkbox').each(function () {
+            $(this).prop('checked', false);
+        });
+    }
+}
+
 $(document).ready(function () {
     eazyWizyLHSMenu._init();
+    eazyWizyBrandFilter._init();
 });
