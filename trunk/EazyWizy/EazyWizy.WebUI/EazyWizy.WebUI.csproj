@@ -157,8 +157,10 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.custom.js" />
     <Content Include="Scripts\jquery.hashchange.js" />
     <Content Include="Scripts\kendo\jquery.min.js" />
     <Content Include="Scripts\kendo\kendo.web.min.js" />
@@ -177,9 +179,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Binder\CartModelBinder.cs" />
     <Compile Include="Controllers\Cart\CartController.cs" />
+    <Compile Include="Controllers\CheckOut\CheckoutController.cs" />
     <Compile Include="Controllers\Content\ProductDisplayController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Menu\LHSMenuController.cs" />
+    <Compile Include="Controllers\RegisterUserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -205,7 +209,7 @@
     <Content Include="Views\Cart\CartDetails.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\_PartialPayments.cshtml" />
-    <Content Include="Views\Cart\TEST.cshtml" />
+    <Content Include="Views\Checkout\SignIn.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -215,6 +219,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\RegisterUser\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EazyWizy.Domain\EazyWizy.Domain.csproj">
