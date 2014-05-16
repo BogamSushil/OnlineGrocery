@@ -266,9 +266,7 @@
     <Content Include="Views\Cart\CartDetails.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\_PartialPayments.cshtml" />
-  
     <Content Include="Views\Content\_ProductList.cshtml" />
-    <Content Include="Views\Cart\Summary.cshtml" />
     <Content Include="Views\Product\_ProductList.cshtml" />
     <Content Include="Views\Shared\_ProductList.cshtml" />
     <Content Include="Views\Shared\Menu\_ProductList.cshtml" />
@@ -303,7 +301,6 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>3418</DevelopmentServerPort>
           <DevelopmentServerPort>3549</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
