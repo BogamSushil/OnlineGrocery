@@ -15,7 +15,7 @@ namespace EazyWizy.Domain.Concrete
         public void AddItem(Product product, int quantity)
         {
             CartLine line = lineCollection.
-                            Where(p => p.Product.product_id == product.product_id)
+                            Where(p => p.Product.Price == product.ProductId)
                             .FirstOrDefault();
             if (line == null)
             {
@@ -29,12 +29,12 @@ namespace EazyWizy.Domain.Concrete
 
         public void RemoveLine(Product product)
         {
-            lineCollection.RemoveAll(l => l.Product.product_id == product.product_id);
+            lineCollection.RemoveAll(l => l.Product.ProductId == product.ProductId);
         }
 
         public decimal ComputeTotalValue()
         {
-            return (decimal)lineCollection.Sum(e => e.Product.product_price * e.Quantity);
+            return (decimal)lineCollection.Sum(e => e.Product.Price * e.Quantity);
         }
 
         public void Clear()

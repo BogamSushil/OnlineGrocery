@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EazyWizy.Domain.Entities;
 
+
 namespace EazyWizy.Domain.Abstract
 {
   public  interface IProductRepository
@@ -12,6 +13,6 @@ namespace EazyWizy.Domain.Abstract
       IQueryable<Product> Products { get; }
       IList<Product> GetAllProduct();
       IList<Product> GetProductByCategory(int categoryId);
-      IList<Product> GetProductByBrand(int brandId);
+      //IList<Product> GetProductByBrand(int brandId);
   }
 }

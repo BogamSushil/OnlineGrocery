@@ -23,7 +23,7 @@ namespace EazyWizy.WebUI.Controllers.Cart
 
         //public RedirectToRouteResult AddToCart(EDC.Cart cart, int productId, string returnUrl)
         //{
-        //    Product product = repository.Products.FirstOrDefault(p => p.product_id == productId);
+        //    Product product = repository.Products.FirstOrDefault(p => p.ProductId == productId);
         //    if (product != null)
         //    {
         //        cart.AddItem(product, 1);
@@ -34,13 +34,13 @@ namespace EazyWizy.WebUI.Controllers.Cart
         [HttpPost]
         public ActionResult AddToCart(EDC.Cart cart, int productId, int quantity)
         {
-            Product product = repository.Products.FirstOrDefault(p => p.product_id == productId);
+            Product product = repository.Products.FirstOrDefault(p => p.ProductId == productId);
             if (product != null)
             {
                 cart.AddItem(product, quantity);
                 var result = new CartResponseViewModel()
                 {
-                    Message = Server.HtmlEncode(string.Format(Constants.ADD_ITEM_TO_CART_MSG, product.product_name)),
+                    Message = Server.HtmlEncode(string.Format(Constants.ADD_ITEM_TO_CART_MSG, product.Name)),
                     CartTotal = cart.ComputeTotalValue().ToString("c"),
                     ItemCount = cart.Lines.Sum(c => c.Quantity)
                 };
@@ -58,7 +58,7 @@ namespace EazyWizy.WebUI.Controllers.Cart
         //public RedirectToRouteResult RemoveFromCart(EDC.Cart cart, int productId, string returnUrl)
         //{
         //    Product product = repository.Products
-        //    .FirstOrDefault(p => p.product_id == productId);
+        //    .FirstOrDefault(p => p.ProductId == productId);
         //    if (product != null)
         //    {
         //        cart.RemoveLine(product);
@@ -69,15 +69,15 @@ namespace EazyWizy.WebUI.Controllers.Cart
         [HttpPost]
         public ActionResult RemoveFromCart(EDC.Cart cart, int productId)
         {
-            Product product = repository.Products.FirstOrDefault(p => p.product_id == productId);
+            Product product = repository.Products.FirstOrDefault(p => p.ProductId == productId);
             if (product != null)
             {
-                if (cart.Lines.Select(x => x.Product.product_id == productId).Count() > 0)
+                if (cart.Lines.Select(x => x.Product.ProductId == productId).Count() > 0)
                 {
                     cart.RemoveLine(product);
                     return Json(new CartResponseViewModel()
                     {
-                        Message = string.Format(Constants.REMOVE_ITEM_FROM_CART_MSG, product.product_name),
+                        Message = string.Format(Constants.REMOVE_ITEM_FROM_CART_MSG, product.Name),
                         CartTotal = cart.ComputeTotalValue().ToString("c"),
                         ItemCount = cart.Lines.Sum(c => c.Quantity)
                     });
@@ -85,7 +85,7 @@ namespace EazyWizy.WebUI.Controllers.Cart
             }
             return Json(new CartResponseViewModel()
             {
-                Message = string.Format(Constants.NO_PRODUCT_TO_REMOVE_MSG, product.product_name),
+                Message = string.Format(Constants.NO_PRODUCT_TO_REMOVE_MSG, product.Name),
                 CartTotal = cart.ComputeTotalValue().ToString("c"),
                 ItemCount = cart.Lines.Sum(c => c.Quantity)
             });

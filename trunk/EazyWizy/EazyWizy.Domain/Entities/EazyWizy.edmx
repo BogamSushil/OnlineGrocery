@@ -4,10 +4,60 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="EazyWizyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <Function Name="sp_Select_GetLHSMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="sp_Select_GetMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="sp_Select_GetSubMenuBrand" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+    <Schema Namespace="EazyWizyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="AuthenticateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmailID" Type="nvarchar" Mode="In" />
+          <Parameter Name="HashPassword" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetAllCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ParentCategory" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetAllProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ParentCategory" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="product_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetProductByCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="product_type_code" Type="char" Mode="In" />
+        </Function>
+        <Function Name="GetUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmailID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ManageProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="productId" Type="int" Mode="In" />
+          <Parameter Name="TypeCode" Type="char" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Price" Type="money" Mode="In" />
+          <Parameter Name="Color" Type="varchar" Mode="In" />
+          <Parameter Name="Size" Type="varchar" Mode="In" />
+          <Parameter Name="ImageName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+          <Parameter Name="otherProductDetails" Type="varchar" Mode="In" />
+          <Parameter Name="Operation" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ManageUserOperation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EmailID" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="HashId" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsActive" Type="bit" Mode="In" />
+          <Parameter Name="RoleID" Type="tinyint" Mode="In" />
+          <Parameter Name="CreatedBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreateDate" Type="datetime" Mode="In" />
+          <Parameter Name="ModifiedBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="ModifiedDate" Type="datetime" Mode="In" />
+          <Parameter Name="Operation" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ManageUserPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmailId" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="EazyWizyModelStoreContainer" />
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -18,6 +68,60 @@
           <FunctionImport Name="sp_Select_GetLHSMenu" ReturnType="Collection(EazyWizyModel.LHSMenu)" />
           <FunctionImport Name="sp_Select_GetSubMenuBrand" ReturnType="Collection(EazyWizyModel.LHSSubMenuBrand)" />
           <FunctionImport Name="sp_Select_GetSubMenuBrandFilter" ReturnType="Collection(EazyWizyModel.LHSBrandFilter)" />
+          <FunctionImport Name="AuthenticateUser">
+            <Parameter Name="EmailID" Mode="In" Type="String" />
+            <Parameter Name="HashPassword" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllCategories" ReturnType="Collection(EazyWizyModel.Categories)">
+            <Parameter Name="ParentCategory" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllUsers" />
+          <FunctionImport Name="GetCategories" ReturnType="Collection(EazyWizyModel.Categories)">
+          <Parameter Name="ParentCategory" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetProduct" ReturnType="Collection(EazyWizyModel.Product)">
+          <Parameter Name="product_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetProductByCategory" ReturnType="Collection(EazyWizyModel.Product)">
+          <Parameter Name="product_type_code" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetUser">
+          <Parameter Name="EmailID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ManageProduct">
+            <Parameter Name="productId" Mode="In" Type="Int32" />
+            <Parameter Name="TypeCode" Mode="In" Type="String" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Price" Mode="In" Type="Decimal" />
+            <Parameter Name="Color" Mode="In" Type="String" />
+            <Parameter Name="Size" Mode="In" Type="String" />
+            <Parameter Name="ImageName" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="otherProductDetails" Mode="In" Type="String" />
+            <Parameter Name="Operation" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ManageUserOperation">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="EmailID" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="HashId" Mode="In" Type="String" />
+            <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+            <Parameter Name="RoleID" Mode="In" Type="Byte" />
+            <Parameter Name="CreatedBy" Mode="In" Type="String" />
+            <Parameter Name="CreateDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ModifiedBy" Mode="In" Type="String" />
+            <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Operation" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ManageUserPassword">
+            <Parameter Name="EmailId" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllProduct" ReturnType="Collection(EazyWizyModel.Product)">
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="TopMenu" >
           <Property Type="Int32" Name="IdMenu" Nullable="false" />
@@ -38,42 +142,89 @@
           <Property Type="String" Name="Name" Nullable="false" />
           <Property Type="String" Name="Image" Nullable="false" />
         </ComplexType>
+        <ComplexType Name="Categories">
+          <Property Type="Int64" Name="CategoryId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="String" Name="ImageName" Nullable="true" MaxLength="150" />
+        </ComplexType>
+        <ComplexType Name="Product">
+          <Property Type="Int64" Name="ProductId" Nullable="false" />
+          <Property Type="String" Name="TypeCode" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="80" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="19" />
+          <Property Type="String" Name="Color" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Size" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ImageName" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="OtherProductDetails" Nullable="true" MaxLength="255" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="EazyWizyModelStoreContainer" CdmEntityContainer="EazyWizyEntities" >
-          <FunctionImportMapping FunctionImportName="sp_Select_GetMenu" FunctionName="EazyWizyModel.Store.sp_Select_GetMenu" >
+          <FunctionImportMapping FunctionImportName="AuthenticateUser" FunctionName="EazyWizyModel.Store.AuthenticateUser" />
+          <FunctionImportMapping FunctionImportName="GetAllUsers" FunctionName="EazyWizyModel.Store.GetAllUsers" />
+          <FunctionImportMapping FunctionImportName="GetCategories" FunctionName="EazyWizyModel.Store.GetCategories">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="EazyWizyModel.TopMenu">
-                <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_Select_GetLHSMenu" FunctionName="EazyWizyModel.Store.sp_Select_GetLHSMenu">
-          <ResultMapping>
-              <ComplexTypeMapping TypeName="EazyWizyModel.LHSMenu">
-                <ScalarProperty Name="IdLHSMenu" ColumnName="IdLHSMenu" />
+              <ComplexTypeMapping TypeName="EazyWizyModel.Categories">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_Select_GetSubMenuBrand" FunctionName="EazyWizyModel.Store.sp_Select_GetSubMenuBrand">
-          <ResultMapping>
-              <ComplexTypeMapping TypeName="EazyWizyModel.LHSSubMenuBrand">
-                <ScalarProperty Name="IdBrand" ColumnName="IdBrand" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_Select_GetSubMenuBrandFilter" FunctionName="EazyWizyModel.Store.sp_Select_GetSubMenuBrand">
+          <FunctionImportMapping FunctionImportName="GetProduct" FunctionName="EazyWizyModel.Store.GetProduct">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="EazyWizyModel.LHSBrandFilter">
-                <ScalarProperty Name="IdBrand" ColumnName="IdBrand" />
+              <ComplexTypeMapping TypeName="EazyWizyModel.Product">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="OtherProductDetails" ColumnName="OtherProductDetails" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetProductByCategory" FunctionName="EazyWizyModel.Store.GetProductByCategory">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EazyWizyModel.Product">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="OtherProductDetails" ColumnName="OtherProductDetails" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetUser" FunctionName="EazyWizyModel.Store.GetUser" />
+          <FunctionImportMapping FunctionImportName="ManageProduct" FunctionName="EazyWizyModel.Store.ManageProduct" />
+          <FunctionImportMapping FunctionImportName="ManageUserOperation" FunctionName="EazyWizyModel.Store.ManageUserOperation" />
+          <FunctionImportMapping FunctionImportName="ManageUserPassword" FunctionName="EazyWizyModel.Store.ManageUserPassword" />
+          <FunctionImportMapping FunctionImportName="GetAllProduct" FunctionName="EazyWizyModel.Store.GetAllProduct">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EazyWizyModel.Product">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="OtherProductDetails" ColumnName="OtherProductDetails" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -58,6 +58,10 @@
     <Compile Include="Abstract\IProductRepository.cs" />
     <Compile Include="Concrete\Cart.cs" />
     <Compile Include="Concrete\EFMenuRepository.cs" />
+    <Compile Include="Concrete\ProductRepository.cs" />
+    <Compile Include="Entities\Categories.cs">
+      <DependentUpon>EazyWizy.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\EazyWizy.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -80,6 +84,9 @@
       <DependentUpon>EazyWizy.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\LHSSubMenuBrand.cs">
+      <DependentUpon>EazyWizy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Product.cs">
       <DependentUpon>EazyWizy.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\TopMenu.cs">

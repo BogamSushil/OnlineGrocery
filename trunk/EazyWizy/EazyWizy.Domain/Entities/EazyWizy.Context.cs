@@ -47,5 +47,192 @@ namespace EazyWizy.Domain.Entities
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LHSBrandFilter>("sp_Select_GetSubMenuBrandFilter");
         }
+    
+        public virtual int AuthenticateUser(string emailID, string hashPassword)
+        {
+            var emailIDParameter = emailID != null ?
+                new ObjectParameter("EmailID", emailID) :
+                new ObjectParameter("EmailID", typeof(string));
+    
+            var hashPasswordParameter = hashPassword != null ?
+                new ObjectParameter("HashPassword", hashPassword) :
+                new ObjectParameter("HashPassword", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AuthenticateUser", emailIDParameter, hashPasswordParameter);
+        }
+    
+        public virtual ObjectResult<Categories> GetAllCategories(Nullable<int> parentCategory)
+        {
+            var parentCategoryParameter = parentCategory.HasValue ?
+                new ObjectParameter("ParentCategory", parentCategory) :
+                new ObjectParameter("ParentCategory", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Categories>("GetAllCategories", parentCategoryParameter);
+        }
+    
+        public virtual int GetAllUsers()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetAllUsers");
+        }
+    
+        public virtual ObjectResult<Categories> GetCategories(Nullable<long> parentCategory)
+        {
+            var parentCategoryParameter = parentCategory.HasValue ?
+                new ObjectParameter("ParentCategory", parentCategory) :
+                new ObjectParameter("ParentCategory", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Categories>("GetCategories", parentCategoryParameter);
+        }
+    
+        public virtual ObjectResult<Product> GetProduct(Nullable<int> product_id)
+        {
+            var product_idParameter = product_id.HasValue ?
+                new ObjectParameter("product_id", product_id) :
+                new ObjectParameter("product_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Product>("GetProduct", product_idParameter);
+        }
+    
+        public virtual ObjectResult<Product> GetProductByCategory(string product_type_code)
+        {
+            var product_type_codeParameter = product_type_code != null ?
+                new ObjectParameter("product_type_code", product_type_code) :
+                new ObjectParameter("product_type_code", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Product>("GetProductByCategory", product_type_codeParameter);
+        }
+    
+        public virtual int GetUser(string emailID)
+        {
+            var emailIDParameter = emailID != null ?
+                new ObjectParameter("EmailID", emailID) :
+                new ObjectParameter("EmailID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetUser", emailIDParameter);
+        }
+    
+        public virtual int ManageProduct(Nullable<int> productId, string typeCode, string name, Nullable<decimal> price, string color, string size, string imageName, string description, string otherProductDetails, Nullable<int> operation)
+        {
+            var productIdParameter = productId.HasValue ?
+                new ObjectParameter("productId", productId) :
+                new ObjectParameter("productId", typeof(int));
+    
+            var typeCodeParameter = typeCode != null ?
+                new ObjectParameter("TypeCode", typeCode) :
+                new ObjectParameter("TypeCode", typeof(string));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var priceParameter = price.HasValue ?
+                new ObjectParameter("Price", price) :
+                new ObjectParameter("Price", typeof(decimal));
+    
+            var colorParameter = color != null ?
+                new ObjectParameter("Color", color) :
+                new ObjectParameter("Color", typeof(string));
+    
+            var sizeParameter = size != null ?
+                new ObjectParameter("Size", size) :
+                new ObjectParameter("Size", typeof(string));
+    
+            var imageNameParameter = imageName != null ?
+                new ObjectParameter("ImageName", imageName) :
+                new ObjectParameter("ImageName", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var otherProductDetailsParameter = otherProductDetails != null ?
+                new ObjectParameter("otherProductDetails", otherProductDetails) :
+                new ObjectParameter("otherProductDetails", typeof(string));
+    
+            var operationParameter = operation.HasValue ?
+                new ObjectParameter("Operation", operation) :
+                new ObjectParameter("Operation", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ManageProduct", productIdParameter, typeCodeParameter, nameParameter, priceParameter, colorParameter, sizeParameter, imageNameParameter, descriptionParameter, otherProductDetailsParameter, operationParameter);
+        }
+    
+        public virtual int ManageUserOperation(Nullable<int> userID, string userName, string firstName, string lastName, string emailID, string password, string hashId, Nullable<bool> isActive, Nullable<byte> roleID, string createdBy, Nullable<System.DateTime> createDate, string modifiedBy, Nullable<System.DateTime> modifiedDate, Nullable<int> operation)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var emailIDParameter = emailID != null ?
+                new ObjectParameter("EmailID", emailID) :
+                new ObjectParameter("EmailID", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            var hashIdParameter = hashId != null ?
+                new ObjectParameter("HashId", hashId) :
+                new ObjectParameter("HashId", typeof(string));
+    
+            var isActiveParameter = isActive.HasValue ?
+                new ObjectParameter("IsActive", isActive) :
+                new ObjectParameter("IsActive", typeof(bool));
+    
+            var roleIDParameter = roleID.HasValue ?
+                new ObjectParameter("RoleID", roleID) :
+                new ObjectParameter("RoleID", typeof(byte));
+    
+            var createdByParameter = createdBy != null ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(string));
+    
+            var createDateParameter = createDate.HasValue ?
+                new ObjectParameter("CreateDate", createDate) :
+                new ObjectParameter("CreateDate", typeof(System.DateTime));
+    
+            var modifiedByParameter = modifiedBy != null ?
+                new ObjectParameter("ModifiedBy", modifiedBy) :
+                new ObjectParameter("ModifiedBy", typeof(string));
+    
+            var modifiedDateParameter = modifiedDate.HasValue ?
+                new ObjectParameter("ModifiedDate", modifiedDate) :
+                new ObjectParameter("ModifiedDate", typeof(System.DateTime));
+    
+            var operationParameter = operation.HasValue ?
+                new ObjectParameter("Operation", operation) :
+                new ObjectParameter("Operation", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ManageUserOperation", userIDParameter, userNameParameter, firstNameParameter, lastNameParameter, emailIDParameter, passwordParameter, hashIdParameter, isActiveParameter, roleIDParameter, createdByParameter, createDateParameter, modifiedByParameter, modifiedDateParameter, operationParameter);
+        }
+    
+        public virtual int ManageUserPassword(string emailId, string password)
+        {
+            var emailIdParameter = emailId != null ?
+                new ObjectParameter("EmailId", emailId) :
+                new ObjectParameter("EmailId", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ManageUserPassword", emailIdParameter, passwordParameter);
+        }
+    
+        public virtual ObjectResult<Product> GetAllProduct()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Product>("GetAllProduct");
+        }
     }
 }
