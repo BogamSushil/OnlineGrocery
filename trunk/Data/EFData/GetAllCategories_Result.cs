@@ -11,14 +11,14 @@ namespace Data.EFData
 {
     using System;
     
-    public partial class GetCategories_Result
+    public partial class GetAllCategories_Result
     {
         public long CategoryId { get; set; }
+        public Nullable<long> ParentCategoryId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public Nullable<bool> IsActive { get; set; }
         public string ImageName { get; set; }
-        public Nullable<long> ParentCategoryId { get; set; }
+        public Nullable<bool> IsActive { get; set; }
         public string UpdatedBy { get; set; }
         public Nullable<System.TimeSpan> UpdatedDate { get; set; }
     }

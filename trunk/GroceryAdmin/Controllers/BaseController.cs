@@ -14,7 +14,7 @@ namespace Admin.Portal.Controllers
         protected AdminMembershipUser GetLoggedInUser()
         {
             var provider = (AdminMembershipProvider)Membership.Provider;
-            AdminMembershipUser user = (AdminMembershipUser)provider.GetUser(User.Identity.Name, true);
+            var user = (AdminMembershipUser)provider.GetUser(User.Identity.Name, true);
             return user;
         }
 
@@ -36,7 +36,7 @@ namespace Admin.Portal.Controllers
         {
             Logger.Error(ex.Message, ex);
 
-            AuthenticationFailedException error = ex as AuthenticationFailedException;
+            var error = ex as AuthenticationFailedException;
             if (null != error)
             {
                 ViewBag.Error = ex.Message;

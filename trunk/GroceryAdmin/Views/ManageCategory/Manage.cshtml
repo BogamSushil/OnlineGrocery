@@ -1,4 +1,5 @@
 ﻿@model Domain.ProductCategory
+@using Domain.Entites
 @using Kendo.Mvc.UI;
 @using Kendo.Mvc.Extensions;
 @{    ViewBag.Title = "Product Category Management";
@@ -23,7 +24,7 @@
 <link href="~/Content/dropit.css" rel="stylesheet" />
 <script src="~/Scripts/dropit.js"></script>
 <script src="~/Scripts/common.js"></script>
-@using (@Html.BeginForm("Manage", "ManageProductType", FormMethod.Post, new { id = "frmProductType", DefaultButton = "Search" }))
+@using (@Html.BeginForm("Manage", "ManageCategory", FormMethod.Post, new { id = "frmProductType", DefaultButton = "Search" }))
 {
     <script type="text/javascript">
         var IsEmail = false;
@@ -171,69 +172,17 @@
             confirmEmail = false;
         };
 
-        // On Group Click inside Manage    
-        function getGroupGrid(clientId, isActive, clientName) {
-            $.ajax({
-                type: "POST",
-                url: '@Url.Action("RedirectToChield", "Client")',
-                data: { clientId: clientId, clientName: clientName, controllerId: 1, action: "ManageGroup" },
-                error: function (xhr, ajaxOptions, error) {
-                    onError();
-                    $('#glowMsgForServerErrror').html(AlertsMessages.ServerError.value);
-                },
-                // whatever I did here on success
-                success: function (data) {
-                    window.location = getSiteUrl("/Group/ManageGroup");
-                }
-            });
-            // window.location = "/Group/ManageGroup?clientId=" + ClientID;       
-        }
-
-        // On Content Click inside Manage
-        function getContentGrid(clientId, isActive, clientName) {
-            $.ajax({
-                type: "POST",
-                url: '@Url.Action("RedirectToChield", "Client")',
-                    data: { clientId: clientId, clientName: clientName, controllerId: 2, action: "ManageContents" },
-                    error: function (xhr, ajaxOptions, error) {
-                        onError();
-                        $('#glowMsgForServerErrror').html(AlertsMessages.ServerError.value);
-                    },
-                    // whatever I did here on success
-                    success: function (data) {
-                        window.location = getSiteUrl("/Content/ManageContents");
-                    }
-                });
-            }
-
-            // On User Click inside Manage
-            function getUserGrid(clientId, isActive, clientName) {
-                $.ajax({
-                    type: "POST",
-                    url: '@Url.Action("RedirectToChield", "Client")',
-                    data: { clientId: clientId, clientName: clientName, controllerId: 2, action: "ManageUser" },
-                    error: function (xhr, ajaxOptions, error) {
-                        onError();
-                        $('#glowMsgForServerErrror').html(AlertsMessages.ServerError.value);
-                    },
-                    // whatever I did here on success
-                    success: function (data) {
-                        window.location = getSiteUrl("/User/ManageUser");
-                    }
-                });
-            }
-
-
+       
 
             // On Deactivate button click deactivate record
             $(document).ready(function () {
                 $(document).on("click", ".k-grid-Deactivate", function (e) {
                     var grid = $("#Client").data("kendoGrid");
                     var dataItem = grid.dataItem($(this).closest("tr"));
-                    var ClientID = dataItem.ClientID;
+                    var CategoryId = dataItem.CategoryId;
                     var status = !dataItem.IsActive;
                     $('#HStatus').val(!dataItem.IsActive);
-                    $('#HClientID').val(ClientID);
+                    $('#HCategoryId').val(CategoryId);
                     if (dataItem.IsActive) {
                         $('#mymodal1').fadeIn('slow');
                         $("#Confirmation").attr("style", "block");
@@ -251,8 +200,8 @@
                 $(document).on("click", ".k-grid-Branding", function (e) {
                     var grid = $("#Client").data("kendoGrid");
                     var dataItem = grid.dataItem($(this).closest("tr"));
-                    var ClientID = dataItem.ClientID;
-                    var url = getSiteUrl("/Branding/ManageBranding?clientId=") + ClientID + "&clientName=" + dataItem.ClientName;
+                    var CategoryId = dataItem.CategoryId;
+                    var url = getSiteUrl("/Branding/ManageBranding?CategoryId=") + CategoryId + "&clientName=" + dataItem.ClientName;
                     window.location.replace(url);
                 });
 
@@ -260,17 +209,18 @@
 
             //Deactivate Click
             function Deactivate() {
+               debugger ;
                 $('.gridstyle .k-grid-update').addClass('r-edit fa fa-check-circle fa-lg');
                 $('.gridstyle .k-grid-cancel').addClass('r-edit fa fa-times-circle fa-lg');
                 $('.gridstyle .k-grid-edit span').removeClass().addClass('fa fa-edit fa-lg');
                 $('.gridstyle .k-grid-Delete span').removeClass().addClass('fa fa-times-circle fa-lg');
                 $('.gridstyle .k-grid-Manage span').removeClass().addClass('fa fa-shield fa-lg');
                 var status = $("#HStatus").val() == 'false' ? false : true;
-                var clientId = $('#HClientID').val();
+                var id = $('#HCategoryId').val();
                 $.ajax({
                     type: "POST",
-                    url: '@Url.Action("DeactivateClient", "Client")',
-                    data: { clientID: clientId, status: status },
+                    url: '@Url.Action("ActiveDeactiveCategory", "ManageCategory")',
+                    data: { Id: id, status: status },
                     error: function (xhr, ajaxOptions, error) {
                         unhandledException();
                     },
@@ -285,7 +235,7 @@
 
             var Email;
             function ClientGrid_OnSave(e) {
-                if (e.model.ClientID == 0 && confirmEmail == false) {
+                if (e.model.CategoryId == 0 && confirmEmail == false) {
                     $('#mymodalEmail').fadeIn('slow');
                     e.preventDefault();
                 }
@@ -330,8 +280,8 @@
                     $('#mymodal2').fadeIn('slow');
                     var grid = $("#Client").data("kendoGrid");
                     var dataItem = grid.dataItem($(this).closest("tr"))
-                    var ClientID = dataItem.ClientID;
-                    $('#DE_ClientID').val(ClientID);
+                    var CategoryId = dataItem.CategoryId;
+                    $('#DE_CategoryId').val(CategoryId);
                     $('#DE_ClientName').val(dataItem.ClientName);
                     $("#DeleteConfirm").attr("style", "block");
                     $("#DeleteConfirm").text(AlertsMessages.DeleteClient.value);
@@ -349,12 +299,12 @@
                 $('.gridstyle .k-grid-edit span').removeClass().addClass('fa fa-edit fa-lg');
                 $('.gridstyle .k-grid-Delete span').removeClass().addClass('fa fa-times-circle fa-lg');
                 $('.gridstyle .k-grid-Manage span').removeClass().addClass('fa fa-shield fa-lg');
-                var clientId = $("#DE_ClientID").val();
+                var id = $("#DE_CategoryId").val();
                 var name = $("#DE_ClientName").val();
                 $.ajax({
                     type: "POST",
-                    url: '@Url.Action("DeleteCategory", "ManageProductType")',
-            data: { clientID: clientId, clientName: name },
+                    url: '@Url.Action("DeleteCategory", "ManageCategory")',
+            data: { id: id },
             error: function (xhr, ajaxOptions, error) {
                 onError();
                 $('#glowMsgForServerErrror').html(AlertsMessages.ServerError.value);
@@ -452,14 +402,13 @@
 
                     <div id="clientsDb">
                         <div id="grid2" class="gridstyle">
-                            @(Html.Kendo().Grid<Domain.ProductCategory>()
+                            @(Html.Kendo().Grid<Category>()
                         .Name("Client")
                         .Columns(columns =>
                         {
-                            columns.Bound(p => p.product_type_code).Title("Category").Width(120);
-                            columns.Bound(p => p.product_type_description).Title("Description").Width(120);
-                            columns.Bound(p => p.parent_product_type_code).Title("ParentCategory").Width(100);
-                            columns.Bound(p => p.productTypeImageName).Title("Image Address").Width(250);
+                            columns.Bound(p => p.Name).Title("Category").Width(120);
+                            columns.Bound(p => p.Description).Title("Description").Width(120);
+                            columns.Bound(p => p.ImageName).Title("Image Address").Width(250);
                             columns.Command(command => { command.Edit().Text(" ").HtmlAttributes(new { title = "Edit" }); command.Custom("Deactivate").Text(" ").HtmlAttributes(new { title = "Disable" }); command.Custom("Delete").Text(" ").HtmlAttributes(new { title = "Delete" });  }).Width(250).Title("Actions");
                         })
                         .ToolBar(toolbar => toolbar.Create())
@@ -474,12 +423,12 @@
                             .PageSize(10)
                             .Model(model =>
                             {
-                                model.Id(e => e.product_type_code);
+                                model.Id(e => e.CategoryId);
                               
                             })
-                            .Create(create => create.Action("CreateCategory", "ManageProductType"))
-                            .Read(read => read.Action("GetCategories", "ManageProductType"))
-                            .Update(update => update.Action("UpdateCategory", "ManageProductType"))
+                            .Create(create => create.Action("CreateCategory", "ManageCategory"))
+                            .Read(read => read.Action("GetCategories", "ManageCategory"))
+                            .Update(update => update.Action("UpdateCategory", "ManageCategory"))
                             .Events(e => e.Error("error_handler"))
                             .Events(e => e.RequestEnd("AfterEnd"))
                             )
@@ -511,7 +460,7 @@
         <span id="Confirmation" style="display: none;"></span>
         <br />
         <br />
-        @Html.Hidden("HClientID")
+        @Html.Hidden("HCategoryId")
         @Html.Hidden("HStatus")
         <div class="errorDivbutton">
             <button class="k-button" id="Ok" onclick="Deactivate();">YES</button>
@@ -526,7 +475,7 @@
         <span id="DeleteConfirm" style="display: none;"></span>
         <br />
         <br />
-        @Html.Hidden("DE_ClientID")
+        @Html.Hidden("DE_CategoryId")
         @Html.Hidden("DE_ClientName")
         <div class="errorDivbutton">
             <button class="k-button" id="Ok_Delete" onclick="Delete();">YES</button>
@@ -552,7 +501,7 @@
         <span>Do you want sent Email?</span>
         <br />
         <br />
-        @Html.Hidden("IsClientID")
+        @Html.Hidden("IsCategoryId")
         <button class="k-button" id="StEmail" onclick="SendEmail();">Send Email</button>
         <button class="k-button" id="StCancel" onclick="SendCancel();">No, Thanks</button>
     </div>

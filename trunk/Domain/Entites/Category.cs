@@ -11,7 +11,7 @@ namespace Domain.Entites
     {
         public long CategoryId { get; set; }
 
-        public long ParentCategoryId { get; set; }
+        public long? ParentCategoryId { get; set; }
 
         public string ImageName { get; set; }
 

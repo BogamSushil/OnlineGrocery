@@ -441,6 +441,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\jquery.validationEngine-en.js" />
     <Content Include="Scripts\jquery.validationEngine.js" />
+    <Content Include="Scripts\js\adminDashboard.js" />
     <Content Include="Scripts\kendo.aspnetmvc.min.js" />
     <Content Include="Scripts\kendo.dataviz.min.js" />
     <Content Include="Scripts\kendo.modernizr.custom.js" />
@@ -557,7 +558,7 @@
     <Compile Include="Controllers\Account\SecurityController.cs" />
     <Compile Include="Controllers\AdminHomeController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\ProductType\ManageProductTypeController.cs" />
+    <Compile Include="Controllers\ProductType\ManageCategoryController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -617,7 +618,8 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\AdminHome\Home.cshtml" />
     <Content Include="Views\AdminHome\DashBoard.cshtml" />
-    <Content Include="Views\ManageProductType\Manage.cshtml" />
+    <Content Include="Views\ManageCategory\Manage.cshtml" />
+    <Content Include="Views\Security\AccessDenied.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -631,7 +633,6 @@
     <Folder Include="Controllers\User\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\ManageProduct\" />
-    <Folder Include="Views\Security\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">
