@@ -47,11 +47,11 @@ namespace Admin.Portal.Controllers.Account
             {
                 if (ModelState.IsValid)
                 {
-                    AdminMembershipProvider provider = (AdminMembershipProvider)Membership.Provider;
+                    var provider = (AdminMembershipProvider)Membership.Provider;
                     if (provider.ValidateUser(model.UserName, model.Password))
                     {
                         FormsAuthentication.RedirectFromLoginPage(model.UserName, model.RememberMe);
-                        AdminMembershipUser user = (AdminMembershipUser)provider.GetUser(model.UserName, true);
+                        var user = (AdminMembershipUser)provider.GetUser(model.UserName, true);
 
                         if (user.UserRoleName == "Admin" || user.UserRoleName == "Super Admin")
                         {
@@ -84,7 +84,7 @@ namespace Admin.Portal.Controllers.Account
         {
             System.Web.HttpContext.Current.Response.Cookies.Clear();
             FormsAuthentication.SignOut();
-            return RedirectToAction("Login", "OAndMAccount");
+            return RedirectToAction("Login", "Login");
         }
 
         [HttpPost]

@@ -8,5 +8,6 @@ namespace Domain.Managers
 {
     public class AdminManager
     {
+
     }
 }

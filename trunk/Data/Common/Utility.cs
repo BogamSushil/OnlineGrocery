@@ -1,28 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Service.Common
+namespace Data.Common
 {
     public static class Utility
     {
-      
-
         public static string[] Split(string value, params char[] separator)
         {
             var result = new List<string>();
-            if (null != value && value.Length > 0)
+            if (!string.IsNullOrEmpty(value))
             {
                 var values = value.Split(separator);
-                foreach (var item in values)
-                {
-                    result.Add(item);
-                }
-
+                result.AddRange(values);
             }
             return result.ToArray();
         }
@@ -88,25 +79,24 @@ namespace Service.Common
         {
             try
             {
-                SmtpClient mSmtpClient = new SmtpClient();
+                var mSmtpClient = new SmtpClient();
                 string adminEmail = GetConfigKey("AdminMailAddress");
                 // Prepare the mail message
-                MailMessage mailMessage = new MailMessage();
+                var mailMessage = new MailMessage();
                 mailMessage.From = new MailAddress(adminEmail);
                 mailMessage.Subject = subject;
                 AddAddresses(mailMessage.To, Utility.Split(to));
-                if (null != cc && cc.Length > 0)
+                if (!string.IsNullOrEmpty(cc))
                 {
                     AddAddresses(mailMessage.CC, Utility.Split(cc));
                 }
-                if (null != bcc && bcc.Length > 0)
+                if (!string.IsNullOrEmpty(bcc))
                 {
                     AddAddresses(mailMessage.Bcc, Utility.Split(bcc));
                 }
                 mailMessage.Body = body;
                 mailMessage.IsBodyHtml = true;
-                if (null != attachmentFileName &&
-                    attachmentFileName.Length > 0)
+                if (!string.IsNullOrEmpty(attachmentFileName))
                 {
                     mailMessage.Attachments.Add(new Attachment(attachmentFileName));
                 }
@@ -114,7 +104,7 @@ namespace Service.Common
             }
             catch (Exception e)
             {
-                Logger.Error(e);
+                //Logger.Error(e);
             }
         }
 
