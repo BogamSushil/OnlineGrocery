@@ -19,7 +19,7 @@ namespace Domain
             {
                 _container = new UnityContainer();
 
-                UnityConfigurationSection section = (UnityConfigurationSection)System.Configuration.ConfigurationManager.GetSection("unity");
+                var section = (UnityConfigurationSection)System.Configuration.ConfigurationManager.GetSection("unity");
 
                 _container.LoadConfiguration(section);
                 _container.AddExtension(new EnterpriseLibraryCoreExtension());

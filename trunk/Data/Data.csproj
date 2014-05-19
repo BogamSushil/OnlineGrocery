@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -48,6 +49,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\AuthenticationHelper.cs" />
+    <Compile Include="Common\CryptoServices.cs" />
+    <Compile Include="Common\EazyWizyException.cs" />
+    <Compile Include="Common\Utility.cs" />
+    <Compile Include="EFData\AuthenticateUser_Result.cs">
+      <DependentUpon>EazyWizy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFData\GetAllCategories_Result.cs">
+      <DependentUpon>EazyWizy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFData\GetAllUsers_Result.cs">
+      <DependentUpon>EazyWizy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFData\GetUser_Result.cs">
+      <DependentUpon>EazyWizy.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repository\EasyWizyRepository.cs" />
     <Compile Include="EFData\EazyWizy.Context.cs">
       <AutoGen>True</AutoGen>

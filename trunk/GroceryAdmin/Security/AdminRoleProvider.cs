@@ -1,4 +1,5 @@
-﻿using Service.Business;
+﻿using Domain.Managers;
+using Service.Business;
 using System;
 using System.Collections.Specialized;
 using System.Linq;
@@ -70,8 +71,8 @@ namespace Admin.Portal.Security
 
             //Get the roles from DB
             var userRoles = new string[] { };
-            var manager = new UserService();
-            var user = manager.GetUser(username);
+           
+            var user = UserManager.GetUser(username);
 
             if (user != null && !string.IsNullOrWhiteSpace(user.RoleName))
             {

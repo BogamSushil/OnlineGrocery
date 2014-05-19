@@ -1,4 +1,5 @@
 ﻿
+using Domain.Managers;
 using Service.Business;
 using System;
 using System.Web;
@@ -33,10 +34,7 @@ namespace Admin.Portal.Security
         {
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                 return false;
-
-           
-                var manager = new AuthenticationService();
-                var user = manager.LoginUser(username, password);
+                var user = UserManager.AuthenticateUser(username, password);
                 //Store in cache
                 var cacheKey = string.Format("UserData_{0}", username);
                 var membershipUser = new AdminMembershipUser(user);

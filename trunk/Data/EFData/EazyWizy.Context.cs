@@ -20,10 +20,7 @@ namespace Data.EFData
         public EazyWizyEntities()
             : base("name=EazyWizyEntities")
         {
-            var abc = typeof(System.Data.Entity.SqlServer.SqlProviderServices);
         }
-
-       
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -38,6 +35,75 @@ namespace Data.EFData
                 new ObjectParameter("ParentCategory", typeof(long));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCategories_Result>("GetCategories", parentCategoryParameter);
+        }
+    
+        public virtual ObjectResult<AuthenticateUser_Result> AuthenticateUser(string emailID, string hashPassword)
+        {
+            var emailIDParameter = emailID != null ?
+                new ObjectParameter("EmailID", emailID) :
+                new ObjectParameter("EmailID", typeof(string));
+    
+            var hashPasswordParameter = hashPassword != null ?
+                new ObjectParameter("HashPassword", hashPassword) :
+                new ObjectParameter("HashPassword", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AuthenticateUser_Result>("AuthenticateUser", emailIDParameter, hashPasswordParameter);
+        }
+    
+        public virtual ObjectResult<GetAllUsers_Result> GetAllUsers()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllUsers_Result>("GetAllUsers");
+        }
+    
+        public virtual ObjectResult<GetUser_Result> GetUser(string emailID)
+        {
+            var emailIDParameter = emailID != null ?
+                new ObjectParameter("EmailID", emailID) :
+                new ObjectParameter("EmailID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUser_Result>("GetUser", emailIDParameter);
+        }
+    
+        public virtual ObjectResult<GetAllCategories_Result> GetAllCategories()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllCategories_Result>("GetAllCategories");
+        }
+    
+        public virtual int ManageCategory(Nullable<long> categoryId, Nullable<long> parentCategoryId, string name, string description, string imageName, Nullable<bool> isActive, string updatedBy, Nullable<int> operation)
+        {
+            var categoryIdParameter = categoryId.HasValue ?
+                new ObjectParameter("CategoryId", categoryId) :
+                new ObjectParameter("CategoryId", typeof(long));
+    
+            var parentCategoryIdParameter = parentCategoryId.HasValue ?
+                new ObjectParameter("ParentCategoryId", parentCategoryId) :
+                new ObjectParameter("ParentCategoryId", typeof(long));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var imageNameParameter = imageName != null ?
+                new ObjectParameter("ImageName", imageName) :
+                new ObjectParameter("ImageName", typeof(string));
+    
+            var isActiveParameter = isActive.HasValue ?
+                new ObjectParameter("IsActive", isActive) :
+                new ObjectParameter("IsActive", typeof(bool));
+    
+            var updatedByParameter = updatedBy != null ?
+                new ObjectParameter("UpdatedBy", updatedBy) :
+                new ObjectParameter("UpdatedBy", typeof(string));
+    
+            var operationParameter = operation.HasValue ?
+                new ObjectParameter("Operation", operation) :
+                new ObjectParameter("Operation", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ManageCategory", categoryIdParameter, parentCategoryIdParameter, nameParameter, descriptionParameter, imageNameParameter, isActiveParameter, updatedByParameter, operationParameter);
         }
     }
 }

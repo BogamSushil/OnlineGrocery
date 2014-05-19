@@ -1,4 +1,6 @@
-﻿using Kendo.Mvc.UI;
+﻿using Domain.Entites;
+using Domain.Managers;
+using Kendo.Mvc.UI;
 using Kendo.Mvc.Extensions;
 using System;
 using System.Collections.Generic;
@@ -9,15 +11,11 @@ using Service.Business;
 
 namespace Admin.Portal.Controllers.ProductType
 {
-    public class ManageProductTypeController : BaseController
+    public class ManageCategoryController : BaseController
     {
         #region "Properties"
 
-        private ProductCategoryService manager;
-        private ProductCategoryService Manager
-        {
-            get { return manager == null ? manager = new ProductCategoryService() : manager; }
-        }
+       
 
        
 
@@ -42,7 +40,7 @@ namespace Admin.Portal.Controllers.ProductType
         {
             try
             {
-                var data = Manager.GetAll();
+                var data = ItemManager.GetAllCategories();
                 return Json(data.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
@@ -56,14 +54,14 @@ namespace Admin.Portal.Controllers.ProductType
 
         [AcceptVerbs(HttpVerbs.Post)]
       
-        public ActionResult CreateCategory([DataSourceRequest] DataSourceRequest request, Domain.ProductCategory entity)
+        public ActionResult CreateCategory([DataSourceRequest] DataSourceRequest request, Category entity)
         {
             try
             {
                 var errors = new Dictionary<string, string>();
                 if (null != entity && ModelState.IsValid)
                 {
-                    Manager.Create(entity);                    
+                    ItemManager.AddCategory(entity);                    
                 }
                 else
                 {
@@ -82,7 +80,7 @@ namespace Admin.Portal.Controllers.ProductType
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult UpdateCategory([DataSourceRequest] DataSourceRequest request, Domain.ProductCategory entity)
+        public ActionResult UpdateCategory([DataSourceRequest] DataSourceRequest request, Category entity)
         {
             try
             {
@@ -90,7 +88,7 @@ namespace Admin.Portal.Controllers.ProductType
                 var errors = new Dictionary<string, string>();
                 if (null != entity && ModelState.IsValid)
                 {
-                    Manager.Update(entity);
+                    ItemManager.UpdateCategory(entity);
                 }
                 else
                 {
@@ -109,14 +107,13 @@ namespace Admin.Portal.Controllers.ProductType
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-    
-        public ActionResult DeleteCategory([DataSourceRequest] DataSourceRequest request, string Id)
+        public ActionResult DeleteCategory([DataSourceRequest] DataSourceRequest request, long Id)
         {
             try
             {
-                if (!string.IsNullOrWhiteSpace(Id)  && ModelState.IsValid)
+                if (ModelState.IsValid)
                 {
-                    Manager.DeleteProductCategory(Id);
+                    ItemManager.DeleteCategory(Id);
                 
                 }
                 return Json(new[] { Id }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
@@ -127,7 +124,24 @@ namespace Admin.Portal.Controllers.ProductType
                 return this.On_Error(ex);
             }
         }
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult ActiveDeactiveCategory([DataSourceRequest] DataSourceRequest request, long Id, bool status)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    ItemManager.ActiveDeactiveCategory(Id, status);
 
+                }
+                return Json(new[] { Id }.ToDataSourceResult(request, ModelState), JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                ex.Data.Add("AjaxError", true);
+                return this.On_Error(ex);
+            }
+        }
      
 
 	}
