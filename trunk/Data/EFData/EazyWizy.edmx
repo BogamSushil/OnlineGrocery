@@ -9,13 +9,29 @@
           <Parameter Name="EmailID" Type="nvarchar" Mode="In" />
           <Parameter Name="HashPassword" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="GetAllBrandMaster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetAllCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CategoryId" Type="bigint" Mode="In" />
+        </Function>
         <Function Name="GetAllUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ParentCategory" Type="bigint" Mode="In" />
         </Function>
         <Function Name="GetUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="EmailID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ManageBrandMaster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BrandId" Type="bigint" Mode="In" />
+          <Parameter Name="BrandName" Type="nchar" Mode="In" />
+          <Parameter Name="BrandDescription" Type="nchar" Mode="In" />
+          <Parameter Name="IsActive" Type="bit" Mode="In" />
+          <Parameter Name="CreatedBy" Type="nchar" Mode="In" />
+          <Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+          <Parameter Name="LogoFileName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ModifiedBy" Type="nchar" Mode="In" />
+          <Parameter Name="ModifiedDate" Type="datetime" Mode="In" />
+          <Parameter Name="Operation" Type="int" Mode="In" />
         </Function>
         <Function Name="ManageCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CategoryId" Type="bigint" Mode="In" />
@@ -25,6 +41,21 @@
           <Parameter Name="ImageName" Type="nchar" Mode="In" />
           <Parameter Name="IsActive" Type="bit" Mode="In" />
           <Parameter Name="UpdatedBy" Type="nchar" Mode="In" />
+          <Parameter Name="Operation" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ManageProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductId" Type="bigint" Mode="In" />
+          <Parameter Name="CategoryId" Type="bigint" Mode="In" />
+          <Parameter Name="TypeCode" Type="char" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Price" Type="money" Mode="In" />
+          <Parameter Name="Color" Type="varchar" Mode="In" />
+          <Parameter Name="Size" Type="varchar" Mode="In" />
+          <Parameter Name="Image" Type="image" Mode="In" />
+          <Parameter Name="ImageName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+          <Parameter Name="BuyCounter" Type="nchar" Mode="In" />
+          <Parameter Name="OtherProductPetails" Type="varchar" Mode="In" />
           <Parameter Name="Operation" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="EazyWizyModelStoreContainer" />
@@ -53,6 +84,37 @@
             <Parameter Name="ImageName" Mode="In" Type="String" />
             <Parameter Name="IsActive" Mode="In" Type="Boolean" />
             <Parameter Name="UpdatedBy" Mode="In" Type="String" />
+            <Parameter Name="Operation" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllBrandMaster" ReturnType="Collection(EazyWizyModel.GetAllBrandMaster_Result)" />
+          <FunctionImport Name="GetAllProducts" ReturnType="Collection(EazyWizyModel.GetAllProducts_Result)" >
+            <Parameter Name="CategoryId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="ManageBrandMaster">
+            <Parameter Name="BrandId" Mode="In" Type="Int64" />
+            <Parameter Name="BrandName" Mode="In" Type="String" />
+            <Parameter Name="BrandDescription" Mode="In" Type="String" />
+            <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+            <Parameter Name="CreatedBy" Mode="In" Type="String" />
+            <Parameter Name="CreatedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="LogoFileName" Mode="In" Type="String" />
+            <Parameter Name="ModifiedBy" Mode="In" Type="String" />
+            <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Operation" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ManageProducts">
+            <Parameter Name="ProductId" Mode="In" Type="Int64" />
+            <Parameter Name="CategoryId" Mode="In" Type="Int64" />
+            <Parameter Name="TypeCode" Mode="In" Type="String" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Price" Mode="In" Type="Decimal" />
+            <Parameter Name="Color" Mode="In" Type="String" />
+            <Parameter Name="Size" Mode="In" Type="String" />
+            <Parameter Name="Image" Mode="In" Type="Binary" />
+            <Parameter Name="ImageName" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="BuyCounter" Mode="In" Type="String" />
+            <Parameter Name="OtherProductPetails" Mode="In" Type="String" />
             <Parameter Name="Operation" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
@@ -141,6 +203,31 @@
           <Property Type="Boolean" Name="IsActive" Nullable="true" />
           <Property Type="String" Name="UpdatedBy" Nullable="true" MaxLength="15" />
           <Property Type="Time" Name="UpdatedDate" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetAllBrandMaster_Result">
+          <Property Type="Int64" Name="BrandId" Nullable="false" />
+          <Property Type="String" Name="BrandName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BrandDescription" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="String" Name="LogoFileName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="CreatedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" />
+          <Property Type="String" Name="ModifiedBy" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetAllProducts_Result">
+          <Property Type="Int64" Name="ProductId" Nullable="false" />
+          <Property Type="String" Name="TypeCode" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="80" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="19" />
+          <Property Type="String" Name="Color" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Size" Nullable="true" MaxLength="20" />
+          <Property Type="Binary" Name="Image" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="ImageName" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="BuyCounter" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="OtherProductPetails" Nullable="true" MaxLength="255" />
+          <Property Type="Int64" Name="CategoryId" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -255,6 +342,41 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ManageCategory" FunctionName="EazyWizyModel.Store.ManageCategory" />
+          <FunctionImportMapping FunctionImportName="GetAllBrandMaster" FunctionName="EazyWizyModel.Store.GetAllBrandMaster">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EazyWizyModel.GetAllBrandMaster_Result">
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="BrandDescription" ColumnName="BrandDescription" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LogoFileName" ColumnName="LogoFileName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllProducts" FunctionName="EazyWizyModel.Store.GetAllProducts">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EazyWizyModel.GetAllProducts_Result">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="BuyCounter" ColumnName="BuyCounter" />
+                <ScalarProperty Name="OtherProductPetails" ColumnName="OtherProductPetails" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ManageBrandMaster" FunctionName="EazyWizyModel.Store.ManageBrandMaster" />
+          <FunctionImportMapping FunctionImportName="ManageProducts" FunctionName="EazyWizyModel.Store.ManageProducts" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

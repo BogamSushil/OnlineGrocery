@@ -1,5 +1,4 @@
 ﻿using Admin.Portal.Security;
-using Service.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,9 +33,7 @@ namespace Admin.Portal.Controllers
         }
         protected ActionResult On_Error(Exception ex)
         {
-            Logger.Error(ex.Message, ex);
-
-            var error = ex as AuthenticationFailedException;
+            var error = ex as Exception;
             if (null != error)
             {
                 ViewBag.Error = ex.Message;

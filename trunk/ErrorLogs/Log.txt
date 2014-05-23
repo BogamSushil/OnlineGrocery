@@ -1,0 +1,139 @@
+2014-05-19 13:52:40,607 [1] INFO  Common - -------------------------------------------------------
+2014-05-19 13:52:40,615 [1] INFO  Common - ********* Initializing Application... *********
+2014-05-19 13:54:08,253 [7] ERROR Common - No connection string named 'EazyWizyEntities' could be found in the application config file.
+System.InvalidOperationException: No connection string named 'EazyWizyEntities' could be found in the application config file.
+   at System.Data.Entity.Internal.LazyInternalConnection.get_ConnectionHasModel()
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.Initialize()
+   at System.Data.Entity.Internal.InternalContext.ForceOSpaceLoadingForKnownEntityTypes()
+   at System.Data.Entity.DbContext.System.Data.Entity.Infrastructure.IObjectContextAdapter.get_ObjectContext()
+   at Data.EFData.EazyWizyEntities.GetUser(String emailID) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Data\EFData\EazyWizy.Context.cs:line 64
+   at Data.Repository.EasyWizyRepository.GetUser(String email) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Data\Repository\EasyWizyRepository.cs:line 59
+   at Data.Common.AuthenticationHelper.Authenticate(String login, String password, Boolean isForgotPasswordRequest) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Data\Common\AuthenticationHelper.cs:line 17
+   at Data.Repository.EasyWizyRepository.LoginUser(String userName, String password) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Data\Repository\EasyWizyRepository.cs:line 31
+   at Domain.Managers.UserManager.AuthenticateUser(String emailId, String password) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Domain\Managers\UserManager.cs:line 36
+   at Admin.Portal.Security.AdminMembershipProvider.ValidateUser(String username, String password) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\GroceryAdmin\Security\AdminMembershipProvider.cs:line 37
+   at Admin.Portal.Controllers.Account.LoginController.Login(LoginModel model) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\GroceryAdmin\Controllers\Account\LoginController.cs:line 51
+2014-05-19 13:59:42,644 [8] ERROR Common - No connection string named 'EazyWizyEntities' could be found in the application config file.
+System.InvalidOperationException: No connection string named 'EazyWizyEntities' could be found in the application config file.
+   at System.Data.Entity.Internal.LazyInternalConnection.get_ConnectionHasModel()
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.Initialize()
+   at System.Data.Entity.Internal.InternalContext.ForceOSpaceLoadingForKnownEntityTypes()
+   at System.Data.Entity.DbContext.System.Data.Entity.Infrastructure.IObjectContextAdapter.get_ObjectContext()
+   at Data.EFData.EazyWizyEntities.GetUser(String emailID) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Data\EFData\EazyWizy.Context.cs:line 64
+   at Data.Repository.EasyWizyRepository.GetUser(String email) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Data\Repository\EasyWizyRepository.cs:line 59
+   at Data.Common.AuthenticationHelper.Authenticate(String login, String password, Boolean isForgotPasswordRequest) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Data\Common\AuthenticationHelper.cs:line 17
+   at Data.Repository.EasyWizyRepository.LoginUser(String userName, String password) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Data\Repository\EasyWizyRepository.cs:line 31
+   at Domain.Managers.UserManager.AuthenticateUser(String emailId, String password) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Domain\Managers\UserManager.cs:line 36
+   at Admin.Portal.Security.AdminMembershipProvider.ValidateUser(String username, String password) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\GroceryAdmin\Security\AdminMembershipProvider.cs:line 37
+   at Admin.Portal.Controllers.Account.LoginController.Login(LoginModel model) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\GroceryAdmin\Controllers\Account\LoginController.cs:line 51
+2014-05-19 14:00:33,745 [8] INFO  Common - -------------------------------------------------------
+2014-05-19 14:00:33,753 [8] INFO  Common - ********* Initializing Application... *********
+2014-05-19 14:00:57,279 [21] ERROR Common - The data reader is incompatible with the specified 'EazyWizyModel.GetUser_Result'. A member of the type, 'CreatedBy1', does not have a corresponding column in the data reader with the same name.
+System.Data.Entity.Core.EntityCommandExecutionException: The data reader is incompatible with the specified 'EazyWizyModel.GetUser_Result'. A member of the type, 'CreatedBy1', does not have a corresponding column in the data reader with the same name.
+   at System.Data.Entity.Core.Query.InternalTrees.ColumnMapFactory.GetMemberOrdinalFromReader(DbDataReader storeDataReader, EdmMember member, EdmType currentType, Dictionary`2 renameList)
+   at System.Data.Entity.Core.Query.InternalTrees.ColumnMapFactory.GetColumnMapsForType(DbDataReader storeDataReader, EdmType edmType, Dictionary`2 renameList)
+   at System.Data.Entity.Core.Query.InternalTrees.ColumnMapFactory.CreateColumnMapFromReaderAndType(DbDataReader storeDataReader, EdmType edmType, EntitySet entitySet, Dictionary`2 renameList)
+   at System.Data.Entity.Core.Query.InternalTrees.ColumnMapFactory.CreateFunctionImportStructuralTypeColumnMap(DbDataReader storeDataReader, FunctionImportMappingNonComposable mapping, Int32 resultSetIndex, EntitySet entitySet, StructuralType baseStructuralType)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.FunctionColumnMapGenerator.System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.IColumnMapGenerator.CreateColumnMap(DbDataReader reader)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.CreateColumnMap(DbDataReader storeDataReader, Int32 resultSetIndex)
+   at System.Data.Entity.Core.Objects.ObjectContext.MaterializedDataRecord[TElement](EntityCommand entityCommand, DbDataReader storeReader, Int32 resultSetIndex, ReadOnlyCollection`1 entitySets, EdmType[] edmTypes, ShaperFactory`1 shaperFactory, MergeOption mergeOption, Boolean streaming)
+   at System.Data.Entity.Core.Objects.ObjectContext.CreateFunctionObjectResult[TElement](EntityCommand entityCommand, ReadOnlyCollection`1 entitySets, EdmType[] edmTypes, ExecutionOptions executionOptions)
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass47`1.<ExecuteFunction>b__46()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass47`1.<ExecuteFunction>b__45()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteFunction[TElement](String functionName, ExecutionOptions executionOptions, ObjectParameter[] parameters)
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteFunction[TElement](String functionName, MergeOption mergeOption, ObjectParameter[] parameters)
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteFunction[TElement](String functionName, ObjectParameter[] parameters)
+   at Data.EFData.EazyWizyEntities.GetUser(String emailID) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Data\EFData\EazyWizy.Context.cs:line 64
+   at Data.Repository.EasyWizyRepository.GetUser(String email) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Data\Repository\EasyWizyRepository.cs:line 59
+   at Data.Common.AuthenticationHelper.Authenticate(String login, String password, Boolean isForgotPasswordRequest) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Data\Common\AuthenticationHelper.cs:line 17
+   at Data.Repository.EasyWizyRepository.LoginUser(String userName, String password) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Data\Repository\EasyWizyRepository.cs:line 31
+   at Domain.Managers.UserManager.AuthenticateUser(String emailId, String password) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Domain\Managers\UserManager.cs:line 36
+   at Admin.Portal.Security.AdminMembershipProvider.ValidateUser(String username, String password) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\GroceryAdmin\Security\AdminMembershipProvider.cs:line 37
+   at Admin.Portal.Controllers.Account.LoginController.Login(LoginModel model) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\GroceryAdmin\Controllers\Account\LoginController.cs:line 51
+2014-05-19 14:06:03,952 [20] INFO  Common - -------------------------------------------------------
+2014-05-19 14:06:03,961 [20] INFO  Common - ********* Initializing Application... *********
+2014-05-19 14:10:19,808 [16] ERROR Common - User Name and/or Password is incorrect
+System.InvalidOperationException: User Name and/or Password is incorrect
+   at Data.Common.AuthenticationHelper.Authenticate(String login, String password, Boolean isForgotPasswordRequest) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Data\Common\AuthenticationHelper.cs:line 23
+   at Data.Repository.EasyWizyRepository.LoginUser(String userName, String password) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Data\Repository\EasyWizyRepository.cs:line 31
+   at Domain.Managers.UserManager.AuthenticateUser(String emailId, String password) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Domain\Managers\UserManager.cs:line 36
+   at Admin.Portal.Security.AdminMembershipProvider.ValidateUser(String username, String password) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\GroceryAdmin\Security\AdminMembershipProvider.cs:line 37
+   at Admin.Portal.Controllers.Account.LoginController.Login(LoginModel model) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\GroceryAdmin\Controllers\Account\LoginController.cs:line 51
+2014-05-19 14:10:51,860 [22] ERROR Common - Invalid login and password or User might be disabled in the system
+Data.Common.AuthenticationFailedException: Invalid login and password or User might be disabled in the system
+   at Data.Common.AuthenticationHelper.Authenticate(String login, String password, Boolean isForgotPasswordRequest) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Data\Common\AuthenticationHelper.cs:line 35
+   at Data.Repository.EasyWizyRepository.LoginUser(String userName, String password) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Data\Repository\EasyWizyRepository.cs:line 31
+   at Domain.Managers.UserManager.AuthenticateUser(String emailId, String password) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Domain\Managers\UserManager.cs:line 36
+   at Admin.Portal.Security.AdminMembershipProvider.ValidateUser(String username, String password) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\GroceryAdmin\Security\AdminMembershipProvider.cs:line 37
+   at Admin.Portal.Controllers.Account.LoginController.Login(LoginModel model) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\GroceryAdmin\Controllers\Account\LoginController.cs:line 51
+2014-05-19 14:11:21,907 [22] ERROR Common - Invalid login and password or User might be disabled in the system
+Data.Common.AuthenticationFailedException: Invalid login and password or User might be disabled in the system
+   at Data.Common.AuthenticationHelper.Authenticate(String login, String password, Boolean isForgotPasswordRequest) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Data\Common\AuthenticationHelper.cs:line 35
+   at Data.Repository.EasyWizyRepository.LoginUser(String userName, String password) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Data\Repository\EasyWizyRepository.cs:line 31
+   at Domain.Managers.UserManager.AuthenticateUser(String emailId, String password) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Domain\Managers\UserManager.cs:line 36
+   at Admin.Portal.Security.AdminMembershipProvider.ValidateUser(String username, String password) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\GroceryAdmin\Security\AdminMembershipProvider.cs:line 37
+   at Admin.Portal.Controllers.Account.LoginController.Login(LoginModel model) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\GroceryAdmin\Controllers\Account\LoginController.cs:line 51
+2014-05-19 15:16:31,342 [1] INFO  Common - -------------------------------------------------------
+2014-05-19 15:16:31,381 [1] INFO  Common - ********* Initializing Application... *********
+2014-05-19 15:19:16,676 [60] ERROR Common - No connection string named 'OnlineGroceryEntities' could be found in the application config file.
+System.InvalidOperationException: No connection string named 'OnlineGroceryEntities' could be found in the application config file.
+   at System.Data.Entity.Internal.LazyInternalConnection.get_ConnectionHasModel()
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.Initialize()
+   at System.Data.Entity.Internal.InternalContext.ForceOSpaceLoadingForKnownEntityTypes()
+   at System.Data.Entity.DbContext.System.Data.Entity.Infrastructure.IObjectContextAdapter.get_ObjectContext()
+   at Data.EFData.OnlineGroceryEntities.GetAllProductCategory() in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Data\EFData\GloceryModel.Context.cs:line 236
+   at Service.Business.ProductCategoryService.GetAll() in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\Service\Business\ProductCategoryService.cs:line 15
+   at Admin.Portal.Controllers.ProductType.ManageProductTypeController.GetCategories(DataSourceRequest request) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\GroceryAdmin\Controllers\ProductType\ManageProductTypeController.cs:line 45
+2014-05-19 16:08:25,496 [1] INFO  Common - -------------------------------------------------------
+2014-05-19 16:08:25,515 [1] INFO  Common - ********* Initializing Application... *********
+2014-05-19 16:10:19,382 [62] INFO  Common - -------------------------------------------------------
+2014-05-19 16:10:19,393 [62] INFO  Common - ********* Initializing Application... *********
+2014-05-19 16:10:23,546 [50] INFO  Common - -------------------------------------------------------
+2014-05-19 16:10:23,557 [50] INFO  Common - ********* Initializing Application... *********
+2014-05-19 16:17:39,536 [60] ERROR Common - Invalid property or field - 'product_type_code' for type: Category
+System.ArgumentException: Invalid property or field - 'product_type_code' for type: Category
+   at Kendo.Mvc.Infrastructure.Implementation.Expressions.MemberAccessTokenExtensions.CreateMemberAccessExpression(IMemberAccessToken token, Expression instance)
+   at Kendo.Mvc.Infrastructure.Implementation.Expressions.ExpressionFactory.MakeMemberAccess(Expression instance, String memberName)
+   at Kendo.Mvc.Infrastructure.Implementation.Expressions.ExpressionFactory.MakeMemberAccess(Expression instance, String memberName, Boolean liftMemberAccessToNull)
+   at Kendo.Mvc.Infrastructure.Implementation.Expressions.PropertyAccessExpressionBuilder.CreateMemberAccessExpression()
+   at Kendo.Mvc.Infrastructure.Implementation.Expressions.FilterDescriptorExpressionBuilder.CreateMemberExpression()
+   at Kendo.Mvc.Infrastructure.Implementation.Expressions.FilterDescriptorExpressionBuilder.CreateBodyExpression()
+   at Kendo.Mvc.FilterDescriptor.CreateFilterExpression(ParameterExpression parameterExpression)
+   at Kendo.Mvc.FilterDescriptorBase.CreateFilterExpression(Expression instance)
+   at Kendo.Mvc.Infrastructure.Implementation.Expressions.FilterDescriptorCollectionExpressionBuilder.CreateBodyExpression()
+   at Kendo.Mvc.CompositeFilterDescriptor.CreateFilterExpression(ParameterExpression parameterExpression)
+   at Kendo.Mvc.FilterDescriptorBase.CreateFilterExpression(Expression instance)
+   at Kendo.Mvc.Infrastructure.Implementation.Expressions.FilterDescriptorCollectionExpressionBuilder.CreateBodyExpression()
+   at Kendo.Mvc.Infrastructure.Implementation.Expressions.FilterExpressionBuilder.CreateFilterExpression()
+   at Kendo.Mvc.Extensions.QueryableExtensions.Where(IQueryable source, IEnumerable`1 filterDescriptors)
+   at Kendo.Mvc.Extensions.QueryableExtensions.CreateDataSourceResult[TModel,TResult](IQueryable queryable, DataSourceRequest request, ModelStateDictionary modelState, Func`2 selector)
+   at Kendo.Mvc.Extensions.QueryableExtensions.ToDataSourceResult(IQueryable queryable, DataSourceRequest request, ModelStateDictionary modelState)
+   at Kendo.Mvc.Extensions.QueryableExtensions.ToDataSourceResult(IQueryable enumerable, DataSourceRequest request)
+   at Kendo.Mvc.Extensions.QueryableExtensions.ToDataSourceResult(IEnumerable enumerable, DataSourceRequest request)
+   at Admin.Portal.Controllers.ProductType.ManageCategoryController.GetCategories(DataSourceRequest request) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\GroceryAdmin\Controllers\ProductType\ManageCategoryController.cs:line 44
+2014-05-19 16:17:44,310 [60] ERROR Common - Invalid property or field - 'product_type_code' for type: Category
+System.ArgumentException: Invalid property or field - 'product_type_code' for type: Category
+   at Kendo.Mvc.Infrastructure.Implementation.Expressions.MemberAccessTokenExtensions.CreateMemberAccessExpression(IMemberAccessToken token, Expression instance)
+   at Kendo.Mvc.Infrastructure.Implementation.Expressions.ExpressionFactory.MakeMemberAccess(Expression instance, String memberName)
+   at Kendo.Mvc.Infrastructure.Implementation.Expressions.ExpressionFactory.MakeMemberAccess(Expression instance, String memberName, Boolean liftMemberAccessToNull)
+   at Kendo.Mvc.Infrastructure.Implementation.Expressions.PropertyAccessExpressionBuilder.CreateMemberAccessExpression()
+   at Kendo.Mvc.Infrastructure.Implementation.Expressions.FilterDescriptorExpressionBuilder.CreateMemberExpression()
+   at Kendo.Mvc.Infrastructure.Implementation.Expressions.FilterDescriptorExpressionBuilder.CreateBodyExpression()
+   at Kendo.Mvc.FilterDescriptor.CreateFilterExpression(ParameterExpression parameterExpression)
+   at Kendo.Mvc.FilterDescriptorBase.CreateFilterExpression(Expression instance)
+   at Kendo.Mvc.Infrastructure.Implementation.Expressions.FilterDescriptorCollectionExpressionBuilder.CreateBodyExpression()
+   at Kendo.Mvc.CompositeFilterDescriptor.CreateFilterExpression(ParameterExpression parameterExpression)
+   at Kendo.Mvc.FilterDescriptorBase.CreateFilterExpression(Expression instance)
+   at Kendo.Mvc.Infrastructure.Implementation.Expressions.FilterDescriptorCollectionExpressionBuilder.CreateBodyExpression()
+   at Kendo.Mvc.Infrastructure.Implementation.Expressions.FilterExpressionBuilder.CreateFilterExpression()
+   at Kendo.Mvc.Extensions.QueryableExtensions.Where(IQueryable source, IEnumerable`1 filterDescriptors)
+   at Kendo.Mvc.Extensions.QueryableExtensions.CreateDataSourceResult[TModel,TResult](IQueryable queryable, DataSourceRequest request, ModelStateDictionary modelState, Func`2 selector)
+   at Kendo.Mvc.Extensions.QueryableExtensions.ToDataSourceResult(IQueryable queryable, DataSourceRequest request, ModelStateDictionary modelState)
+   at Kendo.Mvc.Extensions.QueryableExtensions.ToDataSourceResult(IQueryable enumerable, DataSourceRequest request)
+   at Kendo.Mvc.Extensions.QueryableExtensions.ToDataSourceResult(IEnumerable enumerable, DataSourceRequest request)
+   at Admin.Portal.Controllers.ProductType.ManageCategoryController.GetCategories(DataSourceRequest request) in d:\Sushil\Personal\OnlineGrocery\New\Sushil\OnlineGrocery\trunk\GroceryAdmin\Controllers\ProductType\ManageCategoryController.cs:line 44

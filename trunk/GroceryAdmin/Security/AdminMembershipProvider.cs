@@ -1,6 +1,4 @@
-﻿
-using Domain.Managers;
-using Service.Business;
+﻿using Domain.Managers;
 using System;
 using System.Web;
 using System.Web.Caching;
@@ -54,7 +52,6 @@ namespace Admin.Portal.Security
             var cacheKey = string.Format("UserData_{0}", username);
             if (HttpRuntime.Cache[cacheKey] != null)
                 return (AdminMembershipUser)HttpRuntime.Cache[cacheKey];
-            var UserManager = new UserService();
             var user = UserManager.GetUser(username);
             if (user == null)
             {

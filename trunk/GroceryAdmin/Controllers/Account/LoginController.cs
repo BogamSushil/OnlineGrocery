@@ -1,6 +1,5 @@
 ﻿using Admin.Portal.Models;
 using Admin.Portal.Security;
-using Service.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,7 +72,6 @@ namespace Admin.Portal.Controllers.Account
             catch (Exception ex)
             {
                 ModelState.AddModelError("", ex.Message);
-                Logger.Error(ex.Message, ex);
                 return View(model);
             }
         }
@@ -90,7 +88,6 @@ namespace Admin.Portal.Controllers.Account
         [HttpPost]
         public ActionResult LoggClientSideErrors(string error)
         {
-            Logger.Error(error);
             return new JsonResult
             {
                 Data = new

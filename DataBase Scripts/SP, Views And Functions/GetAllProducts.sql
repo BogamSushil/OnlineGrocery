@@ -8,13 +8,14 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE [dbo].[GetAllProducts] 
 
+@CategoryId Bigint = null
 
 AS
 
  SET NOCOUNT ON;
  
 SELECT		 
-		ProductId,
+		P.ProductId,
 		TypeCode,
 		Name,
 		Price,
@@ -24,6 +25,11 @@ SELECT
 		ImageName,
 		[Description],
 		BuyCounter,
-		OtherProductPetails
+		OtherProductPetails,
+		PC.[CategoryId]
 FROM
-		[dbo].[Products]
+		[dbo].[Products] P
+INNER JOIN [dbo].[ProductCategory] PC ON PC.[ProductId] = P.ProductId
+
+WHERE 
+	@CategoryId Is NULL Or PC.CateGoryId = @CategoryId

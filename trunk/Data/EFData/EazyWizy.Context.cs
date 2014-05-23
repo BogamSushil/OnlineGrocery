@@ -105,5 +105,121 @@ namespace Data.EFData
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ManageCategory", categoryIdParameter, parentCategoryIdParameter, nameParameter, descriptionParameter, imageNameParameter, isActiveParameter, updatedByParameter, operationParameter);
         }
+    
+        public virtual ObjectResult<GetAllBrandMaster_Result> GetAllBrandMaster()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllBrandMaster_Result>("GetAllBrandMaster");
+        }
+    
+        public virtual ObjectResult<GetAllProducts_Result> GetAllProducts(Nullable<long> categoryId)
+        {
+            var categoryIdParameter = categoryId.HasValue ?
+                new ObjectParameter("CategoryId", categoryId) :
+                new ObjectParameter("CategoryId", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAllProducts_Result>("GetAllProducts", categoryIdParameter);
+        }
+    
+        public virtual int ManageBrandMaster(Nullable<long> brandId, string brandName, string brandDescription, Nullable<bool> isActive, string createdBy, Nullable<System.DateTime> createdDate, string logoFileName, string modifiedBy, Nullable<System.DateTime> modifiedDate, Nullable<int> operation)
+        {
+            var brandIdParameter = brandId.HasValue ?
+                new ObjectParameter("BrandId", brandId) :
+                new ObjectParameter("BrandId", typeof(long));
+    
+            var brandNameParameter = brandName != null ?
+                new ObjectParameter("BrandName", brandName) :
+                new ObjectParameter("BrandName", typeof(string));
+    
+            var brandDescriptionParameter = brandDescription != null ?
+                new ObjectParameter("BrandDescription", brandDescription) :
+                new ObjectParameter("BrandDescription", typeof(string));
+    
+            var isActiveParameter = isActive.HasValue ?
+                new ObjectParameter("IsActive", isActive) :
+                new ObjectParameter("IsActive", typeof(bool));
+    
+            var createdByParameter = createdBy != null ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(string));
+    
+            var createdDateParameter = createdDate.HasValue ?
+                new ObjectParameter("CreatedDate", createdDate) :
+                new ObjectParameter("CreatedDate", typeof(System.DateTime));
+    
+            var logoFileNameParameter = logoFileName != null ?
+                new ObjectParameter("LogoFileName", logoFileName) :
+                new ObjectParameter("LogoFileName", typeof(string));
+    
+            var modifiedByParameter = modifiedBy != null ?
+                new ObjectParameter("ModifiedBy", modifiedBy) :
+                new ObjectParameter("ModifiedBy", typeof(string));
+    
+            var modifiedDateParameter = modifiedDate.HasValue ?
+                new ObjectParameter("ModifiedDate", modifiedDate) :
+                new ObjectParameter("ModifiedDate", typeof(System.DateTime));
+    
+            var operationParameter = operation.HasValue ?
+                new ObjectParameter("Operation", operation) :
+                new ObjectParameter("Operation", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ManageBrandMaster", brandIdParameter, brandNameParameter, brandDescriptionParameter, isActiveParameter, createdByParameter, createdDateParameter, logoFileNameParameter, modifiedByParameter, modifiedDateParameter, operationParameter);
+        }
+    
+        public virtual int ManageProducts(Nullable<long> productId, Nullable<long> categoryId, string typeCode, string name, Nullable<decimal> price, string color, string size, byte[] image, string imageName, string description, string buyCounter, string otherProductPetails, Nullable<int> operation)
+        {
+            var productIdParameter = productId.HasValue ?
+                new ObjectParameter("ProductId", productId) :
+                new ObjectParameter("ProductId", typeof(long));
+    
+            var categoryIdParameter = categoryId.HasValue ?
+                new ObjectParameter("CategoryId", categoryId) :
+                new ObjectParameter("CategoryId", typeof(long));
+    
+            var typeCodeParameter = typeCode != null ?
+                new ObjectParameter("TypeCode", typeCode) :
+                new ObjectParameter("TypeCode", typeof(string));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var priceParameter = price.HasValue ?
+                new ObjectParameter("Price", price) :
+                new ObjectParameter("Price", typeof(decimal));
+    
+            var colorParameter = color != null ?
+                new ObjectParameter("Color", color) :
+                new ObjectParameter("Color", typeof(string));
+    
+            var sizeParameter = size != null ?
+                new ObjectParameter("Size", size) :
+                new ObjectParameter("Size", typeof(string));
+    
+            var imageParameter = image != null ?
+                new ObjectParameter("Image", image) :
+                new ObjectParameter("Image", typeof(byte[]));
+    
+            var imageNameParameter = imageName != null ?
+                new ObjectParameter("ImageName", imageName) :
+                new ObjectParameter("ImageName", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var buyCounterParameter = buyCounter != null ?
+                new ObjectParameter("BuyCounter", buyCounter) :
+                new ObjectParameter("BuyCounter", typeof(string));
+    
+            var otherProductPetailsParameter = otherProductPetails != null ?
+                new ObjectParameter("OtherProductPetails", otherProductPetails) :
+                new ObjectParameter("OtherProductPetails", typeof(string));
+    
+            var operationParameter = operation.HasValue ?
+                new ObjectParameter("Operation", operation) :
+                new ObjectParameter("Operation", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ManageProducts", productIdParameter, categoryIdParameter, typeCodeParameter, nameParameter, priceParameter, colorParameter, sizeParameter, imageParameter, imageNameParameter, descriptionParameter, buyCounterParameter, otherProductPetailsParameter, operationParameter);
+        }
     }
 }
