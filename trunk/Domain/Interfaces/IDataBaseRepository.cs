@@ -19,6 +19,28 @@ namespace Domain.Interfaces
         void ActiveDeactiveCategory(long categoryId, bool status);
 
         #endregion
+
+        #region "Product"
+
+        List<Product> GetProducts(long categoryId);
+        List<Product> GetAllProdcts();
+        void AddProduct(Product entity);
+        void UpdateProduct(Product entity);
+        void RemoveProduct(long id);
+       
+        #endregion
+
+        #region "Brand Master"
+
+        BrandMaster GetBrand(long brandId);
+        List<BrandMaster> GetAllBrands();
+        void AddBrand(BrandMaster entity);
+        void UpdateBrand(BrandMaster entity);
+        void RemoveBrand(long id);
+
+        #endregion
+
+        
         #region User
 
         User LoginUser(string userName, string password);

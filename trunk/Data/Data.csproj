@@ -56,7 +56,13 @@
     <Compile Include="EFData\AuthenticateUser_Result.cs">
       <DependentUpon>EazyWizy.tt</DependentUpon>
     </Compile>
+    <Compile Include="EFData\GetAllBrandMaster_Result.cs">
+      <DependentUpon>EazyWizy.tt</DependentUpon>
+    </Compile>
     <Compile Include="EFData\GetAllCategories_Result.cs">
+      <DependentUpon>EazyWizy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFData\GetAllProducts_Result.cs">
       <DependentUpon>EazyWizy.tt</DependentUpon>
     </Compile>
     <Compile Include="EFData\GetAllUsers_Result.cs">

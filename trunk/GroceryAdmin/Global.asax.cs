@@ -1,4 +1,4 @@
-﻿using Service.Common;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +14,6 @@ namespace Admin.Portal
     {
         protected void Application_Start()
         {
-            var path = Server.MapPath("~/web.config");
-            Logger.Init(path);
-
-            Logger.Info("-------------------------------------------------------");
-            Logger.Info("********* Initializing Application... *********");
-
             AreaRegistration.RegisterAllAreas();
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
